@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+section{
+    width: 100%;
+    height: 10vh;
+    /* background-image: ; */
+    background-size: cover;
+    background-position: center;
+}
+section nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 0 10px antiquewhite;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    z-index: 100;
+    height: 10vh;
+}
+section nav .logo img{
+    width: 135px;
+    height: 135px;
+    cursor: pointer;
+}
+section nav ul{
+    list-style: none;
+
+}
+section nav li{
+    display: inline-block;
+    padding: 0 10px;
+}
+section nav li a{
+    text-decoration:  none;
+    color: black;
+}
+section nav li a:hover{
+    color: lightcoral;
+}
+section nav .social {
+    margin:0 5px;
+    padding: 5px;
+    font-size: 18px;
+}
+section nav .social :hover{
+    color: lightcoral;
+}
+iframe {
+    width: calc(100% - 5%); /* Subtract 40px from the viewport width */
+    height: 100vh; /* Set the height to full viewport height */
+    position: fixed; /* Set the position to fixed */
+    top: 20%; /* Align the iframe to the top of the viewport */
+    left: 5%; /* Move the iframe 40px from the left */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    border: none; /* Remove the border */
+}
+.container {
+    position: absolute; /* Position the container absolutely */
+    /* top: 10%; Adjust the top position as needed */
+    left: 50%; /* Position the container horizontally */
+    transform: translateX(-50%); /* Center the container horizontally */
+    z-index: 999; /* Ensure the container is above the iframe */
+}
