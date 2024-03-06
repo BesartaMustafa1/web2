@@ -62,21 +62,31 @@
               </div>
             </div>
           </div>
+          
 
         <iframe class="book-content" src="books.html"></iframe>
 
         <script>
-            document.getElementsByClassName('book-content').onload = function() {
-                // Access the body of the iframe's contentDocument
-                var iframeBody = this.contentDocument.body || this.contentDocument;
-                // Access the children of the body (or the document itself if no body)
-                var children = iframeBody.children || iframeBody.childNodes;
-                // Insert the first child of the iframe into the document body
-                if (children.length > 0) {
-                    document.body.insertBefore(children[0], document.body.firstChild);
+            function moveIframeContentDown() {
+                var iframe = document.querySelector('.book-content');
+                var iframeContent = iframe.contentDocument || iframe.contentWindow.document;
+                var bodyChildren = iframeContent.body.children || iframeContent.body.childNodes;
+                
+                if (bodyChildren.length > 0) {
+                    document.body.appendChild(bodyChildren[0]);
                 }
-                // Remove the iframe
-                this.remove();
+            }
+    
+            window.onload = function() {
+                moveIframeContentDown();
+            };
+    
+            // Assuming you have some button or event to add new content
+            // You should call moveIframeContentDown() function after adding new content
+            // For example, assuming you have a button with id="add-content"
+            document.getElementById('add-content').onclick = function() {
+                // Code to add new content
+                moveIframeContentDown();
             };
         </script>
 
