@@ -20,9 +20,11 @@ section nav{
     background: #fff;
     position: fixed;
     left: 0;
-    z-index: 100;
+    z-index: 1;
     height: 10vh;
+    overflow: hidden;
 }
+
 section nav .logo img{
     width: 135px;
     height: 135px;
@@ -67,4 +69,15 @@ iframe {
     left: 50%; /* Position the container horizontally */
     transform: translateX(-50%); /* Center the container horizontally */
     z-index: 999; /* Ensure the container is above the iframe */
+}
+.row{
+    width:90%;
+    padding: 2.5%;
+    top: 5%;
+
+}
+.card{
+    width: 600px;
+    height: 100vh;
+    left: 15%;
 }

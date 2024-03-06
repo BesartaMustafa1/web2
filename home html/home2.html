@@ -14,38 +14,11 @@
     <style>
      
 
-.book-content {
-    margin: 50px auto 0 auto; /* Center the iframe horizontally */
-    width: 90%; /* Adjust the width to your preference */
-    display: flex;
-    flex-wrap: wrap; /* Allow books to wrap to the next row */
-    justify-content: center; /* Center books horizontally */
-    gap: 20px; /* Add some spacing between books */
-    position: absolute; /* Position the iframe */
-    top: 20%; /* Align the iframe to the top */
-    left: 5%; /* Add left padding */
-    bottom: 0; /* Align the iframe to the bottom */
-    right: 5%; /* Add right padding */
-    border: none; /* Remove the border */
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5%; /* Adjust the margin as needed */
-    /* Other styles for the container */
-}
-
 .container .row {
     margin-top: 20px; /* Adjust the margin between rows */
     padding: 10px;
-}
+} */
 
-.col-sm {
-    /* Styles for columns */
-    
-}
 
     </style>
     <body>
@@ -67,23 +40,28 @@
                     <i class="fa-solid fa-heart"></i>
                 </div>
             </nav>
-            <div class="container">
-                <div class="row">
-                  <div class="col-sm">
-                    One of three columns
-                  </div>
-                  <div class="col-sm">
-                    One of three columns
-                  </div>
-                  <div class="col-sm">
-                    One of three columns
-                  </div>
+          </section>
+
+          <div class="row" style="z-index: 1">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
-
-
-        
-
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
         <iframe class="book-content" src="books.html"></iframe>
 
