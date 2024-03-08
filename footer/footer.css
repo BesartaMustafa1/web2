@@ -40,7 +40,7 @@ button {
 .flex {
   display: flex;
 }
-.footer_video {
+/* .footer_video {
   position: absolute;
   top: 0;
   left: 0;
@@ -50,7 +50,7 @@ button {
   z-index: -1;
   overflow: hidden;
   border: none;
-}
+} */
 #footer_inner {
   background: var(--light);
   backdrop-filter: blur(50px);

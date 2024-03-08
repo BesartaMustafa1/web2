@@ -4,14 +4,14 @@
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-section{
+header{
     width: 100%;
-    height: 10vh;
+    /* height: 10vh; */
     /* background-image: ; */
     background-size: cover;
     background-position: center;
 }
-section nav{
+header nav{
     width: 100%;
     display: flex;
     align-items: center;
@@ -25,33 +25,33 @@ section nav{
     overflow: hidden;
 }
 
-section nav .logo img{
+header nav .logo img{
     width: 135px;
-    height: 135px;
+    /* height: 135px; */
     cursor: pointer;
 }
-section nav ul{
+header nav ul{
     list-style: none;
     
 
 }
-section nav li{
+header nav li{
     display: inline-block;
     padding: 0 10px;
 }
-section nav li a{
+header nav li a{
     text-decoration:  none;
     color: black;
 }
-section nav li a:hover{
+header nav li a:hover{
     color: lightcoral;
 }
-section nav .social {
+header nav .social {
     margin:0 5px;
     padding: 5px;
     font-size: 18px;
 }
-section nav .social :hover{
+header nav .social :hover{
     color: lightcoral;
 }
 

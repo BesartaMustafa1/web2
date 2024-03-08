@@ -1,0 +1,11 @@
+/* Add custom styles */
+.container {
+    margin-top: -43.5%; /* Adjust margin as needed */
+}
+
+/* Style to center the row */
+.center-row {
+    display: flex;
+    justify-content: center;
+    margin-left: -10%; /* Move the row 10% to the left */
+}
