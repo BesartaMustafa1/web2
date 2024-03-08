@@ -32,6 +32,7 @@ section nav .logo img{
 }
 section nav ul{
     list-style: none;
+    
 
 }
 section nav li{
@@ -54,9 +55,3 @@ section nav .social :hover{
     color: lightcoral;
 }
 
-.row{
-    width:90%;
-    padding: 2.5%;
-    top: 5%;
-
-}
