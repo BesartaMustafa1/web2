@@ -32,6 +32,7 @@ section nav .logo img{
 }
 section nav ul{
     list-style: none;
+    text-align: center;
 
 }
 section nav li{
@@ -42,6 +43,7 @@ section nav li{
 section nav li a{
     text-decoration:  none;
     color: black;
+
 }
 section nav li a:hover{
     color: lightcoral;
@@ -54,6 +56,7 @@ section nav .social {
 section nav .social :hover{
     color: lightcoral;
 }
+
 
 .row{
     width:90%;
@@ -211,4 +214,35 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
    flex-direction: column;
     width:400px;
   }
+}
+.feather {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.feather-log-in {
+  /* Add specific styles for the login icon if needed */
+}
+
+/* Example styles for the signin container */
+.signin {
+  display: flex;
+  align-items: center;
+}
+
+.signin svg {
+  margin-right: 5px; /* Adjust the spacing between the icon and text */
+}
+
+.signin span {
+  font-size: 16px;
+  /* Add any other styles for the text */
+}
+ 
+.signin :hover{
+  color: lightcoral;
 }
