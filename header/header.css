@@ -54,3 +54,34 @@ header nav .social :hover{
     color: lightcoral;
 }
 
+.feather {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  .feather-log-in {
+    /* Add specific styles for the login icon if needed */
+  }
+  
+  /* Example styles for the signin container */
+  .signin {
+    display: flex;
+    align-items: center;
+  }
+  
+  .signin svg {
+    margin-right: 5px; /* Adjust the spacing between the icon and text */
+  }
+  
+  .signin span {
+    font-size: 16px;
+    /* Add any other styles for the text */
+  }
+   
+  .signin :hover{
+    color: lightcoral;
+  }
