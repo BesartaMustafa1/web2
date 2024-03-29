@@ -30,11 +30,14 @@
             <i class="fa-solid fa-magnifying-glass"></i>
             <i class="fa-solid fa-heart"></i>
         </div>
-        <div class="signin">
+        <div class="user-info" id="welcomeMessage" style="display: none;">
+            <span>Welcome, <span id="username"></span></span>
+        </div>
+          <div class="signin">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in">
               <path d="M19 12H5M12 19l-7-7 7-7"/>
             </svg>
-            <span>Sign In</span>
+            <a href="../signup/signup.html" style="text-decoration: none; color:black"><span>Sign In</span></a>
           </div>
     </nav>
 </header>
@@ -108,6 +111,22 @@ and build a brighter future for generations to come.
 </div>
 
 <iframe src="../footer/footer.html" width=100% height="450px"></iframe>
+<script>
+      // Retrieve the username from session storage
+      var username = sessionStorage.getItem("username");
+      // Display the welcome message with the username if it exists
+      if (username) {
+          document.getElementById("username").textContent = username;
+          document.getElementById("welcomeMessage").style.display = "block";
+      }
 
+      // Function to handle sign-out action
+      function signOut() {
+          // Clear the session storage
+          sessionStorage.removeItem("username");
+          // Redirect to the login page
+          window.location.href = "home2.html";
+      }
+</script>
 </body>
 </html>
