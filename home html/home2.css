@@ -227,3 +227,42 @@ video {
   width: 100%;
   overflow: hidden;
 }
+.carousel {
+  position: relative;
+}
+
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-20%);
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 1; /* Ensure the buttons are above other elements */
+}
+
+.carousel .prev {
+  left: 20px; /* Adjust the left position */
+}
+
+.carousel .next {
+  right: 20px; /* Adjust the right position */
+}
+
+.image-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: Adding a semi-transparent background */
+  padding: 10px;
+  color: white;
+  z-index: 1; /* Ensure the caption is above other elements */
+}
+
+.image-caption {
+  margin-top: 20px; /* Adjust the top margin as needed */
+  text-align: center;
+}
