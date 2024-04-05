@@ -50,7 +50,13 @@
 
 
           <div id="header"></div>
-          <div class="slideshow-container1" >
+          <div id="video-container">
+            <video autoplay muted loop style="width: 100%;">
+              <source src="Video1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+          <!-- <div class="slideshow-container1" >
             <div class="mySlides fade">
               <img src="Home pic/thisisthefirst.jpg" style="width: 100%;">
               <div class="text">Caption Text</div>
@@ -121,7 +127,7 @@ function showSlides() {
   if (slideIndex > slides.length) {slideIndex = 1}
   slides[slideIndex-1].style.display = "block";
   setTimeout(showSlides, 5000); 
-}
+} -->
           </script>
           </div>
           <br>

@@ -217,3 +217,13 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
 .signin :hover{
   color: lightcoral;
 }
+video {
+  width: 100%;
+  height: auto;
+  margin-bottom: 80px;
+}
+#video-container{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
