@@ -47,3 +47,6 @@
     width: 15px;
     margin-left: 10px;
 }
+.launch-time{
+    display: flex;
+}
