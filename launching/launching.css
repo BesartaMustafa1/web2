@@ -19,3 +19,9 @@
     padding: 20px 0;
     cursor: pointer; 
  }
+ .content{
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    color: #fff;
+}
