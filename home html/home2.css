@@ -118,7 +118,7 @@
 }
 .tile:hover
 {
-/*   background-color:#99aeff; */
+  /* background-color:#99aeff; */
 box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   transform:scale(1.05);
 }
@@ -195,9 +195,9 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   stroke-linejoin: round;
 }
 
-.feather-log-in {
-  /* Add specific styles for the login icon if needed */
-}
+/* .feather-log-in {
+   Add specific styles for the login icon if needed 
+} */
 
 /* Example styles for the signin container */
 .signin {
