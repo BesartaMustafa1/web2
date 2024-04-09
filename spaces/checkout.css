@@ -1,0 +1,118 @@
+
+.popup{
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #fff;
+    border-radius: 6px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 60px;
+    color: #333;
+    visibility: hidden;
+    transition: all 0.8s step-start;    
+    box-sizing: border-box;
+    border-bottom: none;
+   
+}
+
+.allInfo {
+    position: fixed;
+    top: 200px; 
+    right: 20%; 
+    z-index: 1; 
+    background-color: white;
+    padding: 15px; 
+}
+.open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup img{
+    width: 500px;
+    margin-left: -700px;
+    top: 20%;
+
+}
+
+.formDetails{
+    position: relative;
+   border-bottom: none;
+    margin-left: 800px;
+    text-align: left;
+    margin-top: 20px;
+
+}
+
+.productImage{
+    margin-top: 85px;
+    background-color: gray;
+    position: fixed;
+    right: 50%;
+    z-index: 1; 
+   
+
+} 
+.productName{
+    font-size: 28px;
+    font-family: 'Belanosima', sans-serif;
+}
+.prductPrice{
+    font-size: 25px;
+    font-family: 'Belanosima', sans-serif;
+}
+.ref{
+    font-weight:100;
+    opacity: 70%;
+    font-family: 'Belanosima', sans-serif;  
+} 
+.size{
+    width: 300px;
+    border: none ;
+    border-bottom: 1px solid black;
+    height: 40px;
+    font-family: 'Belanosima', sans-serif;
+    display: block;
+} 
+.allSizes{
+    font-size: 15px;
+    opacity: 70%;
+    font-family: 'Belanosima', sans-serif;
+}
+
+.submitButton{
+    background-color: black;
+    margin-top: 10px;
+    width: 300px;
+    display: block;
+    height: 50px;
+    color: white;
+    font-family: 'Belanosima', sans-serif;  
+} 
+.closePopupButton{
+
+    opacity: 80%;
+    
+   
+} 
+.checkout-page .title .page-title {
+    display: none;
+}
+.closePopupButton{
+    position: absolute;
+    margin-top: 50px;
+    margin-top: 100px;
+    margin-left: 700px;
+    font-size: 40px;
+    border: 0px;
+    background-color: white
+}
+
+
