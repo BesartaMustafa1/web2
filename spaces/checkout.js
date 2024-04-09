@@ -66,57 +66,6 @@ const myForm = document.getElementById('formDetails');
 myForm.addEventListener('submit', function(event) {
   event.preventDefault();
 });
-var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
-let userCart = JSON.parse(localStorage.getItem(loggedInUserEmail + '_cart')) || [];
-
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-function CartItem(productName,price,img){
-  this.productName =productName;
-  this.price =price;
-  this.img= img;
-}
-function addToCart(productName, price, img) {
-const cartItem = new CartItem(productName,price,img);
-  console.log("productName"+cartItem.productName)
-  var j=0;
-  console.log("cart:"+cartItem.productName);
-  for(var i=0;i <userCart.length ;i++){
-    console.log(userCart[i].productName); 
-    if(userCart[i].productName ===cartItem.productName){
-     j =1;
-    }
-  }
-
-  console.log(j);
-
-    if(j===1){
-      alert("Already Exist If You More Go Change Quantity ")
-    }else{
-      if(loggedInUserEmail !=="null"){      
-      userCart.push(cartItem)
-      console.log(userCart)
-      alert(` added to cart!`);
-      }else{
-          alert("You must be logged in")
-      }
-    }
-
-}
-
-  console.log(typeof loggedInUserEmail)
-function viewCart() {
-  localStorage.setItem(loggedInUserEmail + '_cart', JSON.stringify(userCart));
-  window.location.href = '/MainFiles/Cart/cart.html';
-}
-document.addEventListener('click', function(event){
-  if (event.target.classList.contains('submitButton')) {
-    const getParagrah = document.querySelector(".productName").innerHTML;
-    const getPrice = document.querySelector(".prductPrice").innerHTML;
-    const getImage = document.querySelector(".productImage").src;
-addToCart(getParagrah,getPrice, getImage)
-  }
-})
 
 function closePopup(){
   popup.classList.remove('open-popup');
