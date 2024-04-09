@@ -81,68 +81,27 @@
     </div>
 </div>   
 
-<script>
-    var x = document.getElementById("login");
-    var y = document.getElementById("register");
-
-    function login() {
-        x.style.left = "4px";
-        y.style.right = "-520px";
-    }
-
-    function register() {
-        x.style.left = "-510px";
-        y.style.right = "5px";
-    }
-
+<?php
     function signIn() {
-        var username = document.getElementById("loginUsername").value;
-        var password = document.getElementById("loginPassword").value;
-        
+        $username = $_POST["loginUsername"];
+        $password = $_POST["loginPassword"];
+
         // Check if username and password are not empty
-        if (username.trim() !== "" && password.trim() !== "") {
-            // Redirect to home2.html when Sign In button is clicked
-            window.location.href = "../home html/home2.html";
+        if (!empty($username) && !empty($password)) {
+            // Here, you would typically send a request to your backend server to verify the credentials
+            // For demonstration purposes, I'm assuming a successful login
+            // Extract username from email (assuming email is in the format username@example.com)
+            $extractedUsername = explode('@', $username)[0];
+            // Store the username in session storage
+            $_SESSION["username"] = $extractedUsername;
+            // Redirect to home2.html
+            header("Location: ../home html/home2.html");
+            exit();
         } else {
-            alert("Please fill in all required fields.");
+            echo "<script>alert('Please fill in all required fields.');</script>";
         }
     }
-
-    function registerUser() {
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-        var email = document.getElementById("registerEmail").value;
-        var password = document.getElementById("registerPassword").value;
-        
-        // Check if all fields are not empty
-        if (firstName.trim() !== "" && lastName.trim() !== "" && email.trim() !== "" && password.trim() !== "") {
-            // Redirect to login page after successful registration
-            window.location.href = "#login";
-        } else {
-            alert("Please fill in all required fields.");
-        }
-    }
-
-function signIn() {
-    var username = document.getElementById("loginUsername").value;
-    var password = document.getElementById("loginPassword").value;
-
-    // Check if username and password are not empty
-    if (username.trim() !== "" && password.trim() !== "") {
-        // Here, you would typically send a request to your backend server to verify the credentials
-        // For demonstration purposes, I'm assuming a successful login
-        // Extract username from email (assuming email is in the format username@example.com)
-        var extractedUsername = username.split('@')[0];
-        // Store the username in session storage
-        sessionStorage.setItem("username", extractedUsername);
-        // Redirect to home2.html
-        window.location.href = "../home html/home2.html";
-    } else {
-        alert("Please fill in all required fields.");
-    }
-}
-
-</script>
+?>
 
 </body>
 </html>
