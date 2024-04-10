@@ -4,59 +4,30 @@
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-section{
-    width: 100%;
-    height: 10vh;
-    /* background-image: ; */
-    background-size: cover;
-    background-position: center;
+.t1 {
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
 }
-section nav{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 0 10px antiquewhite;
-    background: #fff;
-    position: fixed;
-    left: 0;
-    z-index: 1;
-    height: 10vh;
-    overflow: hidden;
+.t1 h3{
+  text-align: center;
+  background-color: #fff;
+  display: inline-block;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
 }
-
-section nav .logo img{
-    width: 135px;
-    height: 135px;
-    cursor: pointer;
+.t1::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 1px;
+  background-color: #000;
+  z-index: 0;
 }
-section nav ul{
-    list-style: none;
-    text-align: center;
-
-}
-section nav li{
-  margin:0 5px;
-    display: inline-block;
-    padding: 0 10px;
-}
-section nav li a{
-    text-decoration:  none;
-    color: black;
-
-}
-section nav li a:hover{
-    color: lightcoral;
-}
-section nav .social {
-    margin:0 5px;
-    padding: 5px;
-    font-size: 18px;
-}
-section nav .social :hover{
-    color: lightcoral;
-}
-
 
 .row{
     width:90%;
@@ -147,7 +118,7 @@ section nav .social :hover{
 }
 .tile:hover
 {
-/*   background-color:#99aeff; */
+  /* background-color:#99aeff; */
 box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   transform:scale(1.05);
 }
@@ -224,9 +195,9 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   stroke-linejoin: round;
 }
 
-.feather-log-in {
-  /* Add specific styles for the login icon if needed */
-}
+/* .feather-log-in {
+   Add specific styles for the login icon if needed 
+} */
 
 /* Example styles for the signin container */
 .signin {
@@ -245,4 +216,53 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
  
 .signin :hover{
   color: lightcoral;
+}
+video {
+  width: 100%;
+  height: auto;
+  margin-bottom: 80px;
+}
+#video-container{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel {
+  position: relative;
+}
+
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-20%);
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 1; /* Ensure the buttons are above other elements */
+}
+
+.carousel .prev {
+  left: 20px; /* Adjust the left position */
+}
+
+.carousel .next {
+  right: 20px; /* Adjust the right position */
+}
+
+.image-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: Adding a semi-transparent background */
+  padding: 10px;
+  color: white;
+  z-index: 1; /* Ensure the caption is above other elements */
+}
+
+.image-caption {
+  margin-top: 20px; /* Adjust the top margin as needed */
+  text-align: center;
 }
