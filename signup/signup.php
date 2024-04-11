@@ -80,8 +80,75 @@
         </div>
     </div>
 </div>   
+<?php
+// Define some constants
+define("MAX_USERNAME_LENGTH", 20);
+define("MAX_PASSWORD_LENGTH", 20);
 
-<script>
+// Accessing variables from the HTML form
+$username = $_POST['loginUsername'];
+$password = $_POST['loginPassword'];
+
+// Dumping variables
+var_dump($username);
+var_dump($password);
+
+// Function to check if a string contains only alphabetic characters
+function isAlpha($str) {
+    return ctype_alpha(str_replace(' ', '', $str));
+}
+
+// Checking if username and password are not empty
+if (!empty($username) && !empty($password)) {
+    // Checking if username is valid (only alphabetic characters and within max length)
+    if (isAlpha($username) && strlen($username) <= MAX_USERNAME_LENGTH) {
+        // Checking if password is within max length
+        if (strlen($password) <= MAX_PASSWORD_LENGTH) {
+            // Assuming successful login, redirecting to home2.html
+            header("Location: ../home html/home2.html");
+            exit();
+        } else {
+            echo "Password must be less than or equal to " . MAX_PASSWORD_LENGTH . " characters.";
+        }
+    } else {
+        echo "Invalid username. Username must contain only alphabetic characters and be less than or equal to " . MAX_USERNAME_LENGTH . " characters.";
+    }
+} else {
+    echo "Please fill in all required fields.";
+}
+
+// Array example
+$fruits = array("Apple", "Banana", "Orange");
+echo $fruits[0]; // Outputs: Apple
+
+// Associative array example
+$person = array("name" => "John", "age" => 30, "city" => "New York");
+echo $person["name"]; // Outputs: John
+
+// Multidimensional array example
+$employees = array(
+    array("name" => "John", "age" => 30, "position" => "Developer"),
+    array("name" => "Jane", "age" => 25, "position" => "Designer")
+);
+
+echo $employees[0]["name"]; // Outputs: John
+
+// Sorting arrays
+sort($fruits); // Sorts in ascending order
+rsort($fruits); // Sorts in descending order
+asort($person); // Sorts associative arrays by value, maintaining key association
+ksort($person); // Sorts associative arrays by key
+arsort($person); // Sorts associative arrays in descending order by value, maintaining key association
+krsort($person); // Sorts associative arrays in descending order by key
+
+// Global variables in PHP
+$GLOBALS['global_var'] = "I am a global variable";
+
+// Accessing global variable
+echo $GLOBALS['global_var'];
+?>
+
+<!-- <script>
     var x = document.getElementById("login");
     var y = document.getElementById("register");
 
@@ -142,7 +209,7 @@ function signIn() {
     }
 }
 
-</script>
+</script> -->
 
 </body>
 </html>
