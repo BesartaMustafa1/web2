@@ -1,35 +1,33 @@
 let popup = document.getElementById('popup');
+let elemtsForCart = {};
+let currentProductIndex = -1; 
 
-var elemtsForCart={};
-function openPopup(){
-  $('html').css('overflow-y','hidden');
+function openPopup() {
+  $('html').css('overflow-y', 'hidden');
   popup.classList.add('open-popup');
 }
-  let firstParagraph1 =  document.querySelectorAll(".linkToBuy");
-  firstParagraph1.forEach(element=>{
-      element.addEventListener("click",(event)=>{
-        var clickedElement = event.currentTarget;
-        var selectImage = clickedElement.querySelector("img").src;
-        var elmentName = clickedElement.querySelector('.firstParagraph').innerHTML;
-        var elementPrice = clickedElement.querySelector('.qmimi').innerHTML;
 
-        document.querySelector(".productImage").src=selectImage;
-        document.querySelector(".productName").innerHTML = elmentName;
-        document.querySelector(".prductPrice").innerHTML = elementPrice;  
-     });
-  }); 
-  function addToCart(){
-    console.log(elemtsForCart.image);
-    document.querySelector(".imgSrc").src = elemtsForCart.image;
-  }
+function closePopup() {
+  popup.classList.remove('open-popup');
+  $('html').css('overflow-y', 'scroll');
+}
 
-function initializeProductDetails(productDetailsArray) {
-  let currentProductIndex = -1; 
-  document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.linkToBuy').forEach(function (button, index) {
-    button.addEventListener('click', function () {
-      currentProductIndex = index;
-      console.log(index);
+document.addEventListener('DOMContentLoaded', function () {
+  let firstParagraph1 = document.querySelectorAll(".linkToBuy");
+
+  firstParagraph1.forEach(element => {
+    element.addEventListener("click", (event) => {
+      var clickedElement = event.currentTarget;
+      var selectImage = clickedElement.querySelector("img").src;
+      var elmentName = clickedElement.querySelector('.card-title').innerHTML;
+      var elementPrice = clickedElement.querySelector('.card-text').innerHTML;
+
+      document.querySelector(".productImage").src = selectImage;
+      document.querySelector(".productName").innerHTML = elmentName;
+      document.querySelector(".prductPrice").innerHTML = elementPrice;
+      
+      currentProductIndex = Array.from(firstParagraph1).indexOf(clickedElement);
+      console.log(currentProductIndex);
       openPopup();
     });
   });
@@ -37,9 +35,13 @@ function initializeProductDetails(productDetailsArray) {
   document.querySelector('.productDetails').addEventListener('click', function () {
     if (currentProductIndex !== -1) {
       const modalBody = document.querySelector('.modal-body');
-      console.log(currentProductIndex);
       modalBody.innerHTML = '';
       const listElement = document.createElement('ul');
+
+      const productDetailsArray = [
+        "Type 1\n-Leather free.\n-Mesh and nylon.\n-Printed logo on the exterior.\nEmbossed logo on the tongue.\n-Material: 75% polyurethane, 21% polyester, 4% nylon.",
+        // Add more product details here
+      ];
 
       productDetailsArray[currentProductIndex]
         .split('\n')
@@ -51,7 +53,6 @@ function initializeProductDetails(productDetailsArray) {
             listElement.appendChild(listItem);
           }
         });
-        modalBody.style.marginTop = '150px';
 
       modalBody.appendChild(listElement);
     } else {
@@ -60,16 +61,11 @@ function initializeProductDetails(productDetailsArray) {
   });
 });
 
-}
 const myForm = document.getElementById('formDetails');
 
-myForm.addEventListener('submit', function(event) {
+myForm.addEventListener('submit', function (event) {
   event.preventDefault();
 });
 
-function closePopup(){
-  popup.classList.remove('open-popup');
-  $('html').css('overflow-y','scroll');
-}
 // Add a class to the body element when on the checkout page
 document.body.classList.add('checkout-page');
