@@ -20,6 +20,7 @@ body{
     align-items: center;
     min-height: 110vh;
     background: rgba(39, 39, 39, 0.4);
+    background-image: url(signup1.jpg);
 }
 .nav{
     position: fixed;
