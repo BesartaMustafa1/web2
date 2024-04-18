@@ -112,3 +112,6 @@ svg {
 .footer_copyright {
   color: var(--light);
 }
+.fa-facebook-f:before {
+  content: "\f39e";
+}

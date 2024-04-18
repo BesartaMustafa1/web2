@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewpoint" content="width: device-width, initial-scale: 1.0">
+    <title>TL</title>
+    <link rel="stylesheet" href="home2.css">
+    <link rel="stylesheet" href="../header/header.css">
+    <link rel="stylesheet" href="../footer/footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/htmlincludejs"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <style>
+        .address {
+            padding-top: 100px;
+            margin: 0 auto;
+        }.add-row {
+            flex-direction: row;
+            flex-wrap: inherit;
+            transition: 0.2s flex-direction;
+            -webkit-transition: 0.2s flex-direction;
+        }
+        .row {
+            --bs-gutter-x: 1.5rem;
+            --bs-gutter-y: 0;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: calc(var(--bs-gutter-y)* -1);
+            margin-right: calc(var(--bs-gutter-x) / -2);
+            margin-left: calc(var(--bs-gutter-x) / -2);
+        }
+    </style>
+   
+    <body>
+          <div id="header"></div>
+          <div class="container address">
+            <div class="row add-row">
+              <div class="col-sm-6">
+                <h3>Adresa jonë:</h3>
+                <div class="violetline-address"></div>
+                <address>
+                  <p>Bregu i Diellit</p>
+                  <p>p.n. 10000 Prishtinë</p>
+                  <p>Republika e Kosovës</p>
+                </address>
+                <div class="phone-e">
+                  <p><span class="glyphicon glyphicon-envelope"> </span> fiek@uni-pr.edu</p>
+                  <p><span class="glyphicon glyphicon-phone"></span> +383(0)38 554 896 </p>
+                </div>
+              </div>
+              <div class="col-sm-6 map-padd">
+                <figure>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.296425333013!2d21.165863238795012!3d42.64879069279192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549ec1b6ecb2c1%3A0x7f0893730efce187!2sFakulteti%20Teknik!5e0!3m2!1sen!2s!4v1704029283729!5m2!1sen!2s" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                  <figcaption>Location on the map</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+          
+          
+
+
+            <div id="footer"></div>
+            <script>
+              // Retrieve the username from session storage
+              var username = sessionStorage.getItem("username");
+              // Display the welcome message with the username if it exists
+              if (username) {
+                  document.getElementById("username").textContent = username;
+                  document.getElementById("welcomeMessage").style.display = "block";
+              }
+        
+              // Function to handle sign-out action
+              function signOut() {
+                  // Clear the session storage
+                  sessionStorage.removeItem("username");
+                  // Redirect to the login page
+                  window.location.href = "home2.html";}
+                </script>
+              <script>
+                 $('#footer').load('../footer/footer.html');
+              </script>
+    </body>
+        
+</html>  
