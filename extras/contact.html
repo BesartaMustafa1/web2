@@ -65,26 +65,26 @@
           
 
 
-            <div id="footer"></div>
+          <div id="footer"></div>
+          <script>
+            // Retrieve the username from session storage
+            var username = sessionStorage.getItem("username");
+            // Display the welcome message with the username if it exists
+            if (username) {
+                document.getElementById("username").textContent = username;
+                document.getElementById("welcomeMessage").style.display = "block";
+            }
+      
+            // Function to handle sign-out action
+            function signOut() {
+                // Clear the session storage
+                sessionStorage.removeItem("username");
+                // Redirect to the login page
+                window.location.href = "home2.html";
+            }</script>
             <script>
-              // Retrieve the username from session storage
-              var username = sessionStorage.getItem("username");
-              // Display the welcome message with the username if it exists
-              if (username) {
-                  document.getElementById("username").textContent = username;
-                  document.getElementById("welcomeMessage").style.display = "block";
-              }
-        
-              // Function to handle sign-out action
-              function signOut() {
-                  // Clear the session storage
-                  sessionStorage.removeItem("username");
-                  // Redirect to the login page
-                  window.location.href = "home2.html";}
-                </script>
-              <script>
-                 $('#footer').load('../footer/footer.html');
-              </script>
+      $('#footer').load('../footer/footer.html');
+        </script>
     </body>
         
 </html>  
