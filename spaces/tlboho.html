@@ -14,10 +14,11 @@
 </head>
 
 <body>
-
+ 
   <div class="allProductImages">
-    <img class="productImage" src="pictures/..jpg">
+    <img class="productImage" src="pictures/coworking1.jpg" width="600px">
 </div>
+
 <form>
     <div class="allInfo">
     <p class="productName">TL's Boho</p>
@@ -104,6 +105,11 @@
           cart = JSON.parse(localStorage.getItem('cart'));
       }
   };
+</script>
+<script>
+  function goToSpacesPage() {
+    window.location.href = 'spaces.html';
+  }
 </script>
 </body>
 </html>
