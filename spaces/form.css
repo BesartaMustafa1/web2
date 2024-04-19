@@ -4,7 +4,7 @@ html, body, div, input, span, a, select, textarea, option, h1, h2, h3, h4, main,
 }
 html {
     background-color: #F8F9F9;
-    background: linear-gradient(0deg, #f9f8f8 0%, #f9f8f8 80%, #000000 80%, #d86d5e 100%);
+    background: linear-gradient(0deg, #f9f8f8 0%, #f9f8f8 80%, #000000 80%, #84807f 100%);
     padding: 30px;
     height: 100%;
 }
@@ -93,7 +93,7 @@ h1 i {
     margin-top: 15px;
     padding: 15px;
     border: 0;
-    background-color: #cb5f51;
+    background-color: #7b7473;
     font-weight: bold;
     color: #fff;
     cursor: pointer;
