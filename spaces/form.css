@@ -1,5 +1,5 @@
 html, body, div, input, span, a, select, textarea, option, h1, h2, h3, h4, main, aside, article, section, header, p, footer, nav, pre {
-    box-sizing: border-box;
+   
     font-family: Tahoma, Geneva, sans-serif;
 }
 html {
@@ -100,7 +100,7 @@ h1 i {
     width: 100%;
 }
 .hotel-reservation-form input[type="submit"]:hover {
-    background-color: #c15b4d;
+    background-color: #272626;
 }
 .hotel-reservation-form input[name="email"] {
     position: relative;
