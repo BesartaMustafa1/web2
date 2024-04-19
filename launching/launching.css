@@ -13,7 +13,9 @@
     background-size: cover;
     padding: 0 8%;
     position: relative;
+    
 }
+
 
  .content{
     top: 50%;
@@ -28,31 +30,35 @@
 .content h1 span{
     color: #e99b5b;
 }
-.content button{
+.content .button{
     background: transparent;
     border: 2px solid #fff;
     outline: none;
     padding: 12px 25px;
+    text-decoration: none;
     color: #fff;
-    display: flex;
+    display: inline-block;
     align-items: center;
     margin-top: 30px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
-  .content button:hover {
+.button {
+    box-sizing: border-box;
+    
+}
+  .content .button:hover {
     background-color: #e99b5b;
     color: black;
     border: 2px solid #fff;
   }
 
-.content button img{
+.content .button img{
     width: 15px;
     margin-left: 10px;
 }
 
-.content button img:hover{
+.content .button img:hover{
     color: black;
   }
 
