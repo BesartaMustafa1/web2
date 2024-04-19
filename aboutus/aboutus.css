@@ -28,3 +28,29 @@
   flex: 1;
   margin-right: 10px; /* Adjust as needed */
 }
+.leadership-grid {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+}
+
+.leadership-grid li {
+  display: inline;
+  text-align: center;
+}
+
+/* Optionally, you can add some styling to the links inside the list items */
+.leadership-grid li a {
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  color: #000; /* Adjust color as needed */
+}
+
+/* Optionally, add hover effects */
+.leadership-grid li a:hover {
+  background-color: #ccc; /* Adjust color as needed */
+}
+
