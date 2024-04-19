@@ -120,6 +120,10 @@ h3{
     text-align: center;
     padding-top: 100px;
 }
+.facilities p{
+    font-size: 20px;
+    color:  rgb(61, 60, 60);
+}
 .facilities-col{
     flex-basis: 31%;
     border-radius: 10px;
