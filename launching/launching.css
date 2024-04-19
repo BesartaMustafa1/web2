@@ -13,13 +13,16 @@
     background-size: cover;
     padding: 0 8%;
     position: relative;
+    
 }
+
 
  .content{
     top: 50%;
     position: absolute;
     transform: translateY(-50%);
     color: #fff;
+
 }
 .content h1{
     font-size: 64px;
@@ -28,7 +31,7 @@
 .content h1 span{
     color: #e99b5b;
 }
-.content button{
+.content .button{
     background: transparent;
     border: 2px solid #fff;
     outline: none;
@@ -41,18 +44,18 @@
     transition: background-color 0.3s;
 }
 
-  .content button:hover {
+  .content .button:hover {
     background-color: #e99b5b;
     color: black;
     border: 2px solid #fff;
   }
 
-.content button img{
+.content .button img{
     width: 15px;
     margin-left: 10px;
 }
 
-.content button img:hover{
+.content .button img:hover{
     color: black;
   }
 
