@@ -77,6 +77,96 @@ if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') {
     <title>Cart</title>
     <!-- Add your CSS and JS links here -->
 </head>
+<style>
+    /* Basic table styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Header styles */
+.table thead {
+    background-color: #f2f2f2;
+}
+
+.table th {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Body styles */
+.table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.table td {
+    padding: 10px 15px;
+}
+
+/* Alternating row color */
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Form Styles */
+form {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px 10px 4px 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Link Styles */
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+</style>
 <body>
     <div id="header"></div>
     
