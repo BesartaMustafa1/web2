@@ -10,15 +10,24 @@ if (isset($_POST['add_to_cart'])) {
     $item_id = $_POST['item_id'];
     $item_name = $_POST['item_name'];
     $item_price = $_POST['item_price'];
+    $item_quantity = 1; // Default quantity
 
     $item = [
         'id' => $item_id,
         'name' => $item_name,
-        'price' => $item_price
+        'price' => $item_price,
+        'quantity' => $item_quantity
     ];
 
-    // Add item to cart array
-    $_SESSION['cart'][] = $item;
+    // Check if item is already in cart
+    $existing_item = array_search($item_id, array_column($_SESSION['cart'], 'id'));
+
+    if ($existing_item !== false) {
+        $_SESSION['cart'][$existing_item]['quantity'] += 1;
+    } else {
+        // Add item to cart array
+        $_SESSION['cart'][] = $item;
+    }
 
     // Redirect to cart page
     header('Location: shop.php');
@@ -46,6 +55,19 @@ if (isset($_GET['remove_item'])) {
 
 // Calculate total price
 $total_price = array_sum(array_column($_SESSION['cart'], 'price'));
+
+if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'name') {
+    usort($_SESSION['cart'], function($a, $b) {
+        return strcmp($a['name'], $b['name']);
+    });
+}
+
+// Sort cart items by price
+if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') {
+    usort($_SESSION['cart'], function($a, $b) {
+        return $a['price'] <=> $b['price'];
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +89,7 @@ $total_price = array_sum(array_column($_SESSION['cart'], 'price'));
                 <th>Name</th>
                 <th>Price</th>
                 <th>Action</th>
+                <th>Quantity</th>
             </tr>
         </thead>
         <tbody>
@@ -78,6 +101,7 @@ $total_price = array_sum(array_column($_SESSION['cart'], 'price'));
                     <td>
                         <a href="shop.php?remove_item=<?php echo $item['id']; ?>" class="btn btn-danger">Remove</a>
                     </td>
+                    <td><?php echo $item['quantity']; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -93,6 +117,9 @@ $total_price = array_sum(array_column($_SESSION['cart'], 'price'));
     <form action="../home html/home2.html" method="post">
         <input type="submit" name="confirm_order" value="Confirm" class="btn btn-primary">
     </form>
+    <a href="shop.php?sort_by=name">Sort by Name</a> | 
+<a href="shop.php?sort_by=price">Sort by Price</a>
+
 
    
 </body>
