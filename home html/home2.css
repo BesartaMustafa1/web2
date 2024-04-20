@@ -266,3 +266,6 @@ video {
   margin-top: 20px; /* Adjust the top margin as needed */
   text-align: center;
 }
+.mySlides{
+  background-size: 100% 100%;
+}
