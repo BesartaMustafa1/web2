@@ -8,14 +8,18 @@
 <style>/* Cart Page Styles */
     body {
         font-family: Arial, sans-serif;
+        background-image:url('10.jpg');
+        background-repeat: no repeat;
+        background-attachment:fixed;
+        background-size: 50% 50%;
     }
-    
     .container {
-        margin-top: 30px;
+        margin-top: 60px;
+        color: rgb(255, 249, 242);
     }
     
     .text-end {
-        margin-top: 20px;
+        margin-top: 50px;
     }
     </style>
 <body>
@@ -23,7 +27,7 @@
     <div id="header"></div>
 
     <div class="container mt-5">
-        <h2>Your Cart</h2>
+        <h2><b>Your Cart</b></h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -46,7 +50,7 @@
     <!-- Include footer -->
     <iframe src="../footer/footer.html" width=100% height="450vh"></iframe>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         // Load header
@@ -90,6 +94,47 @@
         // Display cart items when the page loads
         displayCart();
         
-    </script>
+    </script> -->
+
+    <?php
+// Load header
+echo "<script>$('#header').load('../header/header.html');</script>";
+
+// Retrieve cart items from local storage
+$cart = json_decode($_COOKIE['cart']) ?? [];
+
+// Function to display cart items
+echo "<script>";
+echo "let cartItemsHtml = '';";
+echo "let totalPrice = 0;";
+
+echo "cart.forEach(item => {";
+echo "    let totalItemPrice = item->price * item->quantity;";
+echo "    totalPrice += totalItemPrice;";
+
+echo "    cartItemsHtml += `<tr>
+                        <td>${item->name}</td>
+                        <td>$${item->price}</td>
+                        <td>${item->quantity}</td>
+                        <td>$${totalItemPrice}</td>
+                    </tr>`;";
+echo "});";
+
+echo "$('#cart-items').html(cartItemsHtml);";
+echo "$('#total-price').text(totalPrice.toFixed(2));";
+echo "</script>";
+
+// Function to handle checkout
+echo "<script>";
+echo "function checkout() {";
+echo "    alert('The purchase was completed successfully, you can continue.');";
+echo "    // You can redirect the user to a checkout page or clear the cart after checkout";
+echo "    // For example:";
+echo "     localStorage.removeItem('cart');";
+echo "    window.location.href = '../home html/home2.html';";
+echo "}";
+echo "</script>";
+?>
+
 </body>
 </html>
