@@ -234,7 +234,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">Harry Potter and the 
+                      <a href="../books/2.php">Harry Potter and the 
                       Deathly Hallows: Part 1</h2>
                     </a>
                     <p class="animate-text"> </p>
