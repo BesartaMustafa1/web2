@@ -142,8 +142,8 @@ and build a brighter future for generations to come.
                 <div class="dropdown">
                     <span class="name">Tortor Ipsume<br></span>
                     <div class="dropdown-content">
-                      <p>Extra information goes here.</p>
-                      <p>This can include text, images, links, etc.</p>
+                      <p>Vise Chairman</p>
+                      <p>With 15 years of experience</p>
                     </div>
                   </div>
             </a>
@@ -153,8 +153,8 @@ and build a brighter future for generations to come.
                 <div class="dropdown">
                     <span class="name">Justo Parturient<br></span>
                     <div class="dropdown-content">
-                      <p>Extra information goes here.</p>
-                      <p>This can include text, images, links, etc.</p>
+                      <p>Vise Chairman</p>
+                      <p>With 13 years of experience</p>
                     </div>
                   </div>
             </a>
@@ -164,8 +164,8 @@ and build a brighter future for generations to come.
                 <div class="dropdown">
                     <span class="name">Elit Fringilla<br></span>
                     <div class="dropdown-content">
-                      <p>Extra information goes here.</p>
-                      <p>This can include text, images, links, etc.</p>
+                      <p>Vise Chairman</p>
+                      <p>With 12 years of experience</p>
                     </div>
                   </div>
             </a>
@@ -175,8 +175,8 @@ and build a brighter future for generations to come.
                 <div class="dropdown">
                     <span class="name">Tortor Mollis<br></span>
                     <div class="dropdown-content">
-                      <p>Extra information goes here.</p>
-                      <p>This can include text, images, links, etc.</p>
+                      <p>Director</p>
+                      <p>With 10 years of experience</p>
                     </div>
                   </div>
             </a>
@@ -186,8 +186,8 @@ and build a brighter future for generations to come.
                 <div class="dropdown">
                     <span class="name">Ligula Euismod Condimentum<br></span>
                     <div class="dropdown-content">
-                      <p>Extra information goes here.</p>
-                      <p>This can include text, images, links, etc.</p>
+                      <p>Director</p>
+                      <p>With 8 years of experience</p>
                     </div>
                   </div>
             </a>
@@ -197,8 +197,8 @@ and build a brighter future for generations to come.
                 <div class="dropdown">
                     <span class="name">Nullam Ornare<br></span>
                     <div class="dropdown-content">
-                      <p>Extra information goes here.</p>
-                      <p>This can include text, images, links, etc.</p>
+                      <p>Director</p>
+                      <p>With 7 years of experience</p>
                     </div>
                   </div>
             </a>
@@ -208,8 +208,8 @@ and build a brighter future for generations to come.
                 <div class="dropdown">
                     <span class="name">Malesuada Lorem<br></span>
                     <div class="dropdown-content">
-                      <p>Extra information goes here.</p>
-                      <p>This can include text, images, links, etc.</p>
+                      <p>Director</p>
+                      <p>With 6 years of experience</p>
                     </div>
                   </div>
             </a>
@@ -219,8 +219,8 @@ and build a brighter future for generations to come.
                 <div class="dropdown">
                     <span class="name">Justo Euismod<br></span>
                     <div class="dropdown-content">
-                      <p>Extra information goes here.</p>
-                      <p>This can include text, images, links, etc.</p>
+                      <p>Director</p>
+                      <p>With 6 years of experience</p>
                     </div>
                   </div>
             </a>
