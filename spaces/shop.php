@@ -63,18 +63,26 @@ $total_price = array_sum(array_column($_SESSION['cart'], 'price'));
 //Kushtezimet if, elseif, isset()
 //funksioni usort()
 if (isset($_GET['sort_by'])) {
-    if ($_GET['sort_by'] == 'name') {
+    $sort_by = $_GET['sort_by'];
+    
+    if ($sort_by == 'name') {
+        // Sort by name
         usort($_SESSION['cart'], function($a, $b) {
-            //funksionet string strcmp
             return strcmp($a['name'], $b['name']);
         });
-    } elseif ($_GET['sort_by'] == 'price') {
+    } elseif ($sort_by == 'price_asc') {
+        // Sort by price ascending
         usort($_SESSION['cart'], function($a, $b) {
             return $a['price'] <=> $b['price'];
         });
+    // } elseif ($sort_by == 'price_desc') {
+    //     // Sort by price descending
+    //     usort($_SESSION['cart'], function($a, $b) {
+    //         return $b['price'] <=> $a['price'];
+    //     });
+    // }
     }
 }
-
 
 if (isset($_POST['confirm_order'])) {
     $_SESSION['cart'] = [];
@@ -220,8 +228,17 @@ a:hover {
     <form action="../home html/home2.php" method="post">
         <input type="submit" name="confirm_order" value="Confirm" class="btn btn-primary">
     </form>
-    <a href="shop.php?sort_by=name">Sort by Name</a> | 
-<a href="shop.php?sort_by=price">Sort by Price</a>
+    <!-- <a href="shop.php?sort_by=name">Sort by Name</a> | 
+<a href="shop.php?sort_by=price">Sort by Price</a> -->
+    <form action="shop.php" method="get">
+        <input type="hidden" name="sort_by" value="name">
+        <button type="submit" class="btn btn-primary">Sort by Name</button>
+    </form>
+
+    <form action="shop.php" method="get">
+        <input type="hidden" name="sort_by" value="price">
+        <button type="submit" class="btn btn-primary">Sort by Price</button>
+    </form>
 
 <br>
     <!-- Footer -->
