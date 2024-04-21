@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($username) && !empty($password)) {
             // Assuming successful login, redirecting to home2.html
             $_SESSION['username'] = $username;
-            header("Location: ../home html/home2.html");
+            header("Location: ../home html/home2.php");
             exit();
         } else {
             echo "Please fill in all required fields.";
