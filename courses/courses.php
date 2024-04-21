@@ -231,7 +231,7 @@
                      </div>
                      </div>
                      </section>
-                      <script> $('#header').load('../header/header.html'); </script> 
-                      <iframe src="../footer/footer.html" width=100% height="450vh"></iframe> 
+                      <script> $('#header').load('../header/header.php'); </script> 
+                      <iframe src="../footer/footer.php" width=100% height="450vh"></iframe> 
                     </body>
                      </html>
