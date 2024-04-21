@@ -68,7 +68,7 @@ if (isset($_GET['remove_item'])) {
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php include '../header/header.html'; ?>
+<?php include '../header/header.php'; ?>
 <br>
 <div class="container">
     <div class="row center-row">
@@ -248,12 +248,12 @@ and build a brighter future for generations to come.
           // Clear the session storage
           sessionStorage.removeItem("username");
           // Redirect to the login page
-          window.location.href = "home2.html";
+          window.location.href = "home2.php";
       }
 </script>
 <script>
     
-    $('#header').load('../header/header.html');
+    $('#header').load('../header/header.php');
       </script>
 </body>
 </html>
