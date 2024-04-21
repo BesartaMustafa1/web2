@@ -29,3 +29,6 @@ o Definimi dhe përdorimi i SESSIONS në PHP me të gjitha specifikat (krijimi, 
 o Përdorimi i sesioneve për ndonjë qëllim të numërimit (psh numri i vizitave në një faqe apo formë të caktuar etj.) <br>
 o Shembull i përdorimit të funskionit brenda një PHP sesioni <br>
 o Manipulimi me PHP Sesione (psh ruajtje të ndryshme të vlerave, pastaj ndryshim i tyre dhe manipulime të tilla) <br>
+![cookies](https://github.com/BesartaMustafa1/web2/assets/116516097/3d4ceebd-910c-4d13-8b05-bed872480c8c)
+![s 2](https://github.com/BesartaMustafa1/web2/assets/116516097/63c57ec2-0a29-4eeb-b599-4d8016271ec7)
+![s 1](https://github.com/BesartaMustafa1/web2/assets/116516097/88180df7-1a45-41c0-9617-909fa611728e)
