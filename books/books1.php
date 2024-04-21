@@ -133,7 +133,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/1.php">
                       The Underground Library
                       Book by Jennifer Ryan
                       </h2>
@@ -153,7 +153,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/1.php">
                         It Starts with Us
                       Novel by Colleen Hoover
                       </h2>
@@ -173,7 +173,7 @@
                     <div class="text">
                      
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/1.php">
                       The Alchemist
                       Novel by Paulo Coelho
                       </h2>
@@ -193,7 +193,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">Anna Karenina
+                      <a href="../books/1.php">Anna Karenina
                       Novel by Leo Tolstoy
                       </h2>
                     </a>
@@ -215,7 +215,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/1.php">
                       The Lord of the Rings
                       Novel by John Ronald Reuel Tolkien</h2>
                     </a>
@@ -256,7 +256,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html"></a>
+                      <a href="../books/1.php"></a>
                       Sikur t'isha djalë
                       Novel by Haki Stërmilli
                       </h2>
@@ -276,7 +276,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/1.php">
                       Doruntine (Kush e solli Doruntinën: roman)
                       Novel by Ismail Kadare
                       
