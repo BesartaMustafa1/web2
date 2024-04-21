@@ -1,3 +1,55 @@
+<?php 
+include "../cookies/Cookies.php";
+?>
+<?php
+session_start();
+
+// Check if the cart is set in the session, if not initialize it
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Add item to cart
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
+    $item_id = $_POST['item_id'];
+    $item_name = $_POST['item_name'];
+    $item_price = $_POST['item_price'];
+
+    $item = [
+        'id' => $item_id,
+        'name' => $item_name,
+        'price' => $item_price
+    ];
+
+    // Add item to cart array
+    $_SESSION['cart'][] = $item;
+
+    // Redirect to cart page
+    header('Location: shop.php');
+    exit;
+}
+
+if (isset($_GET['remove_item'])) {
+    $remove_id = $_GET['remove_item'];
+
+    // Remove item from cart array
+    foreach ($_SESSION['cart'] as $index => $item) {
+        if ($item['id'] == $remove_id) {
+            unset($_SESSION['cart'][$index]);
+            break;
+        }
+    }
+
+    // Reset array keys
+    $_SESSION['cart'] = array_values($_SESSION['cart']);
+
+    // Redirect to home page
+    header('Location: spaces.php');
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,36 +67,8 @@
     <script src="https://unpkg.com/htmlincludejs"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
-</head>
 <body>
-<!-- <header>
-    <nav>
-        <div class="logo">
-            <img src="../home html/Home pic/logo.png">
-        </div>
-        <ul>
-            <li><a href="../home html/home2.html">Home</a></li>
-                    <li><a href="../books/books.html">Books</a></li>
-                    <li><a href="../spaces/spaces.html">Study places</a></li>
-                    <li><a href="../launching/launching.html">Launching soon</a></li>
-                    <li><a href="../aboutus/aboutus.html">About us</a></li>
-        </ul>
-        <div class="social">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <i class="fa-solid fa-heart"></i>
-        </div>
-        <div class="user-info" id="welcomeMessage" style="display: none;">
-            <span>Welcome, <span id="username"></span></span>
-        </div>
-          <div class="signin">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            <a href="../signup/signup.html" style="text-decoration: none; color:black"><span>Sign In</span></a>
-          </div>
-    </nav>
-</header> -->
-<div id="header"></div>
+<?php include '../header/header.html'; ?>
 <br>
 <div class="container">
     <div class="row center-row">
@@ -111,12 +135,12 @@ and build a brighter future for generations to come.
         <pre style="text-align: center;"><italic>We have our own Board of Directors composed of four prominent members of society selected on the basis
             of their professional expertise and field.</italic></pre>
 <main>
-	<ul class="leadership-grid">
-		<li>
-			<h3><br>Board of Directors</h3>
-		</li>
-		<li>
-			<a href="#">
+    <ul class="leadership-grid">
+        <li>
+            <h3><br>Board of Directors</h3>
+        </li>
+        <li>
+            <a href="#">
                 <div class="dropdown">
                     <span class="name">Tortor Ipsume<br></span>
                     <div class="dropdown-content">
@@ -124,10 +148,10 @@ and build a brighter future for generations to come.
                       <p>This can include text, images, links, etc.</p>
                     </div>
                   </div>
-			</a>
-		</li>
-		<li>
-			<a href="#">
+            </a>
+        </li>
+        <li>
+            <a href="#">
                 <div class="dropdown">
                     <span class="name">Justo Parturient<br></span>
                     <div class="dropdown-content">
@@ -135,10 +159,10 @@ and build a brighter future for generations to come.
                       <p>This can include text, images, links, etc.</p>
                     </div>
                   </div>
-			</a>
-		</li>
-		<li>
-			<a href="#">
+            </a>
+        </li>
+        <li>
+            <a href="#">
                 <div class="dropdown">
                     <span class="name">Elit Fringilla<br></span>
                     <div class="dropdown-content">
@@ -146,10 +170,10 @@ and build a brighter future for generations to come.
                       <p>This can include text, images, links, etc.</p>
                     </div>
                   </div>
-			</a>
-		</li>
-		<li>
-			<a href="#">
+            </a>
+        </li>
+        <li>
+            <a href="#">
                 <div class="dropdown">
                     <span class="name">Tortor Mollis<br></span>
                     <div class="dropdown-content">
@@ -157,10 +181,10 @@ and build a brighter future for generations to come.
                       <p>This can include text, images, links, etc.</p>
                     </div>
                   </div>
-			</a>
-		</li>
-		<li>
-			<a href="#">
+            </a>
+        </li>
+        <li>
+            <a href="#">
                 <div class="dropdown">
                     <span class="name">Ligula Euismod Condimentum<br></span>
                     <div class="dropdown-content">
@@ -168,10 +192,10 @@ and build a brighter future for generations to come.
                       <p>This can include text, images, links, etc.</p>
                     </div>
                   </div>
-			</a>
-		</li>
-		<li>
-			<a href="#">
+            </a>
+        </li>
+        <li>
+            <a href="#">
                 <div class="dropdown">
                     <span class="name">Nullam Ornare<br></span>
                     <div class="dropdown-content">
@@ -179,10 +203,10 @@ and build a brighter future for generations to come.
                       <p>This can include text, images, links, etc.</p>
                     </div>
                   </div>
-			</a>
-		</li>
-		<li>
-			<a href="#">
+            </a>
+        </li>
+        <li>
+            <a href="#">
                 <div class="dropdown">
                     <span class="name">Malesuada Lorem<br></span>
                     <div class="dropdown-content">
@@ -190,10 +214,10 @@ and build a brighter future for generations to come.
                       <p>This can include text, images, links, etc.</p>
                     </div>
                   </div>
-			</a>
-		</li>
-		<li>
-			<a href="#">
+            </a>
+        </li>
+        <li>
+            <a href="#">
                 <div class="dropdown">
                     <span class="name">Justo Euismod<br></span>
                     <div class="dropdown-content">
@@ -201,12 +225,10 @@ and build a brighter future for generations to come.
                       <p>This can include text, images, links, etc.</p>
                     </div>
                   </div>
-			</a>
-		</li>
-	</ul>
-  <canvas id="bookCanvas" width="1200" height="600" style="background-image: url(IN.jpg);"></canvas>
-
-	
+            </a>
+        </li>
+    </ul>
+    
 </main>
 </div>
 </div>
