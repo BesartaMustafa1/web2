@@ -154,10 +154,10 @@
 
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/7.jpg" alt="Product Image">
+            <img src="../books/3..jpg" alt="Product Image">
         </div>
         <div class="product-details">
-            <h1 class="product-title">Kush e Solli Doruntinen</h1>
+            <h1 class="product-title">Harry Potter and The Deathly Hallows : Part I</h1>
             <p class="product-price">$20</p>
             <div class="product-description">
                 <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
@@ -168,7 +168,7 @@
                     <input class="qty" type="number" value="1">
                     <button class="plus" type="button">+</button>
                 </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Kush e Solli Doruntinen', 20)">Add to Cart</button>
+                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Harry Potter and The Deathly Hallows : Part I', 20)">Add to Cart</button>
             </form>
         </div>
     </div>

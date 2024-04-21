@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewpoint" content="width: device-width, initial-scale: 1.0">
@@ -14,9 +14,15 @@
     <style>
 
     </style>
-    </head>
-    <body>
-      <header>
+</head>
+<body>
+    <?php
+        // Deklarimi dhe inicializimi i variablave
+        $username = "JohnDoe";
+        $welcomeMessage = "Welcome, " . $username . "!";
+    ?>
+
+    <header>
         <nav>
             <div class="logo">
                 <img src="../home html/Home pic/logo.png ">
@@ -34,7 +40,7 @@
             </div>
           
               <div class="user-info" id="welcomeMessage" style="display: none;">
-                <span>Welcome, <span id="username"></span></span>
+                <span><?php echo $welcomeMessage; ?></span>
                 <button onclick="signOut()" style="padding: 20px">Sign Out</button>
             </div>
         
@@ -74,9 +80,11 @@
                     <img src="8.jpg"/>
                     <div class="text">
                     <h2 class="animate-text">
+                      <a href="../books/1.html">
                       A Dance with Dragons
                       Novel by George R. R. Martin
                       </h2>
+                    </a>
                     
                   <div class="dots">
                       <span></span>
@@ -90,10 +98,12 @@
                 <div class="tile"> 
                     <img src="9.jpg"/>
                     <div class="text">
-                    <h2 class="animate-text">One Hundred Years of Solitude
+                    <h2 class="animate-text">
+                      <a href="../books/1.html">
+                      One Hundred Years of Solitude
                       Novel by Gabriel García Márquez
                       </h2>
-                      <a rel="nofollow" href="?add-to-cart=95" data-quantity="1" data-product_id="95" data-product_sku="2" class="add_to_cart_button ajax_add_to_cart qode-button">Add to cart</a>
+                    </a>
                     <p class="animate-text"> </p>
                   <div class="dots">
                       <span></span>
@@ -102,14 +112,18 @@
                     </div>
                     </div>
                    </div>
-            </div> 
+            </div>
             <div class="col-md-3">
                 <div class="tile"> 
                     <img src="10.jpg"/>
                     <div class="text">
-                    <h2 class="animate-text">The Book Thief
+                     
+                    <h2 class="animate-text">
+                      <a href="../books/1.html">
+                      The Book Thief
                       Novel by Markus Zusak
                       </h2>
+                    </a>
                     <p class="animate-text"> </p>
                   <div class="dots">
                       <span></span>
@@ -123,10 +137,13 @@
                 <div class="tile"> 
                     <img src="PR.jpg"/>
                     <div class="text">
+                      
                     <h2 class="animate-text">
+                      <a href="../books/1.html">
                       The Hating Game: A Novel
                       Book by Sally Thorne
                       </h2>
+                    </a>
                     <p class="animate-text"></p>
                   <div class="dots">
                       <span></span>
@@ -143,9 +160,13 @@
                 <div class="tile"> 
                     <img src="1.png"/>
                     <div class="text">
-                    <h2 class="animate-text">The Underground Library
+                      
+                    <h2 class="animate-text">
+                      <a href="../books/1.html">
+                      The Underground Library
                       Book by Jennifer Ryan
                       </h2>
+                    </a>
                     <p class="animate-text"> </p>
                   <div class="dots">
                       <span></span>
@@ -159,9 +180,13 @@
                 <div class="tile"> 
                     <img src="2.jpg"/>
                     <div class="text">
-                    <h2 class="animate-text">It Starts with Us
+                      
+                    <h2 class="animate-text">
+                      <a href="../books/1.html">
+                        It Starts with Us
                       Novel by Colleen Hoover
                       </h2>
+                    </a>
                     <p class="animate-text"> </p>
                   <div class="dots">
                       <span></span>
@@ -175,9 +200,13 @@
                 <div class="tile"> 
                     <img src="3..jpg"/>
                     <div class="text">
-                    <h2 class="animate-text">The Alchemist
+                     
+                    <h2 class="animate-text">
+                      <a href="../books/1.html">
+                      The Alchemist
                       Novel by Paulo Coelho
                       </h2>
+                    </a>
                     <p class="animate-text"> </p>
                   <div class="dots">
                       <span></span>
@@ -191,9 +220,12 @@
                 <div class="tile"> 
                     <img src="AK.jpg"/>
                     <div class="text">
-                    <h2 class="animate-text">Anna Karenina
+                      
+                    <h2 class="animate-text">
+                      <a href="../books/1.html">Anna Karenina
                       Novel by Leo Tolstoy
                       </h2>
+                    </a>
                     <p class="animate-text"> </p>
                   <div class="dots">
                       <span></span>
@@ -210,9 +242,12 @@
                 <div class="tile"> 
                     <img src="LOR.jpg"/>
                     <div class="text">
+                      
                     <h2 class="animate-text">
+                      <a href="../books/1.html">
                       The Lord of the Rings
                       Novel by John Ronald Reuel Tolkien</h2>
+                    </a>
                     <p class="animate-text"></p>
                   <div class="dots">
                       <span></span>
@@ -226,12 +261,15 @@
                 <div class="tile" >
                     <img src="5.jpg"/>
                     <div class="text">
-                    <h2 class="animate-text">Harry Potter and the 
+                      
+                    <h2 class="animate-text">
+                      <a href="../books/1.html">Harry Potter and the 
                       Deathly Hallows: Part 1</h2>
+                    </a>
                     <p class="animate-text"> </p>
-                    <audio controls>
+                    <!-- <!<audio controls>
                         <source src="audio1.mp3" type="audio/mpeg">
-                    </audio>
+                    </audio> -->
                     
                   <div class="dots">
                       <span></span>
@@ -245,9 +283,13 @@
                 <div class="tile"> 
                     <img src="6.jpg"/>
                     <div class="text">
-                    <h2 class="animate-text">Sikur t'isha djalë
+                      
+                    <h2 class="animate-text">
+                      <a href="../books/1.html"></a>
+                      Sikur t'isha djalë
                       Novel by Haki Stërmilli
                       </h2>
+                    </a>
                     <p class="animate-text"> </p>
                   <div class="dots">
                       <span></span>
@@ -261,9 +303,14 @@
                 <div class="tile"> 
                     <img src="7.jpg"/>
                     <div class="text">
-                    <h2 class="animate-text">Doruntine (Kush e solli Doruntinën: roman)
+                      
+                    <h2 class="animate-text">
+                      <a href="../books/1.html">
+                      Doruntine (Kush e solli Doruntinën: roman)
                       Novel by Ismail Kadare
+                      
                       </h2>
+                    </a>
                     <p class="animate-text"> </p>
                   <div class="dots">
                       <span></span>
@@ -274,7 +321,7 @@
                    </div>
             </div>
         </div>
-    </div>
+    </div> 
     </section>
         <iframe src="../footer/footer.html" width=100% height="450vh"></iframe>
         <script>

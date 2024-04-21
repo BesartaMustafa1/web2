@@ -119,6 +119,19 @@
             margin-top: 10px;
             padding: 5px;
         }
+        .rating {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .stars {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .star {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -154,10 +167,10 @@
 
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/3..jpg" alt="Product Image">
+            <img src="../books/7.jpg" alt="Product Image">
         </div>
         <div class="product-details">
-            <h1 class="product-title">The Alchemist</h1>
+            <h1 class="product-title">Kush e Solli Doruntinen</h1>
             <p class="product-price">$20</p>
             <div class="product-description">
                 <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
@@ -168,10 +181,42 @@
                     <input class="qty" type="number" value="1">
                     <button class="plus" type="button">+</button>
                 </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'The Alchemist', 20)">Add to Cart</button>
+                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Kush e Solli Doruntinen', 20)">Add to Cart</button>
             </form>
         </div>
     </div>
+    <div class="rating">
+        <p>Rate This Book:</p>
+        <div class="stars">
+            <span class="star" onclick="rateBook(1)">&#9733;</span>
+            <span class="star" onclick="rateBook(2)">&#9733;</span>
+            <span class="star" onclick="rateBook(3)">&#9733;</span>
+            <span class="star" onclick="rateBook(4)">&#9733;</span>
+            <span class="star" onclick="rateBook(5)">&#9733;</span>
+        </div>
+    </div>
+
+    <!-- JavaScript for handling rating -->
+    <script>
+        // Initialize an empty array to store ratings
+        let bookRatings = [];
+
+        // Function to handle rating a book
+        function rateBook(rating) {
+            // Add the rating to the bookRatings array
+            bookRatings.push(rating);
+
+            // Calculate the average rating
+            let totalRating = 0;
+            for (let i = 0; i < bookRatings.length; i++) {
+                totalRating += bookRatings[i];
+            }
+            let averageRating = totalRating / bookRatings.length;
+
+            // Display the average rating (you can do this however you want)
+            alert('Thank you for rating this book! Average rating: ' + averageRating);
+        }
+    </script>
     <script>
         // Initialize an empty cart array
         let cart = [];
