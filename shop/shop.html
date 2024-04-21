@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ... (head section remains unchanged) ... -->
     <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="../header/header.css">
 </head>
-<style>/* Cart Page Styles */
+<style>
     body {
         font-family: Arial, sans-serif;
     }
@@ -19,7 +18,7 @@
     }
     </style>
 <body>
-    <!-- Include header -->
+
     <div id="header"></div>
 
     <div class="container mt-5">
@@ -34,7 +33,7 @@
                 </tr>
             </thead>
             <tbody id="cart-items">
-                <!-- Cart items will be inserted here -->
+                
             </tbody>
         </table>
         <div class="text-end">
@@ -43,19 +42,18 @@
         </div>
     </div>
 
-    <!-- Include footer -->
+
     <iframe src="../footer/footer.html" width=100% height="450vh"></iframe>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Load header
         $('#header').load('../header/header.html');
 
-        // Retrieve cart items from local storage
+        
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Function to display cart items
+        
         function displayCart() {
             let cartItemsHtml = '';
             let totalPrice = 0;
@@ -78,18 +76,14 @@
             $('#total-price').text(totalPrice.toFixed(2));
         }
 
-        // Function to handle checkout
         function checkout() {
             alert('The purchase was completed successfully, you can continue.');
-            // You can redirect the user to a checkout page or clear the cart after checkout
-            // For example:
+          
              localStorage.removeItem('cart');
             window.location.href = '../home html/home2.html';
         }
-
-        // Display cart items when the page loads
         displayCart();
         
     </script>
 </body>
-</html>
+</html> -->

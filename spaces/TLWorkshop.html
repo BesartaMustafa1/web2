@@ -24,11 +24,11 @@
     <p class="ref">Ref.J27531,566120</p>
     <p class="prductPrice">39$</p>
     <hr class="lineLength">
-    <p class="allSizes">Sizes</p>
+    <p class="allSizes">Hours for reservation</p>
     <select class="size" name="size">
-        <option name="s">S</option>
-        <option name="m">M</option>
-        <option name="l">L</option>
+        <option name="s">1</option>
+        <option name="m">2</option>
+        <option name="l">3</option>
     </select>
     <a href="#" class="btn cart d-block mx-auto mt-2" onclick="addToCart(1, 'TL\'s Terrace', 15)"> <input class="submitButton" type="submit" value="Booking now"> </a>
     <button type="button" class="productDetails btn-demo" data-toggle="modal" data-target="#myModal2"> Product Details</button>
@@ -94,8 +94,6 @@
       // Display a confirmation message (Optional)
       alert('Product added to cart');
 
-      // Optionally, you can redirect the user to the cart page after adding a product
-      // window.location.href = 'cart.html';
   }
 
   // Load cart items from local storage on page load
@@ -109,7 +107,7 @@
 </script>
 <script>
   function goToSpacesPage() {
-    window.location.href = 'spaces.html';
+    window.location.href = 'spaces.php';
   }
 </script>
 </body>
