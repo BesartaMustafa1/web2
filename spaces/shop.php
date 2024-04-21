@@ -226,8 +226,10 @@ a:hover {
 <a href="shop.php?sort_by=price">Sort by Price</a>
 
 <br>
-<?php 
-include "../cookies\cookiefolder/cookies/Cookies.php";
- ?>
+    <!-- Footer -->
+    <iframe src="../footer/footer.php" width="100%" height="450vh"></iframe>
+    <?php 
+include "../cookies\cookiefolder\cookies/Cookies.php";
+?>
 </body>
 </html>
