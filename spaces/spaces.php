@@ -1,3 +1,6 @@
+<?php 
+include "../cookies\16. Cookie and Session-20240417T211201Z-001/Cookies.php";
+ ?>
 <?php
 session_start();
 
