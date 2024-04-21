@@ -1,5 +1,5 @@
 <?php 
-include "../cookies\16. Cookie and Session-20240417T211201Z-001/Cookies.php";
+include "../cookies\ 16. Cookie and Session-20240417T211201Z-001/Cookies.php";
  ?>
 <?php
 session_start();
@@ -250,13 +250,13 @@ if (isset($_GET['remove_item'])) {
     </div>
 </div>
 
-    <iframe src="../footer/footer.html" width="100%" height="450vh"></iframe>
+    <iframe src="../footer/footer.php" width="100%" height="450vh"></iframe>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
-            $('#header').load('../header/header.html');
+            $('#header').load('../header/header.php');
         });
     </script>
 </body>
