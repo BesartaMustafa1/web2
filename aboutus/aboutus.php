@@ -1,6 +1,3 @@
-<?php 
-include "../cookies/Cookies.php";
-?>
 <?php
 session_start();
 
@@ -50,6 +47,7 @@ if (isset($_GET['remove_item'])) {
 ?>
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +66,7 @@ if (isset($_GET['remove_item'])) {
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php include '../header/header.html'; ?>
+<?php include '../header/header.php'; ?>
 <br>
 <div class="container">
     <div class="row center-row">
@@ -257,3 +255,6 @@ and build a brighter future for generations to come.
       </script>
 </body>
 </html>
+<?php 
+include "../cookies\cookiefolder\cookies/Cookies.php";
+?>
