@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var password = document.getElementById("loginPassword").value;
         
         if (username.trim() !== "" && password.trim() !== "") {
-            window.location.href = "../home html/home2.html";
+            window.location.href = "../home html/home2.php";
         } else {
             alert("Please fill in all required fields.");
         }
