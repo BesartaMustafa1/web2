@@ -1,8 +1,9 @@
-<?php 
-include "../cookies\16. Cookie and Session-20240417T211201Z-001/Cookies.php";
- ?>
 <?php
 session_start();
+
+function setBackgroundCookie($value) {
+    setcookie('background', $value, time() + (86400 * 30), "/"); // 86400 = 1 day
+}
 
 // Check if the cart is set in the session, if not initialize it
 if (!isset($_SESSION['cart'])) {
@@ -47,9 +48,23 @@ if (isset($_GET['remove_item'])) {
     header('Location: spaces.php');
     exit;
 }
+
+// Check if the background cookie is set
+if (isset($_COOKIE['background'])) {
+    $background = $_COOKIE['background'];
+    // Apply background based on cookie value
+    if ($background === 'dark') {
+        // Set background color to dark mode
+        setBackgroundCookie('dark');
+    } else {
+        // Set background color to default
+        setBackgroundCookie('default');
+    }
+} else {
+    // Set default background color and cookie
+    setBackgroundCookie('default');
+}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,9 +77,19 @@ if (isset($_GET['remove_item'])) {
     <link rel="stylesheet" href="spaces.css">
     <link rel="stylesheet" href="checkout.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        <?php
+        // Apply background color based on cookie value
+        if (isset($_COOKIE['background']) && $_COOKIE['background'] === 'dark') {
+            echo 'body { background-color: #222222; }';
+        } else {
+            echo 'body { background-color: #ffffff; }'; // Default background color
+        }
+        ?>
+    </style>
 </head>
 <body>
-    <div id="header"></div>
+<div id="header"></div>
     <div class="container">
     <!-- Single Studies Display Section -->
     <div class="title"><h3 class="page-title">Single studies</h3></div>
@@ -250,14 +275,21 @@ if (isset($_GET['remove_item'])) {
     </div>
 </div>
 
-    <iframe src="../footer/footer.html" width="100%" height="450vh"></iframe>
+   
 
+    <!-- Footer -->
+    <iframe src="../footer/footer.php" width="100%" height="450vh"></iframe>
+
+    <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
-            $('#header').load('../header/header.html');
+            $('#header').load('../header/header.php');
         });
     </script>
+    <?php 
+        include "../cookies\cookiefolder/cookies/Cookies.php";
+    ?>
 </body>
 </html>

@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($username) && !empty($password)) {
             // Assuming successful login, redirecting to home2.html
             $_SESSION['username'] = $username;
-            header("Location: ../home html/home2.html");
+            header("Location: ../home html/home2.php");
             exit();
         } else {
             echo "Please fill in all required fields.";
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Validate all fields
         if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($password)) {
             // Assuming successful registration, redirecting to login page
-            header("Location: index.html");
+            header("Location: ../home html/home2.php");
             exit();
         } else {
             echo "Please fill in all required fields.";
@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var password = document.getElementById("loginPassword").value;
         
         if (username.trim() !== "" && password.trim() !== "") {
-            window.location.href = "../home html/home2.html";
+            window.location.href = "../home html/home2.php";
         } else {
             alert("Please fill in all required fields.");
         }
@@ -155,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var password = document.getElementById("registerPassword").value;
         
         if (firstName.trim() !== "" && lastName.trim() !== "" && email.trim() !== "" && password.trim() !== "") {
-            window.location.href = "#login";
+            window.location.href = "../home html/home2.php";
         } else {
             alert("Please fill in all required fields.");
         }

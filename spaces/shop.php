@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['cart'])) {
+// Initialize cart from session or cookie
+if (!isset($_SESSION['cart']) && isset($_COOKIE['cart'])) {
+    $_SESSION['cart'] = json_decode($_COOKIE['cart'], true);
+} elseif (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
@@ -29,11 +32,13 @@ if (isset($_POST['add_to_cart'])) {
         $_SESSION['cart'][] = $item;
     }
 
+    // Save cart to cookie
+    setcookie('cart', json_encode($_SESSION['cart']), time() + (86400 * 30), "/"); // 30 days
+
     // Redirect to cart page
     header('Location: shop.php');
     exit;
 }
-
 if (isset($_GET['remove_item'])) {
     $remove_id = $_GET['remove_item'];
 
@@ -48,30 +53,34 @@ if (isset($_GET['remove_item'])) {
     // Reset array keys
     $_SESSION['cart'] = array_values($_SESSION['cart']);
 
-    // Redirect to home page
-    header('Location: spaces.php');
+    // Save updated cart to cookie
+    setcookie('cart', json_encode($_SESSION['cart']), time() + (86400 * 30), "/"); // 30 days
+
+    // Redirect to the same page to reflect the changes
+    header('Location: shop.php');
     exit;
 }
 
 // Calculate total price
 $total_price = array_sum(array_column($_SESSION['cart'], 'price'));
 
-if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'name') {
-    usort($_SESSION['cart'], function($a, $b) {
-        return strcmp($a['name'], $b['name']);
-    });
+// Sort cart items by name or price
+if (isset($_GET['sort_by'])) {
+    if ($_GET['sort_by'] == 'name') {
+        usort($_SESSION['cart'], function($a, $b) {
+            return strcmp($a['name'], $b['name']);
+        });
+    } elseif ($_GET['sort_by'] == 'price') {
+        usort($_SESSION['cart'], function($a, $b) {
+            return $a['price'] <=> $b['price'];
+        });
+    }
 }
 
-// Sort cart items by price
-if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') {
-    usort($_SESSION['cart'], function($a, $b) {
-        return $a['price'] <=> $b['price'];
-    });
-}
+// Confirm order
 if (isset($_POST['confirm_order'])) {
-    // Clear the cart
     $_SESSION['cart'] = [];
-    header('Location: ../home html/home2.html');
+    header('Location: ../home html/home2.php');
     exit;
 }
 ?>
@@ -88,14 +97,13 @@ if (isset($_POST['confirm_order'])) {
 </head>
 </head>
 <style>
-    /* Basic table styling */
+  
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-/* Header styles */
 .table thead {
     background-color: #f2f2f2;
 }
@@ -106,7 +114,6 @@ if (isset($_POST['confirm_order'])) {
     border-bottom: 1px solid #ddd;
 }
 
-/* Body styles */
 .table tbody tr {
     border-bottom: 1px solid #ddd;
 }
@@ -115,11 +122,10 @@ if (isset($_POST['confirm_order'])) {
     padding: 10px 15px;
 }
 
-/* Alternating row color */
 .table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-/* Table Styles */
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -142,14 +148,13 @@ if (isset($_POST['confirm_order'])) {
     color: white;
 }
 
-/* Form Styles */
+
 form {
     margin-top: 20px;
     display: flex;
     justify-content: flex-end;
 }
 
-/* Button Styles */
 .btn {
     display: inline-block;
     padding: 8px 16px;
@@ -166,7 +171,6 @@ form {
     color: white;
 }
 
-/* Link Styles */
 a {
     text-decoration: none;
     color: #007bff;
@@ -179,49 +183,51 @@ a:hover {
 </style>
 <body>
 <div id="header">
-    <?php include '../header/header.html'; ?>
+    <?php include '../header/header.php'; ?>
 </div>
 
-    <h3 class="page-title">Cart</h3>
-    <table class="table">
-        <thead>
+<h3 class="page-title">Cart</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($_SESSION['cart'] as $item): ?>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Action</th>
-                <th>Quantity</th>
+                <td><?php echo $item['id']; ?></td>
+                <td><?php echo $item['name']; ?></td>
+                <td>$<?php echo $item['price']; ?></td>
+                <td>
+                    <a href="shop.php?remove_item=<?php echo $item['id']; ?>" class="btn btn-danger">Remove</a>
+                </td>
+                <td><?php echo $item['quantity']; ?></td>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($_SESSION['cart'] as $item): ?>
-                <tr>
-                    <td><?php echo $item['id']; ?></td>
-                    <td><?php echo $item['name']; ?></td>
-                    <td>$<?php echo $item['price']; ?></td>
-                    <td>
-                        <a href="shop.php?remove_item=<?php echo $item['id']; ?>" class="btn btn-danger">Remove</a>
-                    </td>
-                    <td><?php echo $item['quantity']; ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="2"></td>
-                <td><strong>Total Price:</strong></td>
-                <td>$<?php echo number_format($total_price, 2); ?></td>
-            </tr>
-        </tfoot>
-    </table>
+        <?php endforeach; ?>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2"></td>
+            <td><strong>Total Price:</strong></td>
+            <td>$<?php echo number_format($total_price, 2); ?></td>
+        </tr>
+    </tfoot>
+</table>
     
-    <form action="../home html/home2.html" method="post">
+    <form action="../home html/home2.php" method="post">
         <input type="submit" name="confirm_order" value="Confirm" class="btn btn-primary">
     </form>
     <a href="shop.php?sort_by=name">Sort by Name</a> | 
 <a href="shop.php?sort_by=price">Sort by Price</a>
 
-
-   
+<br>
+<?php 
+include "../cookies\cookiefolder/cookies/Cookies.php";
+ ?>
 </body>
 </html>

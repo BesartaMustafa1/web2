@@ -1,6 +1,6 @@
 <?php
 	//Session duhet te shenohet ne fillim te file php.
-	session_start();
+	session_start(); //krijimi i sesionit
 ?>
 <html>
 	<head>
@@ -8,16 +8,16 @@
 	<body>
 
 		<?php
-			$_SESSION['emri']='Fatjona';
-			$_SESSION['mbiemri']='Hoxhaj';
+			$_SESSION['emri']='Era'; //definimi i sesiononeve dhe ruajtja e vlerave ne te
+			$_SESSION['mbiemri']='Sheqeri';
 			echo 'Session set';
 			echo '<br>';
 			print_r($_SESSION); //Na mundeson nxjerrjen e te gjitha sessioneve qe gjenden tek variabla globale $_SESSION. Ruhen ne website
 		?>
 		<?php 	
-			if (!isset($_SESSION['count'])) 
+			if (!isset($_SESSION['count'])) // numerimi i sesioneve
 			{
-				$_SESSION['count'] = 1;
+				$_SESSION['count'] = 1; 
 			} 
 			else 
 			{

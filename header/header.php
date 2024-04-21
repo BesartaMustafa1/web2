@@ -17,11 +17,11 @@
                         <img src="../home html/Home pic/logo.png ">
                     </div>
                     <ul>
-                      <li><a href="../home html/home2.html">Home</a></li>
-                      <li><a href="../books/books.html">Books</a></li>
+                      <li><a href="../home html/home2.php">Home</a></li>
+                      <li><a href="../books/books.php">Books</a></li>
                       <li><a href="../spaces/spaces.php">Study places</a></li>
-                      <li><a href="../launching/launching.html">Launching soon</a></li>
-                      <li><a href="../aboutus/aboutus.html">About us</a></li>
+                      <li><a href="../launching/launching.php">Launching soon</a></li>
+                      <li><a href="../aboutus/aboutus.php">About us</a></li>
                     </ul>
                     <div class="social">
                         <i class="fa-solid fa-magnifying-glass"></i>

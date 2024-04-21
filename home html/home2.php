@@ -23,7 +23,7 @@
    
     <body>
           <div id="header"></div><script>
-            $('#header').load('../header/header.html')</script>
+            $('#header').load('../header/header.php')</script>
           <div id="video-container">
             <video autoplay muted loop style="width: 100%;">
               <source src="Video1.mp4" type="video/mp4">
@@ -195,7 +195,7 @@
 
 
 
-<iframe src="../footer/footer.html" width=100% height="450vh"></iframe>
+<iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
     <script>
       // Retrieve the username from session storage
       var username = sessionStorage.getItem("username");
@@ -210,7 +210,7 @@
           // Clear the session storage
           sessionStorage.removeItem("username");
           // Redirect to the login page
-          window.location.href = "home2.html";
+          window.location.href = "home2.php";
       }</script>
       
     </body>
