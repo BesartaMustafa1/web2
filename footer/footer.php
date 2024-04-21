@@ -1,7 +1,17 @@
 <?php
 	//Session duhet te shenohet ne fillim te file php.
 	session_start(); //krijimi i sesionit
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    
+    // Save email to cookie
+    setcookie("user_email", $email, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+    $_SESSION["message"] = "Email saved successfully!";
+}
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,8 +30,8 @@
               <div class="newsletter">
                 <h3 class="newsletter_title">Get updates on fun stuff you probably want to know about in your inbox.</h3>
                 <br>
-                <form action="">
-                  <input type="text" placeholder="Email Address">
+                <form method="post" action="">
+                  <input type="text" placeholder="Email Address" id="email" name="email">
                   <button>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                       <path fill="none" d="M0 0h24v24H0z" />
@@ -31,6 +41,12 @@
                 </form>
               </div>
             </div>
+            <?php
+    if (isset($_SESSION["message"])) {
+        echo "<p>" . $_SESSION["message"] . "</p>";
+        unset($_SESSION["message"]);
+    }
+    ?>
   
             <div class="layout_item w-25">
               <nav class="c-nav-tool">
@@ -171,5 +187,6 @@
         <p style="color: black;">&copy; 2024 TL .</p>
       </div>
     </div>
+    
   </footer>
   </html>
