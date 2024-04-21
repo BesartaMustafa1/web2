@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../header/header.css">
     <link rel="stylesheet" href="../footer/footer.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://unpkg.com/htmlincludejs"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
@@ -122,39 +121,12 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="../home html/Home pic/logo.png ">
-            </div>
-            <ul>
-                <li><a href="../home html/home2.html">Home</a></li>
-                <li><a href="../books/books.html">Books</a></li>
-                <li><a href="../spaces/spaces.html">Study places</a></li>
-                <li><a href="../launching/launching.html">Launching soon</a></li>
-                <li><a href="../aboutus/aboutus.html">About us</a></li>
-            </ul>
-            <div class="social">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <div class="user-info" id="welcomeMessage" style="display: none;">
-                <span>Welcome, <span id="username"></span></span>
-                <button onclick="signOut()" style="padding: 20px">Sign Out</button>
-            </div>
-            <div class="signin">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                <a href="../signup/signup.html" style="text-decoration: none; color:black"><span>Sign In</span></a>
-            </div>
-        </nav>
-
-    </header>
-
+<div id="header"> </div><script>
+            $('#header').load('../header/header.php')</script>
+   
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/8.jpg" alt="Product Image">
+            <img src="../books/adance.jpg" alt="Product Image">
         </div>
         <div class="product-details">
             <h1 class="product-title">A Dance with Dragons</h1>

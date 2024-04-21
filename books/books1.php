@@ -48,10 +48,10 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="8.jpg"/>
+                    <img src="adance.jpg"/>
                     <div class="text">
                     <h2 class="animate-text">
-                      <a href="../books/1.php">
+                      <a href="../books/adance1.php">
                       A Dance with Dragons
                       Novel by George R. R. Martin
                       </h2>
@@ -67,10 +67,10 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="9.jpg"/>
+                    <img src="gabreil.jpg"/>
                     <div class="text">
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/gabriel1.php">
                       One Hundred Years of Solitude
                       Novel by Gabriel García Márquez
                       </h2>
@@ -86,11 +86,11 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="10.jpg"/>
+                    <img src="bookthief.jpg"/>
                     <div class="text">
                      
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/bookthief.php">
                       The Book Thief
                       Novel by Markus Zusak
                       </h2>
@@ -110,7 +110,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/hatinggame.php">
                       The Hating Game: A Novel
                       Book by Sally Thorne
                       </h2>
@@ -129,7 +129,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="1.png"/>
+                    <img src="library.png"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
@@ -149,7 +149,7 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="2.jpg"/>
+                    <img src="itstarts.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
@@ -169,7 +169,7 @@
             </div> 
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="3..jpg"/>
+                    <img src="thealche.jpg"/>
                     <div class="text">
                      
                     <h2 class="animate-text">
@@ -230,7 +230,7 @@
             </div>
             <div class="col-md-3">
                 <div class="tile" >
-                    <img src="5.jpg"/>
+                    <img src="harry.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
@@ -252,7 +252,7 @@
             </div> 
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="6.jpg"/>
+                    <img src="sikur.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
@@ -272,7 +272,7 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="7.jpg"/>
+                    <img src="kadare.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../header/header.css">
     <link rel="stylesheet" href="../footer/footer.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://unpkg.com/htmlincludejs"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
@@ -119,58 +118,18 @@
             margin-top: 10px;
             padding: 5px;
         }
-        .rating {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .stars {
-            font-size: 24px;
-            margin-top: 10px;
-        }
-
-        .star {
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="../home html/Home pic/logo.png ">
-            </div>
-            <ul>
-                <li><a href="../home html/home2.html">Home</a></li>
-                <li><a href="../books/books.html">Books</a></li>
-                <li><a href="../spaces/spaces.html">Study places</a></li>
-                <li><a href="../launching/launching.html">Launching soon</a></li>
-                <li><a href="../aboutus/aboutus.html">About us</a></li>
-            </ul>
-            <div class="social">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <div class="user-info" id="welcomeMessage" style="display: none;">
-                <span>Welcome, <span id="username"></span></span>
-                <button onclick="signOut()" style="padding: 20px">Sign Out</button>
-            </div>
-            <div class="signin">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                <a href="../signup/signup.html" style="text-decoration: none; color:black"><span>Sign In</span></a>
-            </div>
-        </nav>
-
-    </header>
-
+<div id="header"> </div><script>
+            $('#header').load('../header/header.php')</script>
+   
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/7.jpg" alt="Product Image">
+            <img src="../books/adance.jpg" alt="Product Image">
         </div>
         <div class="product-details">
-            <h1 class="product-title">Kush e Solli Doruntinen</h1>
+            <h1 class="product-title">A Dance with Dragons</h1>
             <p class="product-price">$20</p>
             <div class="product-description">
                 <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
@@ -181,42 +140,10 @@
                     <input class="qty" type="number" value="1">
                     <button class="plus" type="button">+</button>
                 </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Kush e Solli Doruntinen', 20)">Add to Cart</button>
+                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'A Dance with Dragons', 20)">Add to Cart</button>
             </form>
         </div>
     </div>
-    <div class="rating">
-        <p>Rate This Book:</p>
-        <div class="stars">
-            <span class="star" onclick="rateBook(1)">&#9733;</span>
-            <span class="star" onclick="rateBook(2)">&#9733;</span>
-            <span class="star" onclick="rateBook(3)">&#9733;</span>
-            <span class="star" onclick="rateBook(4)">&#9733;</span>
-            <span class="star" onclick="rateBook(5)">&#9733;</span>
-        </div>
-    </div>
-
-    <!-- JavaScript for handling rating -->
-    <script>
-        // Initialize an empty array to store ratings
-        let bookRatings = [];
-
-        // Function to handle rating a book
-        function rateBook(rating) {
-            // Add the rating to the bookRatings array
-            bookRatings.push(rating);
-
-            // Calculate the average rating
-            let totalRating = 0;
-            for (let i = 0; i < bookRatings.length; i++) {
-                totalRating += bookRatings[i];
-            }
-            let averageRating = totalRating / bookRatings.length;
-
-            // Display the average rating (you can do this however you want)
-            alert('Thank you for rating this book! Average rating: ' + averageRating);
-        }
-    </script>
     <script>
         // Initialize an empty cart array
         let cart = [];

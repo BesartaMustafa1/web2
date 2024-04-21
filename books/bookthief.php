@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../header/header.css">
     <link rel="stylesheet" href="../footer/footer.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://unpkg.com/htmlincludejs"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
@@ -124,13 +123,12 @@
 <body>
 <div id="header"> </div><script>
             $('#header').load('../header/header.php')</script>
-   
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/8.jpg" alt="Product Image">
+            <img src="../books/bookthief.jpg" alt="Product Image">
         </div>
         <div class="product-details">
-            <h1 class="product-title">A Dance with Dragons</h1>
+            <h1 class="product-title">Harry Potter and The Deathly Hallows : Part I</h1>
             <p class="product-price">$20</p>
             <div class="product-description">
                 <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
@@ -141,7 +139,7 @@
                     <input class="qty" type="number" value="1">
                     <button class="plus" type="button">+</button>
                 </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'A Dance with Dragons', 20)">Add to Cart</button>
+                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Harry Potter and The Deathly Hallows : Part I', 20)">Add to Cart</button>
             </form>
         </div>
     </div>
@@ -177,7 +175,7 @@
             // window.location.href = 'cart.html';
         }
     </script>
-<iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
+<iframe src="../footer/footer.php" width="100%" height="450vh"></iframe>
 <script>
   // Merrni username nga sessionStorage
   var username = sessionStorage.getItem("username");
