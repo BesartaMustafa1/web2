@@ -246,12 +246,12 @@ and build a brighter future for generations to come.
           // Clear the session storage
           sessionStorage.removeItem("username");
           // Redirect to the login page
-          window.location.href = "home2.html";
+          window.location.href = "home2.php";
       }
 </script>
 <script>
     
-    $('#header').load('../header/header.html');
+    $('#header').load('../header/header.php');
       </script>
 </body>
 </html>
