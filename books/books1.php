@@ -133,7 +133,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.php">
+                      <a href="../books/5.php">
                       The Underground Library
                       Book by Jennifer Ryan
                       </h2>
@@ -153,7 +153,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.php">
+                      <a href="../books/6.php">
                         It Starts with Us
                       Novel by Colleen Hoover
                       </h2>
@@ -173,7 +173,7 @@
                     <div class="text">
                      
                     <h2 class="animate-text">
-                      <a href="../books/1.php">
+                      <a href="../books/7.php">
                       The Alchemist
                       Novel by Paulo Coelho
                       </h2>
@@ -193,7 +193,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.php">Anna Karenina
+                      <a href="../books/AK.php">Anna Karenina
                       Novel by Leo Tolstoy
                       </h2>
                     </a>
@@ -215,7 +215,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.php">
+                      <a href="../books/8.php">
                       The Lord of the Rings
                       Novel by John Ronald Reuel Tolkien</h2>
                     </a>
@@ -234,7 +234,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/2.php">Harry Potter and the 
+                      <a href="../books/9.php">Harry Potter and the 
                       Deathly Hallows: Part 1</h2>
                     </a>
                     <p class="animate-text"> </p>
@@ -276,7 +276,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.php">
+                      <a href="../books/10.php">
                       Doruntine (Kush e solli Doruntinën: roman)
                       Novel by Ismail Kadare
                       

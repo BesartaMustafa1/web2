@@ -15,3 +15,5 @@ Era Sheqiri
 ### Lënda: WEB 2
 #### Profesoresha e lëndes: Dhurata Hyseni
 #### Asistentja e lëndes: Dalina  Vranoci
+##### Dokomentimi
+[Dokumentimi i projektit.docx](https://github.com/BesartaMustafa1/web2/files/15054804/Dokumentimi.i.projektit.docx)
