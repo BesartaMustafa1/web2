@@ -106,7 +106,6 @@
     display: block; /* Ensure button occupies full width */
     width: calc(100% - 10px); /* Make button occupy full width */
     }
-    
 
 </style>
 <body>
@@ -144,7 +143,7 @@
 
 <div class="product-container">
     <div class="product-image">
-        <img src="../books/1.png" alt="Product Image">
+        <img src="../books/2.jpg" alt="Product Image">
     </div>
     <div class="product-details">
         <h1 class="product-title">Most Popular Fiction</h1>
@@ -158,7 +157,10 @@
                 <input type="text" name="quantity" value="1" class="qty" pattern="[0-9]*" inputmode="numeric">
                 <input type="button" value="+" class="plus">
             </div>
-            <button type="submit" name="add-to-cart" class="add-to-cart-btn">Add to Cart</button>
+            
+            <a href="./cart.html" onclick="addToCart" button type="submit" name="add-to-cart" class="add-to-cart-btn">Add to Cart</button>
+            </a>
+        
         </form>
         <div class="product-meta">
             <span class="sku-wrapper">SKU: <span class="sku">2</span></span>
