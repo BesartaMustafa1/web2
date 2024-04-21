@@ -5,14 +5,14 @@ session_start();
 // Define some constants
 define("MAX_USERNAME_LENGTH", 20);
 define("MAX_PASSWORD_LENGTH", 20);
-
+//Kushtezimet if, elseif, dhe else
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['loginUsername']) && isset($_POST['loginPassword'])) {
-        // Handle login form submission
+  //variablat $username, $password, $firstName, $lastName, $email, $password     
         $username = $_POST['loginUsername'];
         $password = $_POST['loginPassword'];
 
-        // Validate username and password
+        // funksionet isset() dhe empty()
         if (!empty($username) && !empty($password)) {
             // Assuming successful login, redirecting to home2.html
             $_SESSION['username'] = $username;
@@ -22,15 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Please fill in all required fields.";
         }
     } elseif (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['registerEmail']) && isset($_POST['registerPassword'])) {
-        // Handle registration form submission
+        
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $email = $_POST['registerEmail'];
         $password = $_POST['registerPassword'];
 
-        // Validate all fields
+      
         if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($password)) {
-            // Assuming successful registration, redirecting to login page
+            
             header("Location: ../home html/home2.php");
             exit();
         } else {
