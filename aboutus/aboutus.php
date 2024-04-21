@@ -231,7 +231,7 @@ and build a brighter future for generations to come.
 </div>
 </div>
 
-<iframe src="../footer/footer.html" width=100% height="450px"></iframe>
+<iframe src="../footer/footer.php" width=100% height="450px"></iframe>
 <script>
       // Retrieve the username from session storage
       var username = sessionStorage.getItem("username");
