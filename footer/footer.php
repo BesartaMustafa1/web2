@@ -37,19 +37,19 @@
                 <h4 class="c-nav-tool_title">Menu</h4>
                 <ul class="c-nav-tool_list">
                   <li>
-                    <a href="../books/books.php" class="c-link">Books</a>
+                    <a href="../books/books.php" target="_blank" class="c-link">Books</a>
                   </li>
   
                   <li>
-                    <a href="../spaces/spaces.php" class="c-link">Study spaces</a>
+                    <a href="../spaces/spaces.php"  target="_blank" class="c-link">Study spaces</a>
                   </li>
                   
                   <li>
-                    <a href="../launching/launching.php" class="c-link">Launching soon</a>
+                    <a href="../launching/launching.php"   target="_blank" class="c-link">Launching soon</a>
                   </li>
 
                   <li>
-                    <a href="../aboutus/aboutus.php" class="c-link">About Us</a>
+                    <a href="../aboutus/aboutus.php"  target="_blank" class="c-link">About Us</a>
                   </li>
                 </ul>
               </nav>
