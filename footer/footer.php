@@ -1,3 +1,7 @@
+<?php
+	//Session duhet te shenohet ne fillim te file php.
+	session_start(); //krijimi i sesionit
+?>
 <!DOCTYPE html>
 <html>
     <head>
