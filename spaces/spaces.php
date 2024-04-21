@@ -1,5 +1,5 @@
 <?php 
-include "../cookies\16. Cookie and Session-20240417T211201Z-001/Cookies.php";
+include "../cookies\cookiefolder/cookies/Cookies.php";
  ?>
 <?php
 session_start();

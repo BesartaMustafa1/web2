@@ -14,7 +14,7 @@
 		<?php
 			if(!isset($_COOKIE[$cookie_name]))
 				{
-					echo "Cookie " . $cookie_name . " is not set!";
+					echo "Cookie " . $cookie_name . " is not set! ";
 				} 
 				else 
 				{
