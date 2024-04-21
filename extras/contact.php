@@ -106,8 +106,8 @@
     <script>
         // Load header and footer
         $(function(){
-            $("#header").load("../header/header.html");
-            $("#footer").load("../footer/footer.html");
+            $("#header").load("../header/header.php");
+            $("#footer").load("../footer/footer.php");
         });
     </script>
 </body>
