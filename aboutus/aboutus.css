@@ -5,19 +5,10 @@
     justify-content: center;
     margin-left: -10%; /* Move the row 10% to the left */
 }
-.canvas {
-    border: 1px solid ;
-    border-radius: 10px;
-    margin-right: 5px;
-    box-sizing: border-box;
-    width: 250px;
-    height: 250px;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
 
 .container {
-    width: 50%; /* Adjust as needed */
+    width: 100vw;
+    height: 100vh;
 }
 
 
@@ -35,7 +26,6 @@
   margin: 0;
   padding: 0;
   text-align: center;
-
 }
 
 .leadership-grid li {

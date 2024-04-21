@@ -39,25 +39,46 @@ if (isset($_POST['add_to_cart'])) {
     header('Location: shop.php');
     exit;
 }
+if (isset($_GET['remove_item'])) {
+    $remove_id = $_GET['remove_item'];
 
+    // Remove item from cart array
+    foreach ($_SESSION['cart'] as $index => $item) {
+        if ($item['id'] == $remove_id) {
+            unset($_SESSION['cart'][$index]);
+            break;
+        }
+    }
+
+    // Reset array keys
+    $_SESSION['cart'] = array_values($_SESSION['cart']);
+
+    // Save updated cart to cookie
+    setcookie('cart', json_encode($_SESSION['cart']), time() + (86400 * 30), "/"); // 30 days
+
+    // Redirect to the same page to reflect the changes
+    header('Location: shop.php');
+    exit;
+}
 
 // Calculate total price
 $total_price = array_sum(array_column($_SESSION['cart'], 'price'));
 
-if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'name') {
-    usort($_SESSION['cart'], function($a, $b) {
-        return strcmp($a['name'], $b['name']);
-    });
+// Sort cart items by name or price
+if (isset($_GET['sort_by'])) {
+    if ($_GET['sort_by'] == 'name') {
+        usort($_SESSION['cart'], function($a, $b) {
+            return strcmp($a['name'], $b['name']);
+        });
+    } elseif ($_GET['sort_by'] == 'price') {
+        usort($_SESSION['cart'], function($a, $b) {
+            return $a['price'] <=> $b['price'];
+        });
+    }
 }
 
-// Sort cart items by price
-if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') {
-    usort($_SESSION['cart'], function($a, $b) {
-        return $a['price'] <=> $b['price'];
-    });
-}
+// Confirm order
 if (isset($_POST['confirm_order'])) {
-    // Clear the cart
     $_SESSION['cart'] = [];
     header('Location: ../home html/home2.php');
     exit;
@@ -76,14 +97,13 @@ if (isset($_POST['confirm_order'])) {
 </head>
 </head>
 <style>
-    /* Basic table styling */
+  
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-/* Header styles */
 .table thead {
     background-color: #f2f2f2;
 }
@@ -94,7 +114,6 @@ if (isset($_POST['confirm_order'])) {
     border-bottom: 1px solid #ddd;
 }
 
-/* Body styles */
 .table tbody tr {
     border-bottom: 1px solid #ddd;
 }
@@ -103,11 +122,10 @@ if (isset($_POST['confirm_order'])) {
     padding: 10px 15px;
 }
 
-/* Alternating row color */
 .table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-/* Table Styles */
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -130,14 +148,13 @@ if (isset($_POST['confirm_order'])) {
     color: white;
 }
 
-/* Form Styles */
+
 form {
     margin-top: 20px;
     display: flex;
     justify-content: flex-end;
 }
 
-/* Button Styles */
 .btn {
     display: inline-block;
     padding: 8px 16px;
@@ -154,7 +171,6 @@ form {
     color: white;
 }
 
-/* Link Styles */
 a {
     text-decoration: none;
     color: #007bff;

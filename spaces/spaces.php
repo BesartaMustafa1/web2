@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Function to set background cookie
 function setBackgroundCookie($value) {
     setcookie('background', $value, time() + (86400 * 30), "/"); // 86400 = 1 day
 }
