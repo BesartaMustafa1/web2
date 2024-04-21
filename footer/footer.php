@@ -1,6 +1,8 @@
 <?php
 	//Session duhet te shenohet ne fillim te file php.
 	session_start(); //krijimi i sesionit
+  ob_start();
+ini_set('display_errors', 0);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
@@ -174,12 +176,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </ul>
             </div>
             <!-- button -->
-            <div class="layout_item w-25" style="display:flex;justify-content: end;align-items: center;">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 10h3l-4-4-4 4h3v4h2v-4z" />
-              </svg>
-            </div>
+           
+<div class="layout_item w-25" style="display:flex;justify-content: end;align-items: center;">
+    <button onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 10h3l-4-4-4 4h3v4h2v-4z" />
+        </svg>
+    </button>
+</div>
           </div>
         </div>
       </div>
@@ -187,6 +192,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p style="color: black;">&copy; 2024 TL .</p>
       </div>
     </div>
-    
+    <script>
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+</script>
+
   </footer>
   </html>
