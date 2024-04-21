@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="register-check"> Remember Me</label>
                 </div>
                 <div class="two">
-                    <label><a href="#">Terms & conditions</a></label>
+                    <label><a href="../extras/terms-condiction">Terms & conditions</a></label>
                 </div>
             </div>
         </div>
