@@ -149,7 +149,7 @@
    
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/gabreil.jpg" alt="Product Image">
+            <img src="../books/adance.jpg" alt="Product Image">
         </div>
         <div class="product-details">
             <h1 class="product-title">One Hundred Years of Solitude</h1>
