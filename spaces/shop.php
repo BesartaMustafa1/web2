@@ -29,7 +29,7 @@ if (isset($_POST['add_to_cart'])) {
        
         $_SESSION['cart'][] = $item;
     }
-    //Ruajtja e cart tek cookies,funksioni json_encode()
+    //Ruajtja e cart tek cookies,funksioni json_encode(), operatore + *
     setcookie('cart', json_encode($_SESSION['cart']), time() + (86400 * 30), "/"); // 30 days
     // 
     header('Location: shop.php');

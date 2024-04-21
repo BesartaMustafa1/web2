@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Nëse keni vendosur username në sesion, atëherë merrni atë
+if(isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    $username = "";  // ose ndonjë vlerë tjetër e ndonjë lloji
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,8 +33,10 @@
     </head>
    
     <body>
-          <div id="header"></div><script>
+          <div id="header"> </div><script>
             $('#header').load('../header/header.php')</script>
+          
+
           <div id="video-container">
             <video autoplay muted loop style="width: 100%;">
               <source src="Video1.mp4" type="video/mp4">
@@ -196,22 +209,25 @@
 
 
 <iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
-    <script>
-      // Retrieve the username from session storage
-      var username = sessionStorage.getItem("username");
-      // Display the welcome message with the username if it exists
-      if (username) {
-          document.getElementById("username").textContent = username;
-          document.getElementById("welcomeMessage").style.display = "block";
-      }
+<script>
+  // Merrni username nga sessionStorage
+  var username = sessionStorage.getItem("username");
+  // Shfaqeni në elementin me id 'username'
+  if (username) {
+      document.getElementById("username").textContent = username;
+      // Shfaqeni mesazhin e mirëseardhjes
+      document.getElementById("welcomeMessage").style.display = "block";
+  }
 
-      // Function to handle sign-out action
-      function signOut() {
-          // Clear the session storage
-          sessionStorage.removeItem("username");
-          // Redirect to the login page
-          window.location.href = "home2.php";
-      }</script>
+  // Funksioni për të çkyçur
+  function signOut() {
+      // Fshini username nga sessionStorage
+      sessionStorage.removeItem("username");
+      // Ridrejtohuni tek faqja e login
+      window.location.href = "home2.php";
+  }
+</script>
+
       
     </body>
 
