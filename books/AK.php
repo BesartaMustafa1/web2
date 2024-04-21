@@ -204,24 +204,25 @@
             // window.location.href = 'cart.html';
         }
     </script>
-<iframe src="../footer/footer.html" width=100% height="450vh"></iframe>
-				<script>
-					  // Retrieve the username from session storage
-			  var username = sessionStorage.getItem("username");
-			  // Display the welcome message with the username if it exists
-			  if (username) {
-				  document.getElementById("username").textContent = username;
-				  document.getElementById("welcomeMessage").style.display = "block";
-			  }
-		
-			  // Function to handle sign-out action
-			  function signOut() {
-				  // Clear the session storage
-				  sessionStorage.removeItem("username");
-				  // Redirect to the login page
-				  window.location.href = "home2.html";
-			  }
-				</script>
+<iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
+<script>
+  // Merrni username nga sessionStorage
+  var username = sessionStorage.getItem("username");
+  // Shfaqeni në elementin me id 'username'
+  if (username) {
+      document.getElementById("username").textContent = username;
+      // Shfaqeni mesazhin e mirëseardhjes
+      document.getElementById("welcomeMessage").style.display = "block";
+  }
+
+  // Funksioni për të çkyçur
+  function signOut() {
+      // Fshini username nga sessionStorage
+      sessionStorage.removeItem("username");
+      // Ridrejtohuni tek faqja e login
+      window.location.href = "home2.php";
+  }
+</script>
 				 
 
 </body>
