@@ -1,17 +1,22 @@
 <?php
+ob_start();
 session_start();
+ini_set('display_errors', 0); 
 
-if (!isset($_SESSION['cart'])) {
+// funksioni json_decode()
+if (!isset($_SESSION['cart']) && isset($_COOKIE['cart'])) {
+    $_SESSION['cart'] = json_decode($_COOKIE['cart'], true);
+} elseif (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-// Add item to cart
+// Variablat: $item_id, $item_name, $item_price, $item_quantity,$item, $existing_item, $remove_id, $total_price
+// Qasja e tyre: Perdorni superglobalet $_POST, $_GET, $_SESSION, dhe $_COOKIE per te marre dhe ruajtur vlerat nga formularet, sesionet dhe cookie-t.
 if (isset($_POST['add_to_cart'])) {
     $item_id = $_POST['item_id'];
     $item_name = $_POST['item_name'];
     $item_price = $_POST['item_price'];
     $item_quantity = 1; // Default quantity
-
     $item = [
         'id' => $item_id,
         'name' => $item_name,
@@ -19,73 +24,102 @@ if (isset($_POST['add_to_cart'])) {
         'quantity' => $item_quantity
     ];
 
-    // Check if item is already in cart
+// funksioni array_search()
     $existing_item = array_search($item_id, array_column($_SESSION['cart'], 'id'));
 
+// kushtezim if else
     if ($existing_item !== false) {
         $_SESSION['cart'][$existing_item]['quantity'] += 1;
     } else {
-        // Add item to cart array
+     
+
         $_SESSION['cart'][] = $item;
     }
 
-    // Redirect to cart page
+    //Ruajtja e cart tek cookies,funksioni json_encode()
+    setcookie('cart', json_encode($_SESSION['cart']), time() + (86400 * 30), "/"); // 30 days
+
+   
     header('Location: shop.php');
     exit;
 }
-
+//kushtezim if
 if (isset($_GET['remove_item'])) {
     $remove_id = $_GET['remove_item'];
 
     // Remove item from cart array
+    // Kuhtezimi foreach
     foreach ($_SESSION['cart'] as $index => $item) {
         if ($item['id'] == $remove_id) {
             unset($_SESSION['cart'][$index]);
+            unset($_SESSION['cart'][$index]); // funksioni unset()
             break;
         }
     }
 
-    // Reset array keys
+    //funksionet array_values()
     $_SESSION['cart'] = array_values($_SESSION['cart']);
 
-    // Redirect to home page
-    header('Location: spaces.php');
+    
+    //funksionet string json_encode
+    setcookie('cart', json_encode($_SESSION['cart']), time() + (86400 * 30), "/"); // 30 days
+
+  
+
+    header('Location: shop.php');
     exit;
 }
 
-// Calculate total price
+
+//funksioni aaray_sum(), array_column-->Kthen nje kolone specifike nga nje array.
 $total_price = array_sum(array_column($_SESSION['cart'], 'price'));
 
-if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'name') {
-    usort($_SESSION['cart'], function($a, $b) {
-        return strcmp($a['name'], $b['name']);
-    });
+
+//Kushtezimet if, elseif, isset()
+//funksioni usort()
+if (isset($_GET['sort_by'])) {
+    if ($_GET['sort_by'] == 'name') {
+        usort($_SESSION['cart'], function($a, $b) {
+            //funksionet string strcmp
+            return strcmp($a['name'], $b['name']);
+        });
+    } elseif ($_GET['sort_by'] == 'price') {
+        usort($_SESSION['cart'], function($a, $b) {
+            return $a['price'] <=> $b['price'];
+        });
+    }
 }
 
-// Sort cart items by price
-if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') {
-    usort($_SESSION['cart'], function($a, $b) {
-        return $a['price'] <=> $b['price'];
-    });
+
+
+if (isset($_POST['confirm_order'])) {
+    $_SESSION['cart'] = [];
+    header('Location: ../home html/home2.php');
+    exit;
 }
+ob_end_flush();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Cart</title>
-    <!-- Add your CSS and JS links here -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../header/header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
 </head>
 <style>
-    /* Basic table styling */
+  
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-/* Header styles */
 .table thead {
     background-color: #f2f2f2;
 }
@@ -96,7 +130,6 @@ if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') {
     border-bottom: 1px solid #ddd;
 }
 
-/* Body styles */
 .table tbody tr {
     border-bottom: 1px solid #ddd;
 }
@@ -105,11 +138,10 @@ if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') {
     padding: 10px 15px;
 }
 
-/* Alternating row color */
 .table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-/* Table Styles */
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -132,14 +164,13 @@ if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') {
     color: white;
 }
 
-/* Form Styles */
+
 form {
     margin-top: 20px;
     display: flex;
     justify-content: flex-end;
 }
 
-/* Button Styles */
 .btn {
     display: inline-block;
     padding: 8px 16px;
@@ -156,7 +187,6 @@ form {
     color: white;
 }
 
-/* Link Styles */
 a {
     text-decoration: none;
     color: #007bff;
@@ -168,49 +198,63 @@ a:hover {
 
 </style>
 <body>
-    <div id="header"></div>
-    
-    <!-- Cart Display Section -->
-    <h3 class="page-title">Cart</h3>
-    <table class="table">
-        <thead>
+<div id="header">
+    <?php include '../header/header.php'; ?>
+</div>
+
+<h3 class="page-title">Cart</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($_SESSION['cart'] as $item): ?>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Action</th>
-                <th>Quantity</th>
+                <td><?php echo $item['id']; ?></td>
+                <td><?php echo $item['name']; ?></td>
+                <td>$<?php echo $item['price']; ?></td>
+                <td>
+                    <a href="shop.php?remove_item=<?php echo $item['id']; ?>" class="btn btn-danger">Remove</a>
+                </td>
+                <td><?php echo $item['quantity']; ?></td>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($_SESSION['cart'] as $item): ?>
-                <tr>
-                    <td><?php echo $item['id']; ?></td>
-                    <td><?php echo $item['name']; ?></td>
-                    <td>$<?php echo $item['price']; ?></td>
-                    <td>
-                        <a href="shop.php?remove_item=<?php echo $item['id']; ?>" class="btn btn-danger">Remove</a>
-                    </td>
-                    <td><?php echo $item['quantity']; ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="2"></td>
-                <td><strong>Total Price:</strong></td>
-                <td>$<?php echo number_format($total_price, 2); ?></td>
-            </tr>
-        </tfoot>
-    </table>
+        <?php endforeach; ?>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2"></td>
+            <td><strong>Total Price:</strong></td>
+            <td>$<?php echo number_format($total_price, 2); ?></td>
+        </tr>
+    </tfoot>
+</table>
     
-    <form action="../home html/home2.html" method="post">
+    <form action="../home html/home2.php" method="post">
         <input type="submit" name="confirm_order" value="Confirm" class="btn btn-primary">
     </form>
-    <a href="shop.php?sort_by=name">Sort by Name</a> | 
-<a href="shop.php?sort_by=price">Sort by Price</a>
+    <!-- <a href="shop.php?sort_by=name">Sort by Name</a> | 
+<a href="shop.php?sort_by=price">Sort by Price</a> -->
+    <form action="shop.php" method="get">
+        <input type="hidden" name="sort_by" value="name">
+        <button type="submit" class="btn btn-primary">Sort by Name</button>
+    </form>
 
+    <form action="shop.php" method="get">
+        <input type="hidden" name="sort_by" value="price">
+        <button type="submit" class="btn btn-primary">Sort by Price</button>
+    </form>
 
-   
+<br>
+    <!-- Footer -->
+    <iframe src="../footer/footer.php" width="100%" height="450vh"></iframe>
+    <?php 
+include "../cookies\cookiefolder\cookies/Cookies.php";
+?>
 </body>
 </html>

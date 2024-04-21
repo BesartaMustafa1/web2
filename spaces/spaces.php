@@ -1,13 +1,19 @@
 <?php
+ob_start();
 session_start();
+ini_set('display_errors', 0); 
+//Funksioni per me e vendos cookie +konstanta time()=8640
+function setBackgroundCookie($value) {
+    setcookie('background', $value, time() + (86400 * 30), "/"); // 86400 = 1 day
+}
 
-// Check if the cart is set in the session, if not initialize it
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
-
-// Add item to cart
+//Kushtezimet if else:
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
+  //Variablat: $item_id, $item_name, $item_price, $item,$background, $remove_id
+  // Qasja e tyre me $_POST, $_GET, $_SESSION, dhe $_COOKIE
     $item_id = $_POST['item_id'];
     $item_name = $_POST['item_name'];
     $item_price = $_POST['item_price'];
@@ -18,35 +24,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
         'price' => $item_price
     ];
 
-    // Add item to cart array
-    $_SESSION['cart'][] = $item;
+    
+    $_SESSION['cart'][] = $item; //associative array.
 
-    // Redirect to cart page
+    
     header('Location: shop.php');
     exit;
 }
-
+//Operatoret ==, =, 
 if (isset($_GET['remove_item'])) {
     $remove_id = $_GET['remove_item'];
 
-    // Remove item from cart array
+    
     foreach ($_SESSION['cart'] as $index => $item) {
         if ($item['id'] == $remove_id) {
             unset($_SESSION['cart'][$index]);
             break;
         }
     }
+//Perdorimi i variablave golbale të PHP-se:  $_POST, $_GET, $_SESSION, dhe $_COOKIE
+   
+    $_SESSION['cart'] = array_values($_SESSION['cart']); //numeric array
 
-    // Reset array keys
-    $_SESSION['cart'] = array_values($_SESSION['cart']);
-
-    // Redirect to home page
+    
     header('Location: spaces.php');
     exit;
 }
+
+
+if (isset($_COOKIE['background'])) {
+    $background = $_COOKIE['background'];
+  
+    if ($background === 'dark') {
+       
+        setBackgroundCookie('dark');
+    } else {
+       
+        setBackgroundCookie('default');
+    }
+} else {
+   
+    setBackgroundCookie('default');
+}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,9 +79,19 @@ if (isset($_GET['remove_item'])) {
     <link rel="stylesheet" href="spaces.css">
     <link rel="stylesheet" href="checkout.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        <?php
+        //operatoret &&
+        if (isset($_COOKIE['background']) && $_COOKIE['background'] === 'dark') {
+            echo 'body { background-color: #222222; }';
+        } else {
+            echo 'body { background-color: #ffffff; }'; // Default background color
+        }
+        ?>
+    </style>
 </head>
 <body>
-    <div id="header"></div>
+<div id="header"></div>
     <div class="container">
     <!-- Single Studies Display Section -->
     <div class="title"><h3 class="page-title">Single studies</h3></div>
@@ -247,14 +277,21 @@ if (isset($_GET['remove_item'])) {
     </div>
 </div>
 
-    <iframe src="../footer/footer.html" width="100%" height="450vh"></iframe>
+   
 
+    <!-- Footer -->
+    <iframe src="../footer/footer.php" width="100%" height="450vh"></iframe>
+
+    <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
-            $('#header').load('../header/header.html');
+            $('#header').load('../header/header.php');
         });
     </script>
+    <?php 
+        include "../cookies\cookiefolder/cookies/Cookies.php";
+    ?>
 </body>
 </html>

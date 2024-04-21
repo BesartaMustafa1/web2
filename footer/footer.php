@@ -1,3 +1,7 @@
+<?php
+	//Session duhet te shenohet ne fillim te file php.
+	session_start(); //krijimi i sesionit
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,19 +37,19 @@
                 <h4 class="c-nav-tool_title">Menu</h4>
                 <ul class="c-nav-tool_list">
                   <li>
-                    <a href="../books/books.html" class="c-link">Books</a>
+                    <a href="../books/books.php" target="_blank" class="c-link">Books</a>
                   </li>
   
                   <li>
-                    <a href="../spaces/spaces.php" class="c-link">Study spaces</a>
+                    <a href="../spaces/spaces.php"  target="_blank" class="c-link">Study spaces</a>
                   </li>
                   
                   <li>
-                    <a href="../launching/launching.html" class="c-link">Launching soon</a>
+                    <a href="../launching/launching.php"   target="_blank" class="c-link">Launching soon</a>
                   </li>
 
                   <li>
-                    <a href="../aboutus/aboutus.html" class="c-link">About Us</a>
+                    <a href="../aboutus/aboutus.php"  target="_blank" class="c-link">About Us</a>
                   </li>
                 </ul>
               </nav>
@@ -58,20 +62,20 @@
                 <ul class="c-nav-tool_list">
   
                   <li class="c-nav-tool_item">
-                    <a href="../extras/helpandfqa.html" class="c-link" target="_blank">Help &amp; FAQ</a>
+                    <a href="../extras/helpandfqa.php" class="c-link" target="_blank">Help &amp; FAQ</a>
                   </li>
   
                   <li class="c-nav-tool_item">
-                    <a href="../extras/terms-condiction.html" class="c-link" target="_blank">Terms &amp; Conditions</a>
+                    <a href="../extras/terms-condiction.php" class="c-link" target="_blank">Terms &amp; Conditions</a>
                   </li>
 
   
                   <li class="c-nav-tool_item">
-                    <a href="../extras/contact.html" class="c-link" target="_blank">Contact</a>
+                    <a href="../extras/contact.php" class="c-link" target="_blank">Contact</a>
                   </li>
   
                   <li class="c-nav-tool_item">
-                    <a href="../signup/signup.html" class="c-link" target="_blank">
+                    <a href="../signup/signup.php" class="c-link" target="_blank">
                       Login
                     </a>
                   </li>
