@@ -1,11 +1,15 @@
 <?php
+ob_start();
 session_start();
+ini_set('display_errors', 0); 
+
 // funksioni json_decode()
 if (!isset($_SESSION['cart']) && isset($_COOKIE['cart'])) {
     $_SESSION['cart'] = json_decode($_COOKIE['cart'], true);
 } elseif (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
+
 // Variablat: $item_id, $item_name, $item_price, $item_quantity,$item, $existing_item, $remove_id, $total_price
 // Qasja e tyre: Perdorni superglobalet $_POST, $_GET, $_SESSION, dhe $_COOKIE per te marre dhe ruajtur vlerat nga formularet, sesionet dhe cookie-t.
 if (isset($_POST['add_to_cart'])) {
@@ -13,25 +17,29 @@ if (isset($_POST['add_to_cart'])) {
     $item_name = $_POST['item_name'];
     $item_price = $_POST['item_price'];
     $item_quantity = 1; // Default quantity
-
     $item = [
         'id' => $item_id,
         'name' => $item_name,
         'price' => $item_price,
         'quantity' => $item_quantity
     ];
+
 // funksioni array_search()
     $existing_item = array_search($item_id, array_column($_SESSION['cart'], 'id'));
+
 // kushtezim if else
     if ($existing_item !== false) {
         $_SESSION['cart'][$existing_item]['quantity'] += 1;
     } else {
-       
+     
+
         $_SESSION['cart'][] = $item;
     }
-    //Ruajtja e cart tek cookies,funksioni json_encode(), operatore + *
+
+    //Ruajtja e cart tek cookies,funksioni json_encode()
     setcookie('cart', json_encode($_SESSION['cart']), time() + (86400 * 30), "/"); // 30 days
-    // 
+
+   
     header('Location: shop.php');
     exit;
 }
@@ -39,9 +47,11 @@ if (isset($_POST['add_to_cart'])) {
 if (isset($_GET['remove_item'])) {
     $remove_id = $_GET['remove_item'];
 
+    // Remove item from cart array
     // Kuhtezimi foreach
     foreach ($_SESSION['cart'] as $index => $item) {
         if ($item['id'] == $remove_id) {
+            unset($_SESSION['cart'][$index]);
             unset($_SESSION['cart'][$index]); // funksioni unset()
             break;
         }
@@ -49,47 +59,47 @@ if (isset($_GET['remove_item'])) {
 
     //funksionet array_values()
     $_SESSION['cart'] = array_values($_SESSION['cart']);
+
+    
     //funksionet string json_encode
     setcookie('cart', json_encode($_SESSION['cart']), time() + (86400 * 30), "/"); // 30 days
 
-   
+  
+
     header('Location: shop.php');
     exit;
 }
 
+
 //funksioni aaray_sum(), array_column-->Kthen nje kolone specifike nga nje array.
 $total_price = array_sum(array_column($_SESSION['cart'], 'price'));
+
 
 //Kushtezimet if, elseif, isset()
 //funksioni usort()
 if (isset($_GET['sort_by'])) {
-    $sort_by = $_GET['sort_by'];
-    
-    if ($sort_by == 'name') {
-        // Sort by name
+    if ($_GET['sort_by'] == 'name') {
         usort($_SESSION['cart'], function($a, $b) {
+            //funksionet string strcmp
             return strcmp($a['name'], $b['name']);
         });
-    } elseif ($sort_by == 'price_asc') {
-        // Sort by price ascending
+    } elseif ($_GET['sort_by'] == 'price') {
         usort($_SESSION['cart'], function($a, $b) {
             return $a['price'] <=> $b['price'];
         });
-    // } elseif ($sort_by == 'price_desc') {
-    //     // Sort by price descending
-    //     usort($_SESSION['cart'], function($a, $b) {
-    //         return $b['price'] <=> $a['price'];
-    //     });
-    // }
     }
 }
+
+
 
 if (isset($_POST['confirm_order'])) {
     $_SESSION['cart'] = [];
     header('Location: ../home html/home2.php');
     exit;
 }
+ob_end_flush();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
