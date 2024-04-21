@@ -68,6 +68,12 @@ if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price') {
         return $a['price'] <=> $b['price'];
     });
 }
+if (isset($_POST['confirm_order'])) {
+    // Clear the cart
+    $_SESSION['cart'] = [];
+    header('Location: ../home html/home2.html');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -169,8 +175,6 @@ a:hover {
 </style>
 <body>
     <div id="header"></div>
-    
-    <!-- Cart Display Section -->
     <h3 class="page-title">Cart</h3>
     <table class="table">
         <thead>
@@ -210,7 +214,11 @@ a:hover {
     <a href="shop.php?sort_by=name">Sort by Name</a> | 
 <a href="shop.php?sort_by=price">Sort by Price</a>
 
-
+<script>
+    $(function () {
+            $('#header').load('../header/header.html');
+        });
+</script>
    
 </body>
 </html>
