@@ -25,6 +25,7 @@
 .content h1{
     font-size: 64px;
     font-weight: 600;
+    color:antiquewhite;
 }
 .content h1 span{
     color: #e99b5b;
@@ -63,9 +64,11 @@
 
 .launch-time{
     display: flex;
+    color: antiquewhite;
 }
 .launch-time div{
     flex-basis: 100px;
+    color: antiquewhite;
 }
 .launch-time div p{
     font-size: 60px;
