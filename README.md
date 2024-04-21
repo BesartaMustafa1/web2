@@ -1,17 +1,17 @@
 # PHP projekti grupi 19
 ## Town library
 
-### Rershkrimi i projektit 
-Town Library eshte nje qender kulturore dhe arsimore ne qytet, e cila ofron nje koleksion te gjere te librave, resurseve dhe sherbimeve te tjera per komunitetin. Ne synojme te promovojme leximin, te ndihmojme ne zhvillimin e aftesive te sudenteve, dhe te ofrojme nje ambient te qete dhe te mrekullueshem per lexim dhe studim. Ne kete qender do keni mundesin per blerjen e vendeve ku mund te mesoni ne menyre individuale apo grupore si dhe mund t'i perdorni hapesirat tona per evente te ndryshme te cilat jane gjithnje ne perputhje me misionin dhe visionin e kesaj qendere, pervec hapesirave ne ofrojme edhe libra me temat me interesante nga autoret tone te mirenjohur por edhe nga ata nderkombetar. <br>
-Ejani qe te befasoheni <br>
+### Përshkrimi i projektit 
+Town Library është një qendër kulturore dhe arsimore në qytet, e cila ofron nje koleksion të gjerë të librave, resurseve dhe sherbimeve të tjera për komunitetin. Ne synojmë të promovojme leximin, të ndihmojmë në zhvillimin e aftësive të studentëve, dhe të ofrojme një ambient të qetë dhe të mrekullueshëm për lexim dhe studim. Në këtë qender do të keni mundësinë e blerjës së vendeve ku mund të mësoni, qoftë në mënyrë individuale apo grupore si dhe mund t'i përdorni hapësirat tona për evente të ndryshme të cilat janë gjithnjë në përputhje me misionin dhe visionin e kësaj qendre. Përvec hapësirave ne ofrojmë edhe libra me temat më interesante nga autorët tonë të mirënjohur por edhe nga ata ndërkombetarë. <br>
+Ejani që të befasoheni! <br>
 
-### Punuar nga :
+### Punuar nga:
 Armenie Sadikaj  <br>
 Besarta Mustafa <br>
 Brineta Uka <br>
 Elisa Berisha <br>
 Era Sheqiri
 
-### Lenda: WEB 2
-#### Profesoresha e lendes: Dhurata Hyseni
-#### Asistentja e lendes: Dalina  Vranoci
+### Lënda: WEB 2
+#### Profesoresha e lëndes: Dhurata Hyseni
+#### Asistentja e lëndes: Dalina  Vranoci
