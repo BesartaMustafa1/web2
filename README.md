@@ -17,6 +17,10 @@ o Përdorimi i konstruktorëve (destruktorëve) <br>
 o Përdorimi i atributeve të klasës dhe i funkioneve Get dhe Set <br>
 o Manipulimi me mdoifikatorë: public, private, protected <br>
 o Implementimi i trashëgimisë në PHP dhe klasa <br>
+![2 1](https://github.com/BesartaMustafa1/web2/assets/116516097/8c5eb1b6-2b3a-43fd-a7d8-277c95ea3aa1)
+![2 3](https://github.com/BesartaMustafa1/web2/assets/116516097/37947324-2f53-4d7b-b2e4-f4cc77503cb8)
+![2 2](https://github.com/BesartaMustafa1/web2/assets/116516097/9dfccfd8-9966-4a09-b267-543f5773ee5f)
+
 
 ### PHP Sessions dhe Cookies:
 o Definimi dhe përdorimi i COOKIES me të gjitha specifikat (krijim, fshirja, ruajtja në varg). <br>
@@ -25,3 +29,6 @@ o Definimi dhe përdorimi i SESSIONS në PHP me të gjitha specifikat (krijimi, 
 o Përdorimi i sesioneve për ndonjë qëllim të numërimit (psh numri i vizitave në një faqe apo formë të caktuar etj.) <br>
 o Shembull i përdorimit të funskionit brenda një PHP sesioni <br>
 o Manipulimi me PHP Sesione (psh ruajtje të ndryshme të vlerave, pastaj ndryshim i tyre dhe manipulime të tilla) <br>
+![cookies](https://github.com/BesartaMustafa1/web2/assets/116516097/3d4ceebd-910c-4d13-8b05-bed872480c8c)
+![s 2](https://github.com/BesartaMustafa1/web2/assets/116516097/63c57ec2-0a29-4eeb-b599-4d8016271ec7)
+![s 1](https://github.com/BesartaMustafa1/web2/assets/116516097/88180df7-1a45-41c0-9617-909fa611728e)
