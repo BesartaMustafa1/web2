@@ -19,7 +19,7 @@
 
 <?php
 session_start();
-
+#Definimi dhe përdorimi i SESSIONS në PHP me të gjitha specifikat (krijimi, ruajtja e vlerave, leximi i vlerave etj).
 if(isset($_POST['create_session'])) {
     if(!empty($_POST['name'])) {
         $_SESSION['name'] = $_POST['name'];

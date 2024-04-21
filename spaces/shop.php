@@ -1,5 +1,7 @@
 <?php
+ob_start();
 session_start();
+ini_set('display_errors', 0); 
 
 // funksioni json_decode()
 if (!isset($_SESSION['cart']) && isset($_COOKIE['cart'])) {
@@ -95,6 +97,7 @@ if (isset($_POST['confirm_order'])) {
     header('Location: ../home html/home2.php');
     exit;
 }
+ob_end_flush();
 ?>
 
 

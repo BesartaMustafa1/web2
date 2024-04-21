@@ -1,5 +1,7 @@
 <?php
+ob_start();
 session_start();
+ini_set('display_errors', 0); 
 //Funksioni per me e vendos cookie +konstanta time()=8640
 function setBackgroundCookie($value) {
     setcookie('background', $value, time() + (86400 * 30), "/"); // 86400 = 1 day

@@ -1,10 +1,12 @@
 <?php
+#Krijimi i Cookies:
 	$cookie_name = "User";
 	$cookie_value = "Era Sheqiri";
 	//setcookie(name, value, expire, path, domain, secure, httponly);
-	//setcookie($cookie_name, $cookie_value, time() + 5, "/"); // 86400 = 1 dite
+	setcookie($cookie_name, $cookie_value, time() + 5, "/"); // 86400 = 1 dite
 	// Ne kete menyre mund te e fshijme nje cookie.
-	//setcookie("User", "", time() - 10);
+	#Fshirja e Cookies:
+	 setcookie("User", "", time() - 10);
 ?>
 <html>
 	<head>
@@ -12,6 +14,7 @@
 	<body>
 
 		<?php
+		#Shfaqja e Cookies:
 			if(!isset($_COOKIE[$cookie_name]))
 				{
 					echo "Terms And Agreements  " . $cookie_name . " © is  set! ";

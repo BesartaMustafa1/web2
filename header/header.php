@@ -1,12 +1,14 @@
 <?php
+ob_start();
 session_start();
-
+ini_set('display_errors', 0); 
 // Nëse keni vendosur username në sesion, atëherë merrni atë
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
     $username = "";  // ose ndonjë vlerë tjetër e ndonjë lloji
 }
+ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html lang="en">
