@@ -178,7 +178,10 @@ a:hover {
 
 </style>
 <body>
-    <div id="header"></div>
+<div id="header">
+    <?php include '../header/header.html'; ?>
+</div>
+
     <h3 class="page-title">Cart</h3>
     <table class="table">
         <thead>
@@ -218,13 +221,7 @@ a:hover {
     <a href="shop.php?sort_by=name">Sort by Name</a> | 
 <a href="shop.php?sort_by=price">Sort by Price</a>
 
-<script>        
-    $(function () {
-            $('#header').load('../header/header.html');       
-        }); 
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
    
 </body>
 </html>
