@@ -221,7 +221,7 @@ a:hover {
     <a href="shop.php?sort_by=name">Sort by Name</a> | 
 <a href="shop.php?sort_by=price">Sort by Price</a>
 
-
+<br>
 <?php 
 include "../cookies\cookiefolder/cookies/Cookies.php";
  ?>
