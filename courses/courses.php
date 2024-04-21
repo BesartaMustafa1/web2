@@ -219,19 +219,19 @@
              <h3>Courses For Kids</h3>
               <p>Ignite Your Child's Imagination with Fun and Educational Courses!.</p>
              </div>
-              <div class="facilities-col"> 
+             <div class="facilities-col"> 
                 <img src="facility2.jpg">
                  <h3>Courses For Adults</h3>
                   <p>Invest in Yourself: Elevate Your Skills and Expand Your Horizons!</p> 
-                </div>
+            </div>
                  <div class="facilities-col">
                      <img src="facility3.jpg">
                       <h3>Courses For Teenagers</h3> 
                       <p>Elevate Learning Beyond the Classroom with Engaging Teen-Focused Courses!</p>
                      </div>
-                     </div>
-                     </section>
-                      <script> $('#header').load('../header/header.html'); </script> 
+                </div>
+        </section>
+                      <script> $('#header').load('../header/header.php'); </script> 
                       <iframe src="../footer/footer.php" width=100% height="450vh"></iframe> 
-                    </body>
-                     </html>
+    </body>
+</html>
