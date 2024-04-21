@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -116,18 +118,41 @@
             margin-top: 10px;
             padding: 5px;
         }
+        .rating {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.stars {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.star {
+    cursor: pointer;
+    color: #ccc; /* Default color of stars */
+}
+
+.star:hover,
+.star:hover ~ .star {
+    color: #ffcc00; /* Color of stars when hovered */
+}
+
+        .star {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-</div><script>
+<div id="header"> </div><script>
             $('#header').load('../header/header.php')</script>
    
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/adance.jpg" alt="Product Image">
+            <img src="../books/gabreil.jpg" alt="Product Image">
         </div>
         <div class="product-details">
-            <h1 class="product-title">A Dance with Dragons</h1>
+            <h1 class="product-title">One Hundred Years of Solitude</h1>
             <p class="product-price">$20</p>
             <div class="product-description">
                 <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
@@ -138,7 +163,7 @@
                     <input class="qty" type="number" value="1">
                     <button class="plus" type="button">+</button>
                 </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'A Dance with Dragons', 20)">Add to Cart</button>
+                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'One Hundred Years of Solitude', 20)">Add to Cart</button>
             </form>
         </div>
     </div>
@@ -174,8 +199,24 @@
             // window.location.href = 'cart.html';
         }
     </script>
-<iframe src="../footer/footer.php" width="100%" height="450vh"></iframe>
+     <div class="rating">
+        <p>Rate This Book:</p>
+        <div class="stars">
+            <span class="star" onclick="rateBook(1)">&#9733;</span>
+            <span class="star" onclick="rateBook(2)">&#9733;</span>
+            <span class="star" onclick="rateBook(3)">&#9733;</span>
+            <span class="star" onclick="rateBook(4)">&#9733;</span>
+            <span class="star" onclick="rateBook(5)">&#9733;</span>
+        </div>
+    </div>
+<iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
 <script>
+    function rateBook(rating) {
+    // Display a confirmation message
+    alert('You rated the book ' + rating + ' stars!');
+
+    // Here you can add code to save the rating to a database or perform any other action
+}
   // Merrni username nga sessionStorage
   var username = sessionStorage.getItem("username");
   // Shfaqeni në elementin me id 'username'
@@ -193,8 +234,8 @@
       window.location.href = "home2.php";
   }
 </script>
-				 
 
+				 
 
 </body>
 </html>
