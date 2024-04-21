@@ -1,36 +1,66 @@
 <?php
-// Start session to store user data
 session_start();
+ob_start();
+ini_set('display_errors', 0);
+class User {
+    private $username;
+    private $password;
+    private $firstName;
+    private $lastName;
+    private $email;
 
-// Define some constants
-define("MAX_USERNAME_LENGTH", 20);
-define("MAX_PASSWORD_LENGTH", 20);
-//Kushtezimet if, elseif, dhe else
+    public function __construct($username, $password, $firstName, $lastName, $email) {
+        $this->username = $username;
+        $this->password = $password;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->email = $email;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function getFirstName() {
+        return $this->firstName;
+    }
+
+    public function getLastName() {
+        return $this->lastName;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function isValidLogin() {
+        return !empty($this->username) && !empty($this->password);
+    }
+
+    public function isValidRegistration() {
+        return !empty($this->firstName) && !empty($this->lastName) && !empty($this->email) && !empty($this->password);
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['loginUsername']) && isset($_POST['loginPassword'])) {
-  //variablat $username, $password, $firstName, $lastName, $email, $password     
-        $username = $_POST['loginUsername'];
-        $password = $_POST['loginPassword'];
-
-        // funksionet isset() dhe empty()
-        if (!empty($username) && !empty($password)) {
-            // Assuming successful login, redirecting to home2.html
-            $_SESSION['username'] = $username;
+        $user = new User($_POST['loginUsername'], $_POST['loginPassword'], '', '', '');
+        
+        if ($user->isValidLogin()) {
+            $_SESSION['username'] = $user->getUsername();
             header("Location: ../home html/home2.php");
             exit();
         } else {
             echo "Please fill in all required fields.";
         }
     } elseif (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['registerEmail']) && isset($_POST['registerPassword'])) {
+        $user = new User('', '', $_POST['firstName'], $_POST['lastName'], $_POST['registerEmail']);
         
-        $firstName = $_POST['firstName'];
-        $lastName = $_POST['lastName'];
-        $email = $_POST['registerEmail'];
-        $password = $_POST['registerPassword'];
-
-      
-        if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($password)) {
-            
+        if ($user->isValidRegistration()) {
             header("Location: ../home html/home2.php");
             exit();
         } else {
@@ -41,6 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
