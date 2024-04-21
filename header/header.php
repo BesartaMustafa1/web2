@@ -1,12 +1,14 @@
 <?php
+ob_start();
 session_start();
-
+ini_set('display_errors', 0); 
 // Nëse keni vendosur username në sesion, atëherë merrni atë
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
     $username = "";  // ose ndonjë vlerë tjetër e ndonjë lloji
 }
+ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +30,7 @@ if(isset($_SESSION['username'])) {
             </div>
             <ul>
                 <li><a href="../home html/home2.php">Home</a></li>
-                <li><a href="../books/books.php">Books</a></li>
+                <li><a href="../books/books1.php">Books</a></li>
                 <li><a href="../spaces/spaces.php">Study places</a></li>
                 <li><a href="../launching/launching.php">Launching soon</a></li>
                 <li><a href="../aboutus/aboutus.php">About us</a></li>
