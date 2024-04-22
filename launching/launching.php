@@ -15,7 +15,7 @@ function signOut() {
     // Clear the session storage
     unset($_SESSION["username"]);
     // Redirect to the login page
-    header("Location: home2.html");
+    header("Location: home2.php");
     exit;
 }
 ?>
@@ -135,7 +135,7 @@ echo '</script>';
           </div>
       </div>
     <!---- <a href="courses.html" class="button">Learn More<img src="triangle.png"></a>-->
-    <a href="../courses/courses.html" class="button">Learn More<img src="triangle.png"></a>
+    <a href="../courses/courses.php" class="button">Learn More<img src="triangle.png"></a>
     </div>
 
 <img src="rocket.png" class="rocket">
