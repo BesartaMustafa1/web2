@@ -172,12 +172,12 @@ echo '</script>';
           // Clear the session storage
           sessionStorage.removeItem("username");
           // Redirect to the login page
-          window.location.href = "home2.html";
+          window.location.href = "home2.php";
       }
         </script>
           <script>
     
-            $('#header').load('../header/header.html');
+            $('#header').load('../header/header.php');
               </script>
 <script>
     var countDownDate = new Date(" May 11, 2024 00:00:00").getTime();
@@ -227,7 +227,7 @@ function signOut() {
     // Clear the session storage
     unset($_SESSION["username"]);
     // Redirect to the login page
-    header("Location: home2.html");
+    header("Location: home2.php");
     exit;
 }
 ?>
