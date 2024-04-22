@@ -1,6 +1,3 @@
-<?php 
-include "../cookies/Cookies.php";
-?>
 <?php
 session_start();
 
@@ -48,6 +45,7 @@ if (isset($_GET['remove_item'])) {
     exit;
 }
 ?>
+
 
 
 <!DOCTYPE html>
@@ -257,3 +255,6 @@ and build a brighter future for generations to come.
       </script>
 </body>
 </html>
+<?php 
+include "../cookies\cookiefolder\cookies/Cookies.php";
+?>
