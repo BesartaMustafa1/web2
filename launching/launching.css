@@ -27,6 +27,9 @@
     font-weight: 600;
     color:antiquewhite;
 }
+.content p{
+    color: #fff;
+}
 .content h1 span{
     color: #e99b5b;
 }
