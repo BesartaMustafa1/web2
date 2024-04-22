@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../header/header.css">
     <link rel="stylesheet" href="../footer/footer.css">
     <link rel="stylesheet" href="../courses/courses.css">
-    <link rel="stylesheet" href="/launching/launching.html">
+    <link rel="stylesheet" href="/launching/launching.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://unpkg.com/htmlincludejs"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -139,6 +139,13 @@ document.getElementById("seconds").innerHTML = "00";
 
 <iframe src="../footer/footer.html" width=100% height="450vh"></iframe>
 
+<<<<<<< HEAD
+</body>
+</html>
+<?php 
+include "../cookies\cookiefolder\cookies/Cookies.php";
+?>
+=======
         </body>
         </html>
       -->
@@ -294,3 +301,4 @@ echo '</script>';
 
 
 
+>>>>>>> 9b96522c29343043ae7d973410137403333b3fd5
