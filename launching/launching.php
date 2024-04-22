@@ -151,22 +151,13 @@ echo '</script>';
               <span>Seconds</span>
           </div>
       </div>
-<<<<<<< HEAD
     ---- <a href="courses.html" class="button">Learn More<img src="triangle.png"></a>--
-=======
-    <!---- <a href="courses.html" class="button">Learn More<img src="triangle.png"></a>-->
->>>>>>> c2a78b8cdef0abb5933e8803b91c4408cab3e74b
     <a href="../courses/courses.html" class="button">Learn More<img src="triangle.png"></a>
     </div>
 
 <img src="rocket.png" class="rocket">
 </div>
 
-<<<<<<< HEAD
-
-=======
-<!-- 
->>>>>>> c2a78b8cdef0abb5933e8803b91c4408cab3e74b
         <script>
                // Retrieve the username from session storage
       var username = sessionStorage.getItem("username");
@@ -214,7 +205,6 @@ document.getElementById("seconds").innerHTML = "00";
 }
 
     },1000);
-<<<<<<< HEAD
 </script>
 
 <iframe src="../footer/footer.html" width=100% height="450vh"></iframe>
@@ -374,15 +364,3 @@ echo '</script>';
 
 
 
-=======
-</script> -->
-
-<iframe src="../footer/footer.html" width=100% height="450vh"></iframe>
-
-</body>
-</html>
-
-<?php 
-include "../cookies\cookiefolder\cookies/Cookies.php";
-?>
->>>>>>> c2a78b8cdef0abb5933e8803b91c4408cab3e74b
