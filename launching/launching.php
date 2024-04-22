@@ -1,61 +1,4 @@
-<<<<<<< HEAD
 <!---<!DOCTYPE html>
-=======
-<?php
-// Retrieve the username from session storage
-$username = isset($_SESSION["username"]) ? $_SESSION["username"] : null;
-
-// Display the welcome message with the username if it exists
-if ($username) {
-    echo '<script>';
-    echo 'document.getElementById("username").textContent = "'.$username.'";';
-    echo 'document.getElementById("welcomeMessage").style.display = "block";';
-    echo '</script>';
-}
-
-// Function to handle sign-out action
-function signOut() {
-    // Clear the session storage
-    unset($_SESSION["username"]);
-    // Redirect to the login page
-    header("Location: home2.html");
-    exit;
-}
-?>
-
-<script>
-    $('#header').load('../header/header.html');
-</script>
-
-<?php
-$countDownDate = strtotime("May 11, 2024 00:00:00");
-echo '<script>';
-echo 'var countDownDate = new Date('.json_encode(date("F d, Y H:i:s", $countDownDate) . ' GMT').' ).getTime();';
-echo 'var x = setInterval(function(){';
-echo 'var now = new Date().getTime();';
-echo 'var distance = countDownDate - now;';
-echo 'var days = Math.floor(distance / (1000 * 60 * 60 *24));';
-echo 'var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));';
-echo 'var minutes = Math.floor((distance % (1000 *60 * 60)) / (1000 * 60));';
-echo 'var seconds = Math.floor((distance % (1000 * 60)) / 1000);';
-echo 'document.getElementById("days").innerHTML = days;';
-echo 'document.getElementById("hours").innerHTML = hours;';
-echo 'document.getElementById("minutes").innerHTML = minutes;';
-echo 'document.getElementById("seconds").innerHTML = seconds;';
-echo 'if(distance < 0){';
-echo 'clearInterval(x);';
-echo 'document.getElementById("days").innerHTML = "00";';
-echo 'document.getElementById("hours").innerHTML = "00";';
-echo 'document.getElementById("minutes").innerHTML = "00";';
-echo 'document.getElementById("seconds").innerHTML = "00";';
-echo '}';
-echo '},1000);';
-echo '</script>';
-?>
-
-
-<!DOCTYPE html>
->>>>>>> c2a78b8cdef0abb5933e8803b91c4408cab3e74b
 <head>
 <html lang="en">
     <meta charset="UTF-8">
@@ -74,13 +17,8 @@ echo '</script>';
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
  </head>
     <body>
-<<<<<<< HEAD
 
         <header 
-=======
-    <?php include '../header/header.php'; ?>
-        <!-- <header 
->>>>>>> c2a78b8cdef0abb5933e8803b91c4408cab3e74b
             <nav>
                 <div class="logo">
                     <img src="../home html/Home pic/logo.png">
@@ -107,21 +45,13 @@ echo '</script>';
                     <a href="../signup/signup.html" style="text-decoration: none; color:black"><span>Sign In</span></a>
                   </div>
             </nav>
-<<<<<<< HEAD
         </header> --
-=======
-        </header> -->
->>>>>>> c2a78b8cdef0abb5933e8803b91c4408cab3e74b
 
         <style>
           body{
             background-image:url('books.jpg');
             background-repeat: no repeat;
-<<<<<<< HEAD
             background-attachment:fixed;
-=======
-            background-attachment: fixed;
->>>>>>> c2a78b8cdef0abb5933e8803b91c4408cab3e74b
             background-size: 100% 100%;
           }
         </style>
