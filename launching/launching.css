@@ -29,6 +29,8 @@
 }
 .content p{
     color: #fff;
+    text-align: left;
+    font-size: 20px;
 }
 .content h1 span{
     color: #e99b5b;
