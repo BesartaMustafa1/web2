@@ -149,10 +149,10 @@
    
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/gabreil.jpg" alt="Product Image">
+            <img src="../books/itstarts.jpg" alt="Product Image">
         </div>
         <div class="product-details">
-            <h1 class="product-title">One Hundred Years of Solitude</h1>
+            <h1 class="product-title">It Starts With Us</h1>
             <p class="product-price">$20</p>
             <div class="product-description">
                 <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
@@ -163,7 +163,7 @@
                     <input class="qty" type="number" value="1">
                     <button class="plus" type="button">+</button>
                 </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'One Hundred Years of Solitude', 20)">Add to Cart</button>
+                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'It Starts With Us', 20)">Add to Cart</button>
             </form>
         </div>
     </div>
