@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <ul class="c-nav-tool_list">
   
                   <li class="c-nav-tool_item">
-                    <a href="../extras/helpandfqa.php" class="c-link" target="_blank">Help &amp; FAQ</a>
+                    <a href="../extras/helpandfqa.html" class="c-link" target="_blank">Help &amp; FAQ</a>
                   </li>
   
                   <li class="c-nav-tool_item">
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   
                   <li class="c-nav-tool_item">
-                    <a href="../extras/contact.php" class="c-link" target="_blank">Contact</a>
+                    <a href="../extras/contact.html" class="c-link" target="_blank">Contact</a>
                   </li>
   
                   <li class="c-nav-tool_item">
