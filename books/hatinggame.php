@@ -1,3 +1,27 @@
+<?php
+if (isset($_POST['submit_rating'])) {
+    $rating = $_POST['rating'];
+    // Connect to your database
+    $conn = new mysqli('localhost', 'username', 'password', 'database');
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Insert the rating into the database
+    $stmt = $conn->prepare("INSERT INTO ratings (book_id, rating) VALUES (?, ?)");
+    $book_id = 1; // Assuming 1 is the ID for "The Hating Game"
+    $stmt->bind_param("ii", $book_id, $rating);
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
+
+    // Redirect or display a success message
+    echo "<script>alert('You rated the book $rating stars!');</script>";
+    // header('Location: thank_you.php'); // Redirect to a thank you page if needed
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +50,6 @@
             max-width: 100%;
             height: 500px;
             weight: 500px;
-
         }
 
         .product-details {
@@ -45,7 +68,6 @@
             font-size: 20px;
             margin-bottom: 20px;
             padding-top: 20px;
-
         }
 
         .product-description {
@@ -60,7 +82,7 @@
         }
 
         .cart-form {
-            margin: 50px 10px 75px 10px ;
+            margin: 50px 10px 75px 10px;
         }
 
         .cart-form {
@@ -118,124 +140,95 @@
             margin-top: 10px;
             padding: 5px;
         }
+        
         .rating {
-    margin-top: 20px;
-    text-align: center;
-}
+            margin-top: 20px;
+            text-align: center;
+        }
 
-.stars {
-    font-size: 24px;
-    margin-top: 10px;
-}
-
-.star {
-    cursor: pointer;
-    color: #ccc; /* Default color of stars */
-}
-
-.star:hover,
-.star:hover ~ .star {
-    color: #ffcc00; /* Color of stars when hovered */
-}
+        .stars {
+            font-size: 24px;
+            margin-top: 10px;
+        }
 
         .star {
             cursor: pointer;
+            color: #ccc; /* Default color of stars */
+        }
+
+        .star:hover,
+        .star:hover ~ .star {
+            color: #ffcc00; /* Color of stars when hovered */
         }
     </style>
 </head>
 <body>
-<div id="header"> </div><script>
-            $('#header').load('../header/header.php')</script>
-   
-    <div class="product-container">
-        <div class="product-image">
-            <img src="../books/gabreil.jpg" alt="Product Image">
-        </div>
-        <div class="product-details">
-            <h1 class="product-title">The Hating Game</h1>
-            <p class="product-price">$20</p>
-            <div class="product-description">
-                <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
-            </div>
-            <form class="cart-form" action="../" method="post" enctype="multipart/form-data">
-                <div class="quantity">
-                    <button class="minus" type="button">-</button>
-                    <input class="qty" type="number" value="1">
-                    <button class="plus" type="button">+</button>
-                </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'The Hating Game', 20)">Add to Cart</button>
-            </form>
-        </div>
-    </div>
-    <script>
-        // Initialize an empty cart array
-        let cart = [];
-
-        // Function to add a product to the cart
-        function addToCart(id, name, price) {
-            // Check if the item is already in the cart
-            let existingItem = cart.find(item => item.id === id);
-
-            if (existingItem) {
-                // If the item exists, increase its quantity
-                existingItem.quantity++;
-            } else {
-                // If the item does not exist, add it to the cart
-                cart.push({
-                    id: id,
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-            }
-
-            // Save the cart to local storage
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            // Display a confirmation message (Optional)
-            alert('Product added to cart');
-
-            // Optionally, you can redirect the user to the cart page after adding a product
-            // window.location.href = 'cart.html';
-        }
-    </script>
-     <div class="rating">
-        <p>Rate This Book:</p>
-        <div class="stars">
-            <span class="star" onclick="rateBook(1)">&#9733;</span>
-            <span class="star" onclick="rateBook(2)">&#9733;</span>
-            <span class="star" onclick="rateBook(3)">&#9733;</span>
-            <span class="star" onclick="rateBook(4)">&#9733;</span>
-            <span class="star" onclick="rateBook(5)">&#9733;</span>
-        </div>
-    </div>
-<iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
+<div id="header"></div>
 <script>
-    function rateBook(rating) {
-    // Display a confirmation message
-    alert('You rated the book ' + rating + ' stars!');
-
-    // Here you can add code to save the rating to a database or perform any other action
-}
-  // Merrni username nga sessionStorage
-  var username = sessionStorage.getItem("username");
-  // Shfaqeni në elementin me id 'username'
-  if (username) {
-      document.getElementById("username").textContent = username;
-      // Shfaqeni mesazhin e mirëseardhjes
-      document.getElementById("welcomeMessage").style.display = "block";
-  }
-
-  // Funksioni për të çkyçur
-  function signOut() {
-      // Fshini username nga sessionStorage
-      sessionStorage.removeItem("username");
-      // Ridrejtohuni tek faqja e login
-      window.location.href = "home2.php";
-  }
+    $('#header').load('../header/header.php');
 </script>
 
-				 
+<div class="product-container">
+    <div class="product-image">
+        <img src="../books/thehatinggame.jpg" alt="Product Image">
+    </div>
+    <div class="product-details">
+        <h1 class="product-title">The Hating Game</h1>
+        <p class="product-price">$20</p>
+        <div class="product-description">
+            <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
+        </div>
+        <form class="cart-form" action="../" method="post" enctype="multipart/form-data">
+            <div class="quantity">
+                <button class="minus" type="button">-</button>
+                <input class="qty" type="number" value="1">
+                <button class="plus" type="button">+</button>
+            </div>
+            <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'The Hating Game', 20)">Add to Cart</button>
+        </form>
+    </div>
+</div>
 
+<div class="rating">
+    <p>Rate This Book:</p>
+    <form action="" method="post">
+        <div class="stars">
+            <label class="star" for="star1">&#9733;</label>
+            <input type="radio" id="star1" name="rating" value="1" style="display:none;">
+            
+            <label class="star" for="star2">&#9733;</label>
+            <input type="radio" id="star2" name="rating" value="2" style="display:none;">
+            
+            <label class="star" for="star3">&#9733;</label>
+            <input type="radio" id="star3" name="rating" value="3" style="display:none;">
+            
+            <label class="star" for="star4">&#9733;</label>
+            <input type="radio" id="star4" name="rating" value="4" style="display:none;">
+            
+            <label class="star" for="star5">&#9733;</label>
+            <input type="radio" id="star5" name="rating" value="5" style="display:none;">
+        </div>
+        <button type="submit" name="submit_rating">Submit Rating</button>
+    </form>
+</div>
+
+<iframe src="../footer/footer.php" width="100%" height="450vh"></iframe>
+
+<script>
+    function addToCart(id, name, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let existingItem = cart.find(item => item.id === id);
+
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({ id: id, name: name, price: price, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Product added to cart');
+    }
+</script>
 </body>
 </html>
+

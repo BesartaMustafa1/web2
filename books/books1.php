@@ -106,7 +106,7 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="PR.jpg"/>
+                    <img src="thehatinggame.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
@@ -133,7 +133,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/5.php">
+                      <a href="../books/Library.php">
                       The Underground Library
                       Book by Jennifer Ryan
                       </h2>
@@ -153,7 +153,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/6.php">
+                      <a href="../books/ItStarts.php">
                         It Starts with Us
                       Novel by Colleen Hoover
                       </h2>
@@ -173,7 +173,7 @@
                     <div class="text">
                      
                     <h2 class="animate-text">
-                      <a href="../books/7.php">
+                      <a href="../books/TheAlchemist.php">
                       The Alchemist
                       Novel by Paulo Coelho
                       </h2>
@@ -215,7 +215,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/8.php">
+                      <a href="../books/LOR.php">
                       The Lord of the Rings
                       Novel by John Ronald Reuel Tolkien</h2>
                     </a>
@@ -234,7 +234,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/9.php">Harry Potter and the 
+                      <a href="../books/Harry.php">Harry Potter and the 
                       Deathly Hallows: Part 1</h2>
                     </a>
                     <p class="animate-text"> </p>
@@ -256,7 +256,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.php"></a>
+                      <a href="../books/.php"></a>
                       Sikur t'isha djalë
                       Novel by Haki Stërmilli
                       </h2>
@@ -276,7 +276,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/10.php">
+                      <a href="../books/Doruntine.php">
                       Doruntine (Kush e solli Doruntinën: roman)
                       Novel by Ismail Kadare
                       

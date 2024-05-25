@@ -1,3 +1,35 @@
+<?php
+ob_start();
+session_start();
+ini_set('display_errors', 0);
+
+// Funksioni per me e vendos cookie +konstanta time()=8640
+function setBackgroundCookie($value) {
+    setcookie('background', $value, time() + (86400 * 30), "/"); // 86400 = 1 day
+}
+
+if (isset($_POST['submit_rating'])) {
+    $rating = $_POST['rating'];
+    // Connect to your database
+    $conn = new mysqli('localhost', 'username', 'password', 'database');
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Insert the rating into the database
+    $stmt = $conn->prepare("INSERT INTO ratings (book_id, rating) VALUES (?, ?)");
+    $book_id = 1; // Assuming 1 is the ID for "Book Thief"
+    $stmt->bind_param("ii", $book_id, $rating);
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
+
+    // Display a success message
+    echo "<script>alert('You rated the book $rating stars!');</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,10 +181,10 @@
    
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/LOR.jpg" alt="Product Image">
+            <img src="../books/kadare.jpg" alt="Product Image">
         </div>
         <div class="product-details">
-            <h1 class="product-title">Lord of the Rings</h1>
+            <h1 class="product-title">Kush e solli Doruntinen</h1>
             <p class="product-price">$20</p>
             <div class="product-description">
                 <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
@@ -163,7 +195,7 @@
                     <input class="qty" type="number" value="1">
                     <button class="plus" type="button">+</button>
                 </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Lord of the Rings', 20)">Add to Cart</button>
+                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Kush e solli Doruntinen', 20)">Add to Cart</button>
             </form>
         </div>
     </div>
@@ -208,6 +240,8 @@
             <span class="star" onclick="rateBook(4)">&#9733;</span>
             <span class="star" onclick="rateBook(5)">&#9733;</span>
         </div>
+        <input type="hidden" name="rating" id="rating">
+        <button type="submit" name="submit_rating" style="margin-top: 10px;">Submit Rating</button>
     </div>
 <iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
 <script>

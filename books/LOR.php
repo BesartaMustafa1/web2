@@ -149,10 +149,10 @@
    
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/harry.jpg" alt="Product Image">
+            <img src="../books/LOR.jpg" alt="Product Image">
         </div>
         <div class="product-details">
-            <h1 class="product-title">Harry Potter and the Deathly Hallows:Part1</h1>
+            <h1 class="product-title">Lord of the Rings</h1>
             <p class="product-price">$20</p>
             <div class="product-description">
                 <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
@@ -163,7 +163,7 @@
                     <input class="qty" type="number" value="1">
                     <button class="plus" type="button">+</button>
                 </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Harry Potter and the Deathly Hallows:Part1', 20)">Add to Cart</button>
+                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Lord of the Rings', 20)">Add to Cart</button>
             </form>
         </div>
     </div>
@@ -208,6 +208,8 @@
             <span class="star" onclick="rateBook(4)">&#9733;</span>
             <span class="star" onclick="rateBook(5)">&#9733;</span>
         </div>
+        <input type="hidden" name="rating" id="rating">
+        <button type="submit" name="submit_rating" style="margin-top: 10px;">Submit Rating</button>
     </div>
 <iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
 <script>

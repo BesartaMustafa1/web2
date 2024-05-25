@@ -20,7 +20,7 @@ if (isset($_POST['submit_rating'])) {
 
     // Insert the rating into the database
     $stmt = $conn->prepare("INSERT INTO ratings (book_id, rating) VALUES (?, ?)");
-    $book_id = 1; // Assuming 1 is the ID for "Book Thief"
+    $book_id = 1; // Assuming 1 is the ID for "The Alchemist"
     $stmt->bind_param("ii", $book_id, $rating);
     $stmt->execute();
     $stmt->close();
@@ -30,6 +30,7 @@ if (isset($_POST['submit_rating'])) {
     echo "<script>alert('You rated the book $rating stars!');</script>";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +41,6 @@ if (isset($_POST['submit_rating'])) {
     <link rel="stylesheet" href="../header/header.css">
     <link rel="stylesheet" href="../footer/footer.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://unpkg.com/htmlincludejs"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
@@ -151,102 +151,139 @@ if (isset($_POST['submit_rating'])) {
             margin-top: 10px;
             padding: 5px;
         }
+
+        .rating {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .star {
+            cursor: pointer;
+            color: #ccc; /* Default color of stars */
+        }
+
+        .star:hover,
+        .star:hover ~ .star {
+            color: #ffcc00; /* Color of stars when hovered */
+        }
+
+        .star.active {
+            color: #ffcc00; /* Color of stars when selected */
+        }
     </style>
 </head>
 <body>
-<div id="header"> </div><script>
-            $('#header').load('../header/header.php')</script>
+<div id="header"></div>
+<script>
+    $('#header').load('../header/header.php');
+</script>
 
-    <div class="product-container">
-        <div class="product-image">
-            <img src="../books/AK.jpg" alt="Product Image">
-        </div>
-        <div class="product-details">
-            <h1 class="product-title">Ana Karenina</h1>
-            <p class="product-price">$20</p>
-            <div class="product-description">
-                <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
-            </div>
-            <form class="cart-form" action="../" method="post" enctype="multipart/form-data">
-                <div class="quantity">
-                    <button class="minus" type="button">-</button>
-                    <input class="qty" type="number" value="1">
-                    <button class="plus" type="button">+</button>
-                </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Ana Karenina', 20)">Add to Cart</button>
-            </form>
-        </div>
+<div class="product-container">
+    <div class="product-image">
+        <img src="../books/thealche.jpg" alt="Product Image">
     </div>
-    <script>
-        // Initialize an empty cart array
-        let cart = [];
+    <div class="product-details">
+        <h1 class="product-title">The Alchemist</h1>
+        <p class="product-price">$20</p>
+        <div class="product-description">
+            <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
+        </div>
+        <form class="cart-form" action="../" method="post" enctype="multipart/form-data">
+            <div class="quantity">
+                <button class="minus" type="button">-</button>
+                <input class="qty" type="number" value="1">
+                <button class="plus" type="button">+</button>
+            </div>
+            <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'The Alchemist', 20)">Add to Cart</button>
+        </form>
+    </div>
+</div>
 
-        // Function to add a product to the cart
-        function addToCart(id, name, price) {
-            // Check if the item is already in the cart
-            let existingItem = cart.find(item => item.id === id);
-
-            if (existingItem) {
-                // If the item exists, increase its quantity
-                existingItem.quantity++;
-            } else {
-                // If the item does not exist, add it to the cart
-                cart.push({
-                    id: id,
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-            }
-
-            // Save the cart to local storage
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            // Display a confirmation message (Optional)
-            alert('Product added to cart');
-
-            // Optionally, you can redirect the user to the cart page after adding a product
-            // window.location.href = 'cart.html';
-        }
-    </script>
+<form method="post" action="">
     <div class="rating">
         <p>Rate This Book:</p>
         <div class="stars">
-            <span class="star" onclick="rateBook(1)">&#9733;</span>
-            <span class="star" onclick="rateBook(2)">&#9733;</span>
-            <span class="star" onclick="rateBook(3)">&#9733;</span>
-            <span class="star" onclick="rateBook(4)">&#9733;</span>
-            <span class="star" onclick="rateBook(5)">&#9733;</span>
+            <span class="star" onclick="selectRating(1)">&#9733;</span>
+            <span class="star" onclick="selectRating(2)">&#9733;</span>
+            <span class="star" onclick="selectRating(3)">&#9733;</span>
+            <span class="star" onclick="selectRating(4)">&#9733;</span>
+            <span class="star" onclick="selectRating(5)">&#9733;</span>
         </div>
         <input type="hidden" name="rating" id="rating">
         <button type="submit" name="submit_rating" style="margin-top: 10px;">Submit Rating</button>
     </div>
-<iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
+</form>
+
+<iframe src="../footer/footer.php" width="100%" height="450vh"></iframe>
+
 <script>
-    function rateBook(rating) {
-    // Display a confirmation message
-    alert('You rated the book ' + rating + ' stars!');
+    // Initialize an empty cart array
+    let cart = [];
 
-    // Here you can add code to save the rating to a database or perform any other action
-}
-  // Merrni username nga sessionStorage
-  var username = sessionStorage.getItem("username");
-  // Shfaqeni në elementin me id 'username'
-  if (username) {
-      document.getElementById("username").textContent = username;
-      // Shfaqeni mesazhin e mirëseardhjes
-      document.getElementById("welcomeMessage").style.display = "block";
-  }
+    // Function to add a product to the cart
+    function addToCart(id, name, price) {
+        // Check if the item is already in the cart
+        let existingItem = cart.find(item => item.id === id);
 
-  // Funksioni për të çkyçur
-  function signOut() {
-      // Fshini username nga sessionStorage
-      sessionStorage.removeItem("username");
-      // Ridrejtohuni tek faqja e login
-      window.location.href = "home2.php";
-  }
+        if (existingItem) {
+            // If the item exists, increase its quantity
+            existingItem.quantity++;
+        } else {
+            // If the item does not exist, add it to the cart
+            cart.push({
+                id: id,
+                name: name,
+                price: price,
+                quantity: 1
+            });
+        }
+
+        // Save the cart to local storage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Display a confirmation message (Optional)
+        alert('Product added to cart');
+
+        // Optionally, you can redirect the user to the cart page after adding a product
+        // window.location.href = 'cart.html';
+    }
+
+    function selectRating(rating) {
+        // Remove the active class from all stars
+        document.querySelectorAll('.star').forEach(star => star.classList.remove('active'));
+        // Add the active class to the selected star and all previous stars
+        document.querySelectorAll('.star').forEach((star, index) => {
+            if (index < rating) {
+                star.classList.add('active');
+            }
+        });
+        // Set the rating value in the hidden input
+        document.getElementById('rating').value = rating;
+    }
+
+    // Merrni username nga sessionStorage
+    var username = sessionStorage.getItem("username");
+    // Shfaqeni në elementin me id 'username'
+    if (username) {
+        document.getElementById("username").textContent = username;
+        // Shfaqeni mesazhin e mirëseardhjes
+        document.getElementById("welcomeMessage").style.display = "block";
+    }
+
+    // Funksioni për të çkyçur
+    function signOut() {
+        // Fshini username nga sessionStorage
+        sessionStorage.removeItem("username");
+        // Ridrejtohuni tek faqja e login
+        window.location.href = "home2.php";
+    }
 </script>
-				 
-
 </body>
 </html>
