@@ -1,35 +1,63 @@
 <?php
-// Variablat për të ruajtur të dhënat personale të përdoruesit
-$emri = "John";
-$mbiemri = "Doe";
-$password = "fjalkalimi";
-$numri_llogarise = "1234567890";
+session_start();
+require_once("../mysql/dbconnector.php");
 
-// Kontrollo për ndryshimin e fjalëkalimit
+// Check if the user is logged in
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+
+    // Fetch user's name and surname from the database
+    $sql = "SELECT first_name, last_name FROM users WHERE username='$username'";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $emri = $row['emri'];
+        $mbiemri = $row['mbiemri'];
+    } else {
+        $emri = $mbiemri = "Nuk u gjetën të dhëna";
+    }
+} else {
+    $username = $emri = $mbiemri = "";
+}
+
+// Handle password update
 if (isset($_POST['submit_password'])) {
     $new_password = $_POST['new_password'];
-    // Kryeni validimin e fjalëkalimit dhe përditësoni fjalëkalimin në bazën e të dhënave
-    $password = $new_password;
-    echo "<p>Fjalëkalimi u përditësua me sukses!</p>";
+    $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+    $sql_update_password = "UPDATE users SET password='$hashed_password' WHERE username='$username'";
+    if ($conn->query($sql_update_password) === TRUE) {
+        echo "<p>Fjalëkalimi u përditësua me sukses!</p>";
+    } else {
+        echo "<p>Gabim gjatë përditësimit të fjalëkalimit: " . $conn->error . "</p>";
+    }
 }
 
-// Kontrollo për ndryshimin e të dhënave bankare
+// Handle bank info update
 if (isset($_POST['submit_bank_info'])) {
     $new_bank_info = $_POST['new_bank_info'];
-    // Kryeni validimin e të dhënave bankare dhe përditësoni ato në bazën e të dhënave
-    $numri_llogarise = $new_bank_info;
-    echo "<p>Të dhënat bankare u përditësuan me sukses!</p>";
+    $sql_update_bank_info = "UPDATE users SET bank_info='$new_bank_info' WHERE username='$username'";
+    if ($conn->query($sql_update_bank_info) === TRUE) {
+        echo "<p>Të dhënat bankare u përditësuan me sukses!</p>";
+    } else {
+        echo "<p>Gabim gjatë përditësimit të të dhënave bankare: " . $conn->error . "</p>";
+    }
 }
+
+// Close the database connection
+$conn->close();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Profili i Përdoruesit</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libraria - Profili i Përdoruesit</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
             margin: 0;
             padding: 0;
         }
@@ -39,12 +67,15 @@ if (isset($_POST['submit_bank_info'])) {
             margin: 20px auto;
             padding: 20px;
             background-color: #fff;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
             color: #333;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
         }
 
         form {
@@ -64,13 +95,13 @@ if (isset($_POST['submit_bank_info'])) {
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: #007bff;
             color: white;
             cursor: pointer;
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
         }
 
         p {
@@ -82,8 +113,8 @@ if (isset($_POST['submit_bank_info'])) {
 
 <div class="container">
     <h2>Profili i Përdoruesit</h2>
-    <p><strong>Emri:</strong> <?php echo $emri; ?></p>
-    <p><strong>Mbiemri:</strong> <?php echo $mbiemri; ?></p>
+    <p><strong>Emri:</strong> <?php echo htmlspecialchars($emri); ?></p>
+    <p><strong>Mbiemri:</strong> <?php echo htmlspecialchars($mbiemri); ?></p>
     <form method="post" action="">
         <h3>Përditëso Fjalëkalimin</h3>
         <input type="password" name="new_password" placeholder="Fjalëkalimi i ri">
