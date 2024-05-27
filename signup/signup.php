@@ -1,7 +1,18 @@
 <?php
 session_start();
 ob_start();
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
+
+require_once ( "../mysql/dbconnector.php");
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 class User {
     private $username;
     private $password;
@@ -47,31 +58,57 @@ class User {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Handle login
     if (isset($_POST['loginUsername']) && isset($_POST['loginPassword'])) {
         $user = new User($_POST['loginUsername'], $_POST['loginPassword'], '', '', '');
-        
+
         if ($user->isValidLogin()) {
-            $_SESSION['username'] = $user->getUsername();
-            header("Location: ../home html/home2.php");
-            exit();
+            $sql = "SELECT * FROM users WHERE username = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $user->getUsername());
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $userData = $result->fetch_assoc();
+                if (password_verify($_POST['loginPassword'], $userData['password'])) {
+                    $_SESSION['username'] = $userData['username'];
+                    header("Location: ../home html/home2.php");
+                    exit();
+                } else {
+                    echo "Invalid password.";
+                }
+            } else {
+                echo "User does not exist.";
+            }
         } else {
             echo "Please fill in all required fields.";
         }
-    } elseif (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['registerEmail']) && isset($_POST['registerPassword'])) {
-        $user = new User('', '', $_POST['firstName'], $_POST['lastName'], $_POST['registerEmail']);
-        
-        if ($user->isValidRegistration()) {
-            header("Location: ../home html/home2.php");
-            exit();
-        } else {
-            echo "Please fill in all required fields.";
-        }
-    } else {
-        echo "Invalid form submission.";
     }
+    // Handle registration
+    elseif (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['registerEmail']) && isset($_POST['registerPassword'])) {
+        $user = new User('', $_POST['registerPassword'], $_POST['firstName'], $_POST['lastName'], $_POST['registerEmail']);
+
+        if ($user->isValidRegistration()) {
+            $passwordHash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
+            $sql = "INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssss", $user->getEmail(), $passwordHash, $user->getFirstName(), $user->getLastName(), $user->getEmail());
+
+            if ($stmt->execute()) {
+                $_SESSION['username'] = $user->getEmail();
+                header("Location: ../home html/home2.php");
+                exit();
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+        } else {
+            echo "Please fill in all required fields.";
+        }
+    }
+   
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,26 +129,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
                 <header>Login</header>
             </div>
-            <div class="input-box">
-                <input type="text" class="input-field" id="loginUsername" name="loginUsername" placeholder="Username or Email" required>
-                <i class="bx bx-user"></i>
-            </div>
-            <div class="input-box">
-                <input type="password" class="input-field" id="loginPassword" name="loginPassword" placeholder="Password" required>
-                <i class="bx bx-lock-alt"></i>
-            </div>
-            <div class="input-box">
-                <input type="button" class="submit" value="Sign In" onclick="signIn()">
-            </div>
-            <div class="two-col">
-                <div class="one">
-                    <input type="checkbox" id="login-check">
-                    <label for="login-check"> Remember Me</label>
+            <form method="POST" action="">
+                <div class="input-box">
+                    <input type="text" class="input-field" id="loginUsername" name="loginUsername" placeholder="Username or Email" required>
+                    <i class="bx bx-user"></i>
                 </div>
-                <div class="two">
-                    <label><a href="#">Forgot password?</a></label>
+                <div class="input-box">
+                    <input type="password" class="input-field" id="loginPassword" name="loginPassword" placeholder="Password" required>
+                    <i class="bx bx-lock-alt"></i>
                 </div>
-            </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Sign In">
+                </div>
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="login-check">
+                        <label for="login-check"> Remember Me</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">Forgot password?</a></label>
+                    </div>
+                </div>
+            </form>
         </div>
         
         <!-- registration form -->
@@ -120,37 +159,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span>Have an account? <a href="#" onclick="login()">Login</a></span>
                 <header>Sign Up</header>
             </div>
-            <div class="two-forms">
-                <div class="input-box">
-                    <input type="text" class="input-field" id="firstName" name="firstName" placeholder="Firstname" required>
-                    <i class="bx bx-user"></i>
+            <form method="POST" action="">
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-field" id="firstName" name="firstName" placeholder="Firstname" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" id="lastName" name="lastName" placeholder="Lastname" required>
+                        <i class="bx bx-user"></i>
+                    </div>
                 </div>
                 <div class="input-box">
-                    <input type="text" class="input-field" id="lastName" name="lastName" placeholder="Lastname" required>
-                    <i class="bx bx-user"></i>
+                    <input type="text" class="input-field" id="registerEmail" name="registerEmail" placeholder="Email" required>
+                    <i class="bx bx-envelope"></i>
                 </div>
-            </div>
-            <div class="input-box">
-                <input type="text" class="input-field" id="registerEmail" name="registerEmail" placeholder="Email" required>
-                <i class="bx bx-envelope"></i>
-            </div>
-            <div class="input-box">
-                <input type="password" class="input-field" id="registerPassword" name="registerPassword" placeholder="Password" required>
-                <i class="bx bx-lock-alt"></i>
-            </div>
-            <div class="input-box">
-                <input type="button" class="submit" value="Register" onclick="registerUser()">
-            </div>
-            <div class="two-col">
-                <div class="one">
-                    <input type="checkbox" id="register-check">
-                    <label for="register-check"> Remember Me</label>
+                <div class="input-box">
+                    <input type="password" class="input-field" id="registerPassword" name="registerPassword" placeholder="Password" required>
+                    <i class="bx bx-lock-alt"></i>
                 </div>
-                <div class="two">
-                    <label><a href="../extras/terms-condiction">Terms & conditions</a></label>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Register">
                 </div>
-            </div>
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="register-check">
+                        <label for="register-check"> Remember Me</label>
+                      
+                    </div>
+
+                    <div class="two">
+                        <label><a href="../extras/terms-condiction">Terms & conditions</a></label>
+                    </div>
+                </div>
+            </form>
         </div>
+
     </div>
 </div>
 
@@ -168,29 +212,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         y.style.right = "5px";
     }
 
-    function signIn() {
-        var username = document.getElementById("loginUsername").value;
-        var password = document.getElementById("loginPassword").value;
-        
-        if (username.trim() !== "" && password.trim() !== "") {
-            window.location.href = "../home html/home2.php";
-        } else {
-            alert("Please fill in all required fields.");
-        }
-    }
-
-    function registerUser() {
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-        var email = document.getElementById("registerEmail").value;
-        var password = document.getElementById("registerPassword").value;
-        
-        if (firstName.trim() !== "" && lastName.trim() !== "" && email.trim() !== "" && password.trim() !== "") {
-            window.location.href = "../home html/home2.php";
-        } else {
-            alert("Please fill in all required fields.");
-        }
-    }
+  
 </script>
 
 </body>

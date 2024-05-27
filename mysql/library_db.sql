@@ -26,4 +26,13 @@ CREATE TABLE members (
     join_date DATE
 );
 
+CREATE TABLE users (
+    id INT auto_increment PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100) NOT NULL UNIQUE
+);
+
 

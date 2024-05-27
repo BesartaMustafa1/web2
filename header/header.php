@@ -2,12 +2,9 @@
 ob_start();
 session_start();
 ini_set('display_errors', 0); 
-// Nëse keni vendosur username në sesion, atëherë merrni atë
-if(isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
-} else {
-    $username = "";  // ose ndonjë vlerë tjetër e ndonjë lloji
-}
+
+// Check if username is set in session
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : "";
 ob_end_flush();
 ?>
 <!DOCTYPE html>
@@ -44,7 +41,7 @@ ob_end_flush();
                 Welcome, <span id="username"></span>! <button onclick="signOut()">Sign Out</button>
             </div>   
             
-            <div class="signin">
+            <div class="signin" id="signInLink" style="display: none;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
@@ -54,21 +51,24 @@ ob_end_flush();
     </header>
 
     <script>
-        // Merrni username nga sessionStorage
-        var username = sessionStorage.getItem("username");
-        // Shfaqeni në elementin me id 'username'
+        // Get the PHP username variable
+        var username = "<?php echo $username; ?>";
+        
         if (username) {
             document.getElementById("username").textContent = username;
-            // Shfaqeni mesazhin e mirëseardhjes
             document.getElementById("welcomeMessage").style.display = "block";
+            document.getElementById("signInLink").style.display = "none";
+        } else {
+            document.getElementById("welcomeMessage").style.display = "none";
+            document.getElementById("signInLink").style.display = "block";
         }
 
-        // Funksioni për të çkyçur
+        // Function to sign out
         function signOut() {
-            // Fshini username nga sessionStorage
-            sessionStorage.removeItem("username");
-            // Ridrejtohuni tek faqja e login
-            window.location.href = "home2.php";
+            // Clear the session data (optional, but usually done server-side)
+            <?php session_destroy(); ?>
+            // Redirect to the login page
+            window.location.href = "../home html/home2.php";
         }
     </script>
 </body>
