@@ -3,7 +3,7 @@ session_start();
 ob_start();
 ini_set('display_errors', 1);
 
-require_once ( "../mysql/dbconnector.php");
+require_once("../mysql/dbconnector.php");
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -53,9 +53,21 @@ class User {
     }
 
     public function isValidRegistration() {
-        return !empty($this->firstName) && !empty($this->lastName) && !empty($this->email) && !empty($this->password);
+        return !empty($this->firstName) && !empty($this->lastName) && isValidEmail($this->email) && isValidPassword($this->password);
     }
 }
+
+function isValidEmail($email) {
+    $pattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+    return preg_match($pattern, $email);
+}
+
+function isValidPassword($password) {
+    $pattern = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
+    return preg_match($pattern, $password);
+}
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // login
@@ -85,30 +97,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Please fill in all required fields.";
         }
     }
-   #register
+    #register
     elseif (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['registerEmail']) && isset($_POST['registerPassword'])) {
-    $user = new User('', $_POST['registerPassword'], $_POST['firstName'], $_POST['lastName'], $_POST['registerEmail']);
+        $user = new User('', $_POST['registerPassword'], $_POST['firstName'], $_POST['lastName'], $_POST['registerEmail']);
 
-    if ($user->isValidRegistration()) {
-        $passwordHash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $user->getEmail(), $passwordHash, $user->getFirstName(), $user->getLastName(), $user->getEmail());
+        if ($user->isValidRegistration()) {
+            $passwordHash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
+            $sql = "INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssss", $user->getEmail(), $passwordHash, $user->getFirstName(), $user->getLastName(), $user->getEmail());
 
-        if ($stmt->execute()) {
-            $_SESSION['username'] = $user->getEmail();
-            header("Location: ../home html/home2.php");
-            exit();
+            if ($stmt->execute()) {
+                $_SESSION['username'] = $user->getEmail();
+                header("Location: ../home html/home2.php");
+                exit();
+            } else {
+                echo "Error: " . $stmt->error;
+            }
         } else {
-            echo "Error: " . $stmt->error;
+            echo "Please use a valid email.";
         }
-     } else {
-        echo "Please fill in all required fields.";
-         }
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
