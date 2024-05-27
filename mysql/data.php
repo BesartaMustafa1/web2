@@ -3,7 +3,7 @@
 
 $dbhost = 'localhost:3306';
 $dbuser = 'root';
-$dbpass = 'Password';
+$dbpass = 'Art@1234';
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass); 
 if(! $conn )
 {
@@ -52,13 +52,13 @@ if(! $retval )
 die('Could not create table: ' . mysqli_connect_error());
 }
 echo "Table authors was created successfully\n";
-mysqli_close($conn);*/
+mysqli_close($conn);
 
 
  //Insertimi i te dhenave
 $dbhost = 'localhost:3306';
 $dbuser = 'root';
-$dbpass = 'Password';
+$dbpass = 'Art@1234';
 $db='library_db';
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db); 
 if(! $conn )

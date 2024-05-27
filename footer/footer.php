@@ -1,16 +1,21 @@
 <?php
-	//Session duhet te shenohet ne fillim te file php.
-	session_start(); //krijimi i sesionit
-  ob_start();
+// Session should be started at the beginning of the PHP file.
+session_start(); // Starting the session
+ob_start();
 ini_set('display_errors', 0);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     
-    // Save email to cookie
-    setcookie("user_email", $email, time() + (86400 * 30), "/"); // 86400 = 1 day
+    // Validate email using PHP regex
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Save email to cookie
+        setcookie("user_email", $email, time() + (86400 * 30), "/"); // 86400 = 1 day
 
-    $_SESSION["message"] = "Email saved successfully!";
+        $_SESSION["message"] = "Email saved successfully!";
+    } else {
+        $_SESSION["message"] = "Invalid email address!";
+    }
 }
 ?>
 

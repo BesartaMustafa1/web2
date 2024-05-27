@@ -58,7 +58,7 @@ class User {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Handle login
+    // login
     if (isset($_POST['loginUsername']) && isset($_POST['loginPassword'])) {
         $user = new User($_POST['loginUsername'], $_POST['loginPassword'], '', '', '');
 
@@ -85,29 +85,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Please fill in all required fields.";
         }
     }
-    // Handle registration
+   #register
     elseif (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['registerEmail']) && isset($_POST['registerPassword'])) {
-        $user = new User('', $_POST['registerPassword'], $_POST['firstName'], $_POST['lastName'], $_POST['registerEmail']);
+    $user = new User('', $_POST['registerPassword'], $_POST['firstName'], $_POST['lastName'], $_POST['registerEmail']);
 
-        if ($user->isValidRegistration()) {
-            $passwordHash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
-            $sql = "INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?, ?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss", $user->getEmail(), $passwordHash, $user->getFirstName(), $user->getLastName(), $user->getEmail());
+    if ($user->isValidRegistration()) {
+        $passwordHash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (username, password, first_name, last_name, email) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssss", $user->getEmail(), $passwordHash, $user->getFirstName(), $user->getLastName(), $user->getEmail());
 
-            if ($stmt->execute()) {
-                $_SESSION['username'] = $user->getEmail();
-                header("Location: ../home html/home2.php");
-                exit();
-            } else {
-                echo "Error: " . $stmt->error;
-            }
+        if ($stmt->execute()) {
+            $_SESSION['username'] = $user->getEmail();
+            header("Location: ../home html/home2.php");
+            exit();
         } else {
-            echo "Please fill in all required fields.";
+            echo "Error: " . $stmt->error;
         }
+     } else {
+        echo "Please fill in all required fields.";
+         }
     }
-   
 }
+
+
 ?>
 
 <!DOCTYPE html>
