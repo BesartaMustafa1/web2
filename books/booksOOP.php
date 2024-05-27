@@ -1,8 +1,11 @@
 <?php
+
+//Perdorimi i klasave
 class Librat{
     public $libri;
     public $autori;
 
+// Perdorimi i konstruktorit
     public function __construct($x, $y){
     $this -> libri = $x;
     $this -> autori = $y;
@@ -53,6 +56,7 @@ function getTitulli(){
         
         // Thirrja e funksioneve
         
+        //Perdorimi i metodave set dhe get
         $book1 -> setTitulli('It Starts With Us');
         $book1 -> setCmimi(15);
         echo 'Libri i pare ' . $book1 -> getTitulli() . 'dhe ka cmimin ' . $book1 -> getCmimi();
