@@ -1,3 +1,35 @@
+<?php
+ob_start();
+session_start();
+ini_set('display_errors', 0);
+
+// Funksioni per me e vendos cookie +konstanta time()=8640
+function setBackgroundCookie($value) {
+    setcookie('background', $value, time() + (86400 * 30), "/"); // 86400 = 1 day
+}
+
+if (isset($_POST['submit_rating'])) {
+    $rating = $_POST['rating'];
+    // Connect to your database
+    $conn = new mysqli('localhost', 'username', 'password', 'database');
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Insert the rating into the database
+    $stmt = $conn->prepare("INSERT INTO ratings (book_id, rating) VALUES (?, ?)");
+    $book_id = 1; // Assuming 1 is the ID for "Book Thief"
+    $stmt->bind_param("ii", $book_id, $rating);
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
+
+    // Display a success message
+    echo "<script>alert('You rated the book $rating stars!');</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +40,6 @@
     <link rel="stylesheet" href="../header/header.css">
     <link rel="stylesheet" href="../footer/footer.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://unpkg.com/htmlincludejs"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
@@ -119,45 +150,41 @@
             margin-top: 10px;
             padding: 5px;
         }
+        .rating {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.stars {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.star {
+    cursor: pointer;
+    color: #ccc; /* Default color of stars */
+}
+
+.star:hover,
+.star:hover ~ .star {
+    color: #ffcc00; /* Color of stars when hovered */
+}
+
+        .star {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="../home html/Home pic/logo.png ">
-            </div>
-            <ul>
-                <li><a href="../home html/home2.html">Home</a></li>
-                <li><a href="../books/books.html">Books</a></li>
-                <li><a href="../spaces/spaces.html">Study places</a></li>
-                <li><a href="../launching/launching.html">Launching soon</a></li>
-                <li><a href="../aboutus/aboutus.html">About us</a></li>
-            </ul>
-            <div class="social">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <div class="user-info" id="welcomeMessage" style="display: none;">
-                <span>Welcome, <span id="username"></span></span>
-                <button onclick="signOut()" style="padding: 20px">Sign Out</button>
-            </div>
-            <div class="signin">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                <a href="../signup/signup.html" style="text-decoration: none; color:black"><span>Sign In</span></a>
-            </div>
-        </nav>
-
-    </header>
-
+<div id="header"> </div><script>
+            $('#header').load('../header/header.php')</script>
+   
     <div class="product-container">
         <div class="product-image">
-            <img src="../books/4.jpg" alt="Product Image">
+            <img src="../books/gabreil.jpg" alt="Product Image">
         </div>
         <div class="product-details">
-            <h1 class="product-title">Me Before You</h1>
+            <h1 class="product-title">One Hundred Years of Solitude</h1>
             <p class="product-price">$20</p>
             <div class="product-description">
                 <p>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
@@ -168,7 +195,7 @@
                     <input class="qty" type="number" value="1">
                     <button class="plus" type="button">+</button>
                 </div>
-                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'Me Before You', 20)">Add to Cart</button>
+                <button class="add-to-cart-btn" type="button" onclick="addToCart(1, 'One Hundred Years of Solitude', 20)">Add to Cart</button>
             </form>
         </div>
     </div>
@@ -204,24 +231,44 @@
             // window.location.href = 'cart.html';
         }
     </script>
-<iframe src="../footer/footer.html" width=100% height="450vh"></iframe>
-				<script>
-					  // Retrieve the username from session storage
-			  var username = sessionStorage.getItem("username");
-			  // Display the welcome message with the username if it exists
-			  if (username) {
-				  document.getElementById("username").textContent = username;
-				  document.getElementById("welcomeMessage").style.display = "block";
-			  }
-		
-			  // Function to handle sign-out action
-			  function signOut() {
-				  // Clear the session storage
-				  sessionStorage.removeItem("username");
-				  // Redirect to the login page
-				  window.location.href = "home2.html";
-			  }
-				</script>
+     <div class="rating">
+        <p>Rate This Book:</p>
+        <div class="stars">
+            <span class="star" onclick="rateBook(1)">&#9733;</span>
+            <span class="star" onclick="rateBook(2)">&#9733;</span>
+            <span class="star" onclick="rateBook(3)">&#9733;</span>
+            <span class="star" onclick="rateBook(4)">&#9733;</span>
+            <span class="star" onclick="rateBook(5)">&#9733;</span>
+        </div>
+        <input type="hidden" name="rating" id="rating">
+        <button type="submit" name="submit_rating" style="margin-top: 10px;">Submit Rating</button>
+    </div>
+<iframe src="../footer/footer.php" width=100% height="450vh"></iframe>
+<script>
+    function rateBook(rating) {
+    // Display a confirmation message
+    alert('You rated the book ' + rating + ' stars!');
+
+    // Here you can add code to save the rating to a database or perform any other action
+}
+  // Merrni username nga sessionStorage
+  var username = sessionStorage.getItem("username");
+  // Shfaqeni në elementin me id 'username'
+  if (username) {
+      document.getElementById("username").textContent = username;
+      // Shfaqeni mesazhin e mirëseardhjes
+      document.getElementById("welcomeMessage").style.display = "block";
+  }
+
+  // Funksioni për të çkyçur
+  function signOut() {
+      // Fshini username nga sessionStorage
+      sessionStorage.removeItem("username");
+      // Ridrejtohuni tek faqja e login
+      window.location.href = "home2.php";
+  }
+</script>
+
 				 
 
 </body>

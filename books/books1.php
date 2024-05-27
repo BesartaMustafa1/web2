@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="../footer/footer.css">
     <link rel="stylesheet" href="../books/books.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://unpkg.com/htmlincludejs"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 
     </style>
@@ -48,10 +48,10 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="8.jpg"/>
+                    <img src="adance.jpg"/>
                     <div class="text">
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/adance1.php">
                       A Dance with Dragons
                       Novel by George R. R. Martin
                       </h2>
@@ -67,10 +67,10 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="9.jpg"/>
+                    <img src="gabreil.jpg"/>
                     <div class="text">
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/gabriel1.php">
                       One Hundred Years of Solitude
                       Novel by Gabriel García Márquez
                       </h2>
@@ -86,11 +86,11 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="10.jpg"/>
+                    <img src="bookthief.jpg"/>
                     <div class="text">
                      
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/bookthief.php">
                       The Book Thief
                       Novel by Markus Zusak
                       </h2>
@@ -106,11 +106,11 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="PR.jpg"/>
+                    <img src="thehatinggame.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/hatinggame.php">
                       The Hating Game: A Novel
                       Book by Sally Thorne
                       </h2>
@@ -129,11 +129,11 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="1.png"/>
+                    <img src="library.png"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/Library.php">
                       The Underground Library
                       Book by Jennifer Ryan
                       </h2>
@@ -149,11 +149,11 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="2.jpg"/>
+                    <img src="itstarts.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/ItStarts.php">
                         It Starts with Us
                       Novel by Colleen Hoover
                       </h2>
@@ -169,11 +169,11 @@
             </div> 
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="3..jpg"/>
+                    <img src="thealche.jpg"/>
                     <div class="text">
                      
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/TheAlchemist.php">
                       The Alchemist
                       Novel by Paulo Coelho
                       </h2>
@@ -193,7 +193,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">Anna Karenina
+                      <a href="../books/AK.php">Anna Karenina
                       Novel by Leo Tolstoy
                       </h2>
                     </a>
@@ -215,7 +215,7 @@
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/LOR.php">
                       The Lord of the Rings
                       Novel by John Ronald Reuel Tolkien</h2>
                     </a>
@@ -230,11 +230,11 @@
             </div>
             <div class="col-md-3">
                 <div class="tile" >
-                    <img src="5.jpg"/>
+                    <img src="harry.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">Harry Potter and the 
+                      <a href="../books/Harry.php">Harry Potter and the 
                       Deathly Hallows: Part 1</h2>
                     </a>
                     <p class="animate-text"> </p>
@@ -252,11 +252,11 @@
             </div> 
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="6.jpg"/>
+                    <img src="sikur.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html"></a>
+                      <a href="../books/.php"></a>
                       Sikur t'isha djalë
                       Novel by Haki Stërmilli
                       </h2>
@@ -272,11 +272,11 @@
             </div>
             <div class="col-md-3">
                 <div class="tile"> 
-                    <img src="7.jpg"/>
+                    <img src="kadare.jpg"/>
                     <div class="text">
                       
                     <h2 class="animate-text">
-                      <a href="../books/1.html">
+                      <a href="../books/Doruntine.php">
                       Doruntine (Kush e solli Doruntinën: roman)
                       Novel by Ismail Kadare
                       

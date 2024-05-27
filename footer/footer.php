@@ -1,7 +1,19 @@
 <?php
 	//Session duhet te shenohet ne fillim te file php.
 	session_start(); //krijimi i sesionit
+  ob_start();
+ini_set('display_errors', 0);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    
+    // Save email to cookie
+    setcookie("user_email", $email, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+    $_SESSION["message"] = "Email saved successfully!";
+}
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,8 +32,8 @@
               <div class="newsletter">
                 <h3 class="newsletter_title">Get updates on fun stuff you probably want to know about in your inbox.</h3>
                 <br>
-                <form action="">
-                  <input type="text" placeholder="Email Address">
+                <form method="post" action="">
+                  <input type="text" placeholder="Email Address" id="email" name="email">
                   <button>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                       <path fill="none" d="M0 0h24v24H0z" />
@@ -31,6 +43,12 @@
                 </form>
               </div>
             </div>
+            <?php
+    if (isset($_SESSION["message"])) {
+        echo "<p>" . $_SESSION["message"] . "</p>";
+        unset($_SESSION["message"]);
+    }
+    ?>
   
             <div class="layout_item w-25">
               <nav class="c-nav-tool">
@@ -62,7 +80,7 @@
                 <ul class="c-nav-tool_list">
   
                   <li class="c-nav-tool_item">
-                    <a href="../extras/helpandfqa.php" class="c-link" target="_blank">Help &amp; FAQ</a>
+                    <a href="../extras/helpandfqa.html" class="c-link" target="_blank">Help &amp; FAQ</a>
                   </li>
   
                   <li class="c-nav-tool_item">
@@ -71,7 +89,7 @@
 
   
                   <li class="c-nav-tool_item">
-                    <a href="../extras/contact.php" class="c-link" target="_blank">Contact</a>
+                    <a href="../extras/contact.html" class="c-link" target="_blank">Contact</a>
                   </li>
   
                   <li class="c-nav-tool_item">
@@ -158,12 +176,15 @@
               </ul>
             </div>
             <!-- button -->
-            <div class="layout_item w-25" style="display:flex;justify-content: end;align-items: center;">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 10h3l-4-4-4 4h3v4h2v-4z" />
-              </svg>
-            </div>
+           
+<div class="layout_item w-25" style="display:flex;justify-content: end;align-items: center;">
+    <button onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 10h3l-4-4-4 4h3v4h2v-4z" />
+        </svg>
+    </button>
+</div>
           </div>
         </div>
       </div>
@@ -171,5 +192,14 @@
         <p style="color: black;">&copy; 2024 TL .</p>
       </div>
     </div>
+    <script>
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+</script>
+
   </footer>
   </html>
