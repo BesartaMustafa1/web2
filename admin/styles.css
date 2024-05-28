@@ -1,0 +1,173 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Login Form Styles */
+.login-form, .dashboard {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: auto;
+}
+
+h1, h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+    color: #343a40;
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"], input[type="number"], input[type="email"], input[type="date"], button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #495057;
+    background-color: #fff;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="date"]:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 8px rgba(128, 189, 255, 0.6);
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Dashboard Styles */
+.dashboard {
+    width: 100%;
+}
+
+/* Consistent Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #dee2e6;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+table th:nth-child(1),
+table td:nth-child(1) {
+    width: 10%;
+}
+
+table th:nth-child(2),
+table td:nth-child(2) {
+    width: 30%;
+}
+
+table th:nth-child(3),
+table td:nth-child(3) {
+    width: 30%;
+}
+
+table th:nth-child(4),
+table td:nth-child(4) {
+    width: 15%;
+}
+
+table th:nth-child(5),
+table td:nth-child(5) {
+    width: 15%;
+}
+
+/* Form Section Styles */
+.form-section {
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+    font-size: 20px;
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.form-section form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.form-section form input, .form-section form button {
+    flex: 1;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.logout-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}

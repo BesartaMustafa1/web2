@@ -2,7 +2,6 @@
 session_start();
 ob_start();
 ini_set('display_errors', 1);
-
 require_once("../mysql/dbconnector.php");
 
 // Create connection
@@ -20,7 +19,7 @@ class User {
     private $lastName;
     private $email;
 
-    public function __construct($username, $password, $firstName, $lastName, $email) {
+    public function __construct($username, $password, $firstName = '', $lastName = '', $email = '') {
         $this->username = $username;
         $this->password = $password;
         $this->firstName = $firstName;
@@ -67,12 +66,10 @@ function isValidPassword($password) {
     return preg_match($pattern, $password);
 }
 
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // login
     if (isset($_POST['loginUsername']) && isset($_POST['loginPassword'])) {
-        $user = new User($_POST['loginUsername'], $_POST['loginPassword'], '', '', '');
+        $user = new User($_POST['loginUsername'], $_POST['loginPassword']);
 
         if ($user->isValidLogin()) {
             $sql = "SELECT * FROM users WHERE username = ?";
@@ -85,7 +82,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $userData = $result->fetch_assoc();
                 if (password_verify($_POST['loginPassword'], $userData['password'])) {
                     $_SESSION['username'] = $userData['username'];
-                    header("Location: ../home html/home2.php");
+                    $_SESSION['email'] = $userData['email'];
+
+                    if ($userData['email'] === 'admin@admin.com') {
+                        header("Location: ../admin/admin.php");
+                    } else {
+                        header("Location: ../home html/home2.php");
+                    }
                     exit();
                 } else {
                     echo "Invalid password.";
@@ -97,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Please fill in all required fields.";
         }
     }
-    #register
+    // register
     elseif (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['registerEmail']) && isset($_POST['registerPassword'])) {
         $user = new User('', $_POST['registerPassword'], $_POST['firstName'], $_POST['lastName'], $_POST['registerEmail']);
 
@@ -109,6 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($stmt->execute()) {
                 $_SESSION['username'] = $user->getEmail();
+                $_SESSION['email'] = $user->getEmail();
                 header("Location: ../home html/home2.php");
                 exit();
             } else {
@@ -196,9 +200,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="one">
                         <input type="checkbox" id="register-check">
                         <label for="register-check"> Remember Me</label>
-                      
                     </div>
-
                     <div class="two">
                         <label><a href="../extras/terms-condiction">Terms & conditions</a></label>
                     </div>
@@ -222,8 +224,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         x.style.left = "-510px";
         y.style.right = "5px";
     }
-
-  
 </script>
 
 </body>

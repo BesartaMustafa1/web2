@@ -35,7 +35,7 @@ mysqli_close($conn);
 //Krijimi i tabeles
 $dbhost = 'localhost:3306';
 $dbuser = 'root';
-$dbpass = 'Password';
+$dbpass = 'Art@1234';
 $db='library_db';
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db); 
 if(! $conn )
@@ -53,6 +53,7 @@ die('Could not create table: ' . mysqli_connect_error());
 }
 echo "Table authors was created successfully\n";
 mysqli_close($conn);
+
 
 
  //Insertimi i te dhenave
