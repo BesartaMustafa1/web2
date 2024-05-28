@@ -35,4 +35,8 @@ CREATE TABLE users (
     email VARCHAR(100) NOT NULL UNIQUE
 );
 
-
+CREATE TABLE ratings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT NOT NULL,
+    rating INT NOT NULL
+);
