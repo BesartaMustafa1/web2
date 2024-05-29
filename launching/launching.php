@@ -141,7 +141,7 @@ echo '</script>';
           </div>
       </div>
     <!---- <a href="courses.html" class="button">Learn More<img src="triangle.png"></a>-->
-    <a href="../courses/courses.php" class="button">Learn More<img src="triangle.png"></a>
+    <a href="../courses/api.php" class="button">Learn More<img src="triangle.png"></a>
     </div>
 
 <img src="rocket.png" class="rocket">

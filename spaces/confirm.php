@@ -13,7 +13,7 @@ $errors = []; // Vargu për të mbledhur gabimet
 function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = []) {
     global $errors;
     $errorMessage = "[ERROR][$errno] $errstr in $errfile on line $errline\n";
-    $errors[] = $errorMessage; // Shto gabimin në varg
+    $errors[] = $errorMessage; 
     return true;
 }
 
