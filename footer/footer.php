@@ -92,9 +92,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <a href="../extras/terms-condiction.php" class="c-link" target="_blank">Terms &amp; Conditions</a>
                   </li>
 
+                  <li class="c-nav-tool_item">
+                    <a href="../extras/location.php" class="c-link" target="_blank">Location </a>
+                  </li>
+
   
                   <li class="c-nav-tool_item">
-                    <a href="../extras/contact.html" class="c-link" target="_blank">Contact</a>
+                    <a href="../sendemail/index.php" class="c-link" target="_blank">Contact</a>
                   </li>
   
                   <li class="c-nav-tool_item">
@@ -180,16 +184,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </li>
               </ul>
             </div>
-            <!-- button -->
-           
-<div class="layout_item w-25" style="display:flex;justify-content: end;align-items: center;">
-    <button onclick="scrollToTop()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 10h3l-4-4-4 4h3v4h2v-4z" />
-        </svg>
-    </button>
-</div>
           </div>
         </div>
       </div>
