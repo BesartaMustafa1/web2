@@ -7,10 +7,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+$errors = []; // Vargu për të mbledhur gabimet
+
 // Funksioni për trajtimin e gabimeve
 function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = []) {
+    global $errors;
     $errorMessage = "[ERROR][$errno] $errstr in $errfile on line $errline\n";
-    echo "<script>alert('Ndodhi një gabim: [$errno] $errstr - $errfile:$errline');</script>";
+    $errors[] = $errorMessage; // Shto gabimin në varg
     return true;
 }
 
@@ -33,7 +36,8 @@ function connectDB() {
 
     // Kontrollo lidhjen
     if ($conn->connect_error) {
-        die("Lidhja dështoi: " . $conn->connect_error);
+        triggerCustomError("Lidhja dështoi: " . $conn->connect_error, E_USER_ERROR);
+        return null;
     }
 
     return $conn;
@@ -87,27 +91,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!$hasError) {
             // Lidhja me bazën e të dhënave
             $conn = connectDB();
+            if ($conn) {
+                // Futja e të dhënave në bazën e të dhënave
+                $stmt = $conn->prepare("INSERT INTO orders (name, surname, phone, card_number, expiry_date, ccv) VALUES (?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("ssssss", $name, $surname, $phone, $card_number, $expiry_date, $ccv);
 
-            // Futja e të dhënave në bazën e të dhënave
-            $stmt = $conn->prepare("INSERT INTO orders (name, surname, phone, card_number, expiry_date, ccv) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssss", $name, $surname, $phone, $card_number, $expiry_date, $ccv);
+                if ($stmt->execute()) {
+                    // Pastrimi i shportës
+                    $_SESSION['cart'] = [];
+                    setcookie('cart', '', time() - 3600, '/'); // Fshin cookie-n
+                    header('Location: ../home html/home2.php');
+                    exit;
+                } else {
+                    triggerCustomError("Dështoi futja e të dhënave: " . $stmt->error, E_USER_ERROR);
+                }
 
-            if ($stmt->execute()) {
-                // Pastrimi i shportës
-                $_SESSION['cart'] = [];
-                setcookie('cart', '', time() - 3600, '/'); // Fshin cookie-n
-                header('Location: ../home html/home2.php');
-                exit;
-            } else {
-                triggerCustomError("Dështoi futja e të dhënave: " . $stmt->error, E_USER_ERROR);
+                // Mbyllja e lidhjes
+                $stmt->close();
+                $conn->close();
             }
-
-            // Mbyllja e lidhjes
-            $stmt->close();
-            $conn->close();
         }
     } catch (Exception $e) {
-        echo "<script>alert('{$e->getMessage()}');</script>";
+        triggerCustomError("Një gabim ndodhi: " . $e->getMessage(), E_USER_ERROR);
     }
 }
 ?>
