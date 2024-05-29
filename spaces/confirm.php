@@ -1,6 +1,8 @@
 <?php
 ob_start();
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -8,15 +10,16 @@ error_reporting(E_ALL);
 // Funksioni për trajtimin e gabimeve
 function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = []) {
     $errorMessage = "[ERROR][$errno] $errstr in $errfile on line $errline\n";
-    error_log($errorMessage, 3, "error_log.txt");
     echo "<script>alert('Ndodhi një gabim: [$errno] $errstr - $errfile:$errline');</script>";
-    if ($errno == E_USER_ERROR) {
-        die("Gabim fatal. Ekzekutimi ndërpritet.");
-    }
     return true;
 }
 
 set_error_handler("customErrorHandler");
+
+// Krijimi i një gabimi të personalizuar (shqip) dhe trajtimi i tij
+function triggerCustomError($error_message, $error_type = E_USER_NOTICE) {
+    trigger_error($error_message, $error_type);
+}
 
 // Funksioni për lidhjen me bazën e të dhënave
 function connectDB() {
@@ -37,50 +40,72 @@ function connectDB() {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $phone = $_POST['phone'];
-    $card_number = $_POST['card_number'];
-    $expiry_date = $_POST['expiry_date'];
-    $ccv = $_POST['ccv'];
+    $name = $_POST['name'] ?? '';
+    $surname = $_POST['surname'] ?? '';
+    $phone = $_POST['phone'] ?? '';
+    $card_number = $_POST['card_number'] ?? '';
+    $expiry_date = $_POST['expiry_date'] ?? '';
+    $ccv = $_POST['ccv'] ?? '';
+
+    $hasError = false;
 
     try {
-        if (empty($name) || empty($surname) || empty($phone) || empty($card_number) || empty($expiry_date) || empty($ccv)) {
-            throw new Exception("Të gjitha fushat janë të detyrueshme.");
+        if (empty($name)) {
+            triggerCustomError("Emri është i detyrueshëm.", E_USER_WARNING);
+            $hasError = true;
+        }
+        if (empty($surname)) {
+            triggerCustomError("Mbiemri është i detyrueshëm.", E_USER_WARNING);
+            $hasError = true;
+        }
+        if (empty($phone)) {
+            triggerCustomError("Numri i telefonit është i detyrueshëm.", E_USER_WARNING);
+            $hasError = true;
+        } elseif (!preg_match("/^\+?\d{10,15}$/", $phone)) {
+            triggerCustomError("Numri i telefonit nuk është i vlefshëm.", E_USER_WARNING);
+            $hasError = true;
+        }
+        if (empty($card_number)) {
+            triggerCustomError("Numri i kartës së kreditit është i detyrueshëm.", E_USER_WARNING);
+            $hasError = true;
+        } elseif (!preg_match("/^[0-9]{16}$/", $card_number)) {
+            triggerCustomError("Numri i kartës së kreditit duhet të ketë 16 shifra.", E_USER_WARNING);
+            $hasError = true;
+        }
+        if (empty($expiry_date)) {
+            triggerCustomError("Data e skadimit është e detyrueshme.", E_USER_WARNING);
+            $hasError = true;
+        }
+        if (empty($ccv)) {
+            triggerCustomError("CCV është i detyrueshëm.", E_USER_WARNING);
+            $hasError = true;
+        } elseif (!preg_match("/^[0-9]{3,4}$/", $ccv)) {
+            triggerCustomError("CCV duhet të ketë 3 ose 4 shifra.", E_USER_WARNING);
+            $hasError = true;
         }
 
-        if (!preg_match("/^[0-9]{16}$/", $card_number)) {
-            throw new Exception("Numri i kartës së kreditit duhet të ketë 16 shifra.");
-        }
+        if (!$hasError) {
+            // Lidhja me bazën e të dhënave
+            $conn = connectDB();
 
-        if (!preg_match("/^[0-9]{3,4}$/", $ccv)) {
-            throw new Exception("CCV duhet të ketë 3 ose 4 shifra.");
-        }
+            // Futja e të dhënave në bazën e të dhënave
+            $stmt = $conn->prepare("INSERT INTO orders (name, surname, phone, card_number, expiry_date, ccv) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssss", $name, $surname, $phone, $card_number, $expiry_date, $ccv);
 
-        if (!preg_match("/^\+?\d{10,15}$/", $phone)) {
-            throw new Exception("Numri i telefonit nuk është i vlefshëm.");
-        }
-
-        // Lidhja me bazën e të dhënave
-        $conn = connectDB();
-
-        // Futja e të dhënave në bazën e të dhënave
-        $stmt = $conn->prepare("INSERT INTO orders (name, surname, phone, card_number, expiry_date, ccv) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $name, $surname, $phone, $card_number, $expiry_date, $ccv);
-
-        if ($stmt->execute()) {
+            if ($stmt->execute()) {
                 // Pastrimi i shportës
                 $_SESSION['cart'] = [];
                 setcookie('cart', '', time() - 3600, '/'); // Fshin cookie-n
                 header('Location: ../home html/home2.php');
                 exit;
-        } else {
-            throw new Exception("Dështoi futja e të dhënave: " . $stmt->error);
-        }
+            } else {
+                triggerCustomError("Dështoi futja e të dhënave: " . $stmt->error, E_USER_ERROR);
+            }
 
-        // Mbyllja e lidhjes
-        $stmt->close();
-        $conn->close();
+            // Mbyllja e lidhjes
+            $stmt->close();
+            $conn->close();
+        }
     } catch (Exception $e) {
         echo "<script>alert('{$e->getMessage()}');</script>";
     }

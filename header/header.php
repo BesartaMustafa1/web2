@@ -33,7 +33,7 @@ ob_end_flush();
                 <li><a href="../aboutus/aboutus.php">About us</a></li>
             </ul>
             <div class="social">
-                <i class="fa-solid fa-magnifying-glass"></i>
+               
                 <a href="../spaces/shop.php" style="color: black; text-decoration: none;"><i class="fas fa-shopping-cart"></i></a>
             </div>
             
