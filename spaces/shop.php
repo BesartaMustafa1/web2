@@ -9,7 +9,6 @@ if (!isset($_SESSION['cart']) && isset($_COOKIE['cart'])) {
 } elseif (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
-
 // Variablat: $item_id, $item_name, $item_price, $item_quantity,$item, $existing_item, $remove_id, $total_price
 // Qasja e tyre: Perdorni superglobalet $_POST, $_GET, $_SESSION, dhe $_COOKIE per te marre dhe ruajtur vlerat nga formularet, sesionet dhe cookie-t.
 if (isset($_POST['add_to_cart'])) {
@@ -90,13 +89,23 @@ if (isset($_GET['sort_by'])) {
     }
 }
 
-
-
 if (isset($_POST['confirm_order'])) {
     $_SESSION['cart'] = [];
-    header('Location: ../home html/home2.php');
+    header('Shop cart is empty');
     exit;
 }
+try {
+    if (empty($_SESSION['cart'])) {
+        throw new Exception("Ju keni shportën e zbrazët");
+    }
+} catch (Exception $e) {
+    echo "<script>
+        alert('{$e->getMessage()}');
+        window.location.href = '../home html/home2.php';
+    </script>";
+    exit;
+}
+
 ob_end_flush();
 ?>
 
@@ -235,7 +244,7 @@ a:hover {
     </tfoot>
 </table>
     
-    <form action="../home html/home2.php" method="post">
+    <form action="confirm.php" method="post">
         <input type="submit" name="confirm_order" value="Confirm" class="btn btn-primary">
     </form>
     <!-- <a href="shop.php?sort_by=name">Sort by Name</a> | 
