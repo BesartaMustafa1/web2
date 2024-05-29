@@ -225,8 +225,8 @@ function addProduct($name, $description, $price) {
                 <p class="product-description">>When a slew of bombs destroys the library, Juliet relocates the stacks to the local Underground station where the city's residents shelter nightly, determined to lend out stories that will keep spirits up. But tragedy after tragedy threatens to unmoor the women and sever the ties of their community.</p>
                 <form class="cart-form" onsubmit="addToCart(event)">
                     <input type="hidden" id="item_id" value="1">
-                    <input type="hidden" id="item_name" value="Product Name">
-                    <input type="hidden" id="item_price" value="99.99">
+                    <input type="hidden" id="item_name" value="A dance with Dragons">
+                    <input type="hidden" id="item_price" value="20.99">
                     <div class="quantity">
                         <button type="button" class="minus">-</button>
                         <input type="text" class="qty" value="1">
