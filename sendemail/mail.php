@@ -12,6 +12,11 @@ require 'phpmailer/src/SMTP.php';
 
 //Create an instance; passing `true` enables exceptions
 if (isset($_POST["send"])) {
+  
+  // Sanitize input fields
+  $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+  $subject = filter_var($_POST["subject"], FILTER_SANITIZE_STRING);
+  $message = filter_var($_POST["message"], FILTER_SANITIZE_STRING);
 
   $mail = new PHPMailer(true);
 
