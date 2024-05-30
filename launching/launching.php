@@ -151,7 +151,7 @@ echo '</script>';
  <!-- AJAX Section -->
  <div class="ajax-section" style="display: block;">
     <h2>AJAX User Data</h2>
-    <div id="result">User data will be loaded here.</div>
+    <div id="user">User data will be loaded here.</div>
     <button onclick="loadData()" style="display: block;">Load User</button>
     <button onclick="updateUser()" style="display: block;">Update User</button>
 </div>
