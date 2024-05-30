@@ -25,7 +25,7 @@ function signOut() {
 </script>
 
 <?php
-$countDownDate = strtotime("May 11, 2024 00:00:00");
+$countDownDate = strtotime("May 31, 2024 12:00:00");
 echo '<script>';
 echo 'var countDownDate = new Date('.json_encode(date("F d, Y H:i:s", $countDownDate) . ' GMT').' ).getTime();';
 echo 'var x = setInterval(function(){';
