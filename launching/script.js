@@ -1,16 +1,16 @@
 alert('script.js loaded');
-function loadData() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "launching/get_user.php", true); // URL of your server-side script to fetch user data
 
+function loadUser() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "launching/get_user.php", true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById("result").innerHTML = xhr.responseText;
+            document.getElementById("user").innerHTML = xhr.responseText;
         }
     };
-
     xhr.send();
 }
+
 
 function updateUser() {
     var xhr = new XMLHttpRequest();
