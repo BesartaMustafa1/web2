@@ -1,5 +1,6 @@
 alert('script.js loaded');
 
+// Lexim i te dhenave ne nje Database
 function loadUser() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "launching/get_user.php", true);
@@ -12,6 +13,7 @@ function loadUser() {
 }
 
 
+//Update i të Dhënave në një Database
 function updateUser() {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "launching/update_user.php", true);
