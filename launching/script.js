@@ -26,3 +26,14 @@ function updateUser() {
     var params = "id=1&name=Jane&age=25";
     xhr.send(params);
 }
+
+function loadData() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "launching/data.php", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("result").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
