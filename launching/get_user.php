@@ -10,12 +10,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT name, age FROM users WHERE id = 1";
+$sql = "SELECT username, email FROM users WHERE id = 1";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo "Name: " . $row["name"]. " - Age: " . $row["age"]. "<br>";
+        echo "Name: " . $row["username"]. " - Age: " . $row["age"]. "<br>";
     }
 } else {
     echo "0 results";
