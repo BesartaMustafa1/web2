@@ -11,10 +11,10 @@ if ($conn->connect_error) {
 }
 
 $id = $_POST['id'];
-$name = $_POST['name'];
-$age = $_POST['age'];
+$username = $_POST['username'];
+$email = $_POST['email'];
 
-$sql = "UPDATE users SET name='$name', age='$age' WHERE id=$id";
+$sql = "UPDATE users SET username='$username', email='$email' WHERE id=$id";
 
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";

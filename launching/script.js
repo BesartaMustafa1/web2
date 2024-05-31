@@ -51,6 +51,6 @@ function updateData() {
             document.getElementById("result").innerHTML = xhr.responseText;
         }
     };
-    var params = "name=John&age=30";
+    var params = "username=John&email=30";
     xhr.send(params);
 }

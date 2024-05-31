@@ -1,7 +1,7 @@
 <?php
-$name = $_POST['name'];
-$age = $_POST['age'];
+$username = $_POST['username'];
+$email = $_POST['email'];
 
 // Përpunimi i të dhënave
-echo "Name: " . $name . ", Age: " . $age;
+echo "Username: " . $username . ", Email: " . $email;
 ?>
